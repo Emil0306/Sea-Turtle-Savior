@@ -1,16 +1,11 @@
-class Trash {
-	private string name;
-	private string material;
+class Trash
+{
+	public string Name {get;}
+	public string Material {get;}
 
-	public Trash(string name, string material){
-		this.name = name;
-		this.material = material;
-	}
-
-	public string GetMaterial(){
-		return material;
-	}
-	public string GetName(){
-		return name;
+	public Trash(string Name, string Material)
+	{
+		this.Name = Name;
+		this.Material = Material;
 	}
 }
