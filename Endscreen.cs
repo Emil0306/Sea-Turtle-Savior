@@ -1,13 +1,3 @@
-class Test {
-	public static void Main (string[] args) {
-		bool donedone = false;
-		while (donedone == false){
-			EndScreen end = new EndScreen(true, 200, 0, 0.20);
-			donedone = end.EndInfo();
-		}
-	}
-}
-
 class EndScreen{
 	// Atributes
 	private bool win;
