@@ -2,7 +2,7 @@ class Trash {
 	private string name;
 	private string material;
 
-	public Car(string name, string material){
+	public Trash(string name, string material){
 		this.name = name;
 		this.material = material;
 	}
