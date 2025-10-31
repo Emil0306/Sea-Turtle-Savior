@@ -48,7 +48,7 @@ class Inventory
 		
 	}
 
-	/* public static void Main()
+	/* public static void Main() // Dette er kun brugt til at teste om det virker da vi ikke har rum med trash endnu. 
 	{	
 		
 		Inventory myInv = new Inventory();
