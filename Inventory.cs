@@ -42,13 +42,13 @@ class Inventory
 
 		for (int i = 0 ; i < inventoryList.Count ; i++) 
 		{
-			Console.WriteLine($"{inventoryList[i].Name} af {inventoryList[i].Material}"); // Prints out the waste's name and material type.
+			Console.WriteLine($"{inventoryList[i].Name} af {inventoryList[i].Material}"); // Prints out the trash name and material type.
 		}
 
 		
 	}
 
-	public static void Main()
+	/* public static void Main()
 	{	
 		
 		Inventory myInv = new Inventory();
@@ -75,7 +75,7 @@ class Inventory
 		myInv.RemoveTrash(0);
 		myInv.GetInventory();
 
-	}
+	} */
 
 
 }
