@@ -26,7 +26,7 @@ class EndScreen{
 			Console.ForegroundColor = ConsoleColor.Red;
 		}
 		Console.Write((pollutionmeterProgress*100)+"%");
-		Console.ForegroundColor = ConsoleColor.White;
+		Console.ForegroundColor = ConsoleColor.Gray;
 		Console.Write(" And you are: ");
 		if (cleaningMachineProgress == 1){
 			Console.ForegroundColor = ConsoleColor.Green;
@@ -36,7 +36,7 @@ class EndScreen{
 			Console.ForegroundColor = ConsoleColor.Red;
 		}
 		Console.Write((cleaningMachineProgress*100)+"%");
-		Console.ForegroundColor = ConsoleColor.White;
+		Console.ForegroundColor = ConsoleColor.Gray;
 		Console.WriteLine(" done with the cleaning machine");
 
 
