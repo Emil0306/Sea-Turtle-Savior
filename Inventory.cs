@@ -20,9 +20,10 @@ class Inventory
 			
 	}
 
-	public void RemoveTrash(int item)
+	public void RemoveTrash(Trash trash)
 	{
-			inventoryList.Remove(inventoryList[item]); 
+		
+			inventoryList.Remove(trash); 
 	}
 
 	public void FullCapacity() // Player Should then die, but will be added later on.
@@ -42,40 +43,49 @@ class Inventory
 
 		for (int i = 0 ; i < inventoryList.Count ; i++) 
 		{
-			Console.WriteLine($"{inventoryList[i].Name} af {inventoryList[i].Material}"); // Prints out the trash name and material type.
+			Console.WriteLine($"{inventoryList[i].Name} af {inventoryList[i].Material}"); // Prints out the waste's name and material type.
 		}
 
 		
 	}
 
-	/* public static void Main() // Dette er kun brugt til at teste om det virker da vi ikke har rum med trash endnu. 
+	public static void Main()
 	{	
 		
 		Inventory myInv = new Inventory();
 		
 
-		myInv.CollectTrash(new Trash("Dildo", "Plastic"));
-		myInv.CollectTrash(new Trash("Heineken", "Plastic"));
-		myInv.CollectTrash(new Trash("Træ", "Plastic"));
-		myInv.CollectTrash(new Trash("Køleskab", "Plastic"));
-		myInv.CollectTrash(new Trash("Bue", "Plastic"));
-		myInv.CollectTrash(new Trash("Pil", "Plastic"));
-		myInv.CollectTrash(new Trash("Hjul", "Plastic"));
-		myInv.CollectTrash(new Trash("Deo", "Plastic"));
-		myInv.CollectTrash(new Trash("Jernrør", "Plastic"));
-		myInv.CollectTrash(new Trash("Hammer", "Plastic"));
-		myInv.CollectTrash(new Trash("Spyd", "Plastic"));
-		myInv.CollectTrash(new Trash("Malerspand", "Plastic"));
-		myInv.CollectTrash(new Trash("Tang", "Plastic"));
-		myInv.CollectTrash(new Trash("Sten", "Plastic"));
-		myInv.CollectTrash(new Trash("Iphone", "Plastic"));
-		myInv.CollectTrash(new Trash("Bil", "Plastic"));
+		/* myInv.CollectTrash(new Trash("Dildo", "Plastic", false));
+		myInv.CollectTrash(new Trash("Heineken", "Plastic", false));
+		myInv.CollectTrash(new Trash("Træ", "Plastic", false));
+		myInv.CollectTrash(new Trash("Køleskab", "Plastic", false));
+		myInv.CollectTrash(new Trash("Bue", "Plastic", false));
+		myInv.CollectTrash(new Trash("Pil", "Plastic", false));
+		myInv.CollectTrash(new Trash("Hjul", "Plastic", false));
+		myInv.CollectTrash(new Trash("Deo", "Plastic", false));
+		myInv.CollectTrash(new Trash("Jernrør", "Plastic", false));
+		myInv.CollectTrash(new Trash("Hammer", "Plastic", false));
+		myInv.CollectTrash(new Trash("Spyd", "Plastic", false));
+		myInv.CollectTrash(new Trash("Malerspand", "Plastic", false));
+		myInv.CollectTrash(new Trash("Tang", "Plastic", false));
+		myInv.CollectTrash(new Trash("Sten", "Plastic", false));
+		myInv.CollectTrash(new Trash("Iphone", "Plastic", false));
+		myInv.CollectTrash(new Trash("Bil", "Plastic", false));
 		myInv.GetInventory();
 
 		myInv.RemoveTrash(0);
+		myInv.GetInventory(); 
+		Console.WriteLine("Hello!");
+
+		Trash trashTest = new Trash("Mikroovn", "Metal", false);
+		myInv.CollectTrash(trashTest);
 		myInv.GetInventory();
 
-	} */
+		WasteStation wStation = new WasteStation();
+		wStation.SortTrash(myInv, trashTest, 3, "Metal");
+		myInv.GetInventory();*/
+
+	}
 
 
 }
