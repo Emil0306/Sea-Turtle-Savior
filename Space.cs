@@ -48,9 +48,6 @@ class Space : Node {
         if (h==0) makemap += " | ";
 
         if (i==4 && h==4) makemap += "🐢 ";
-
-        else if (i==3 && h==7) makemap += "🥤 ";
-
         else makemap += " ~ ";
 
         if (h==mapSize-1) makemap += " | ";
