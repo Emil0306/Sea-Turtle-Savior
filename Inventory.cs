@@ -45,17 +45,15 @@ class Inventory
 		{
 			Console.WriteLine($"{inventoryList[i].Name} af {inventoryList[i].Material}"); // Prints out the waste's name and material type.
 		}
-
-		
 	}
 
-	public static void Main()
+	/*public static void Main()
 	{	
 		
 		Inventory myInv = new Inventory();
 		
 
-		/* myInv.CollectTrash(new Trash("Dildo", "Plastic", false));
+		myInv.CollectTrash(new Trash("Dildo", "Plastic", false));
 		myInv.CollectTrash(new Trash("Heineken", "Plastic", false));
 		myInv.CollectTrash(new Trash("Træ", "Plastic", false));
 		myInv.CollectTrash(new Trash("Køleskab", "Plastic", false));
@@ -83,9 +81,7 @@ class Inventory
 
 		WasteStation wStation = new WasteStation();
 		wStation.SortTrash(myInv, trashTest, 3, "Metal");
-		myInv.GetInventory();*/
+		myInv.GetInventory();
 
-	}
-
-
+	}*/
 }
