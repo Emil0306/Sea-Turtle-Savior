@@ -73,7 +73,6 @@ class Space : Node {
     return makemap;
   }
       
-  /* NEDENSTÅENDE ER FOR SKRALD I "VINDUET"
   public string MakeMaps(HashSet<string> exits, int pos1, int pos2){ // to make variable positions make parameters like pos1 and pos 2
     int mapSize = 9;
     string makemap = "";
@@ -121,7 +120,6 @@ class Space : Node {
     }
     return makemap;
   }
-
   private string Borders(int mapSize){
     string border = "     ";
     for (int i = 0 ; i<mapSize*3+4 ; i++){
@@ -129,17 +127,8 @@ class Space : Node {
     }
     border += "\n";
     return border;
-  }
-}
-*/
-
-
-  private string Borders(int mapSize){
-    string border = "     ";
-    for (int i = 0 ; i<mapSize*3+4 ; i++){
-      border += "-";
     }
-    border += "\n";
-    return border;
-  }
 }
+
+
+
