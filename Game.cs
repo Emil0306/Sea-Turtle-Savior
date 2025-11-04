@@ -4,58 +4,7 @@
 class Game
 {
   private bool IsRunning;
-  private int pollutionMeter = 0;
 
-  public void startStartScreen()
-  {
-    Start start = new Start();
-    start.Game();
-  }
-
-  public void startGame()
-  static void Main(string[] args)
-    {
-         Console.WriteLine("Welcome to Sea Turtle Savior!");
-
-    InitRegistry();
-    context.GetCurrent().Welcome();
-
-    }
-  
-  
-private int pollutionMeter = 0;
-  public void updatePollutionMeter()
-  {
-    pollutionMeter = +1;
-    Console.WriteLine($"pollution: {pollutionMeter}");
-  }
-  public void gamestatus()
-  {
-    if (pollutionMeter >= 100)
-    {
-      Console.WriteLine("The sea is too polluted");
-      endGame();
-    }
-  }
-  public void endGame()
-    {
-         while (context.IsRunning() )
-      {
-      Console.Write("> ");
-      string? line = Console.ReadLine();
-      if (line != null) registry.Dispatch(line);
-       Console.WriteLine("Game Over ");
-
-      }
-  
-    }
-   
-
-    
-  
-    
-    
- 
   static World world = new World();
   static Context context = new Context(world.GetEntry());
   static ICommand fallback = new CommandUnknown();
@@ -69,17 +18,20 @@ private int pollutionMeter = 0;
     registry.Register("bye", cmdExit);
     registry.Register("go", new CommandGo());
     registry.Register("help", new CommandHelp(registry));
+    registry.Register("collect", new CommandCollect());
   }
 
   static void Main(string[] args)
   {
-    
-    Console.WriteLine("Welcome to Sea Turtle Savior!");
+    Console.Clear();
+    Startscreen start = new Startscreen();
+    start.Startinformation();
+
 
     InitRegistry();
     context.GetCurrent().Welcome();
 
-    while (context.IsRunning() )
+    while (context.IsDone()==false)
     {
       Console.Write("> ");
       string? line = Console.ReadLine();

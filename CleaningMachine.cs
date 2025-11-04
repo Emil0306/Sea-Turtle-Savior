@@ -2,17 +2,6 @@ public class CleaningMachine
 {
     private int progress = 0;
 
-    public int Progress
-    {
-        get => progress;
-        private set
-        {
-            if (value < 0) progress = 0;
-            else if (value > 100) progress = 100;
-            else progress = value;
-        }
-    }
-
     private string[] constructionList=
     {
         "Strong metal body to hold everything together",
@@ -26,7 +15,7 @@ public class CleaningMachine
 
     public int GetProgress()
     {
-        return Progress;
+        return progress;
     }
 
     public string[] GetConstructionList()
@@ -34,13 +23,10 @@ public class CleaningMachine
         return constructionList;
     }
 
-    public void ChangeProgress(int newProgress)
+    public void SetProgress(int newProgress)
     {
-        Progress=newProgress;
-    }
-
-    public void GoHarbor()
-    {
-        Console.WriteLine ("Going Harbor");
+        if (newProgress < 0) progress = 0;
+        else if (newProgress >= 100) progress = 100;
+        else progress = newProgress;
     }
 }

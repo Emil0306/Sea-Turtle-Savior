@@ -1,5 +1,5 @@
 
-class StartScreen
+class Startscreen
 {
     //Attributes
     private DateTime startTime;

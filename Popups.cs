@@ -1,5 +1,5 @@
   // Herfra starter POPUPS med (+ Location (int, int) : void og + LearningInfo (string) : void)
-
+/*
   using System;
 
   public class Popups
@@ -40,3 +40,4 @@
       }
 
   }
+*/
