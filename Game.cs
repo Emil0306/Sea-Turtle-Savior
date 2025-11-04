@@ -14,6 +14,7 @@ class Game {
     registry.Register("bye", cmdExit);
     registry.Register("go", new CommandGo());
     registry.Register("help", new CommandHelp(registry));
+    registry.Register("collect", new CommandCollect());
   }
   
   static void Main (string[] args) {
@@ -21,7 +22,6 @@ class Game {
     
     InitRegistry();
     context.GetCurrent().Welcome();
-    
     while (context.IsDone()==false) {
       Console.Write("> ");
       string? line = Console.ReadLine();
