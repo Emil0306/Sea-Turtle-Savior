@@ -16,6 +16,10 @@ class CommandCollect : BaseCommand, ICommand {
         Inventory myInv = new Inventory();
         for (int i = 0 ; i < Space.trashList.Length ; i++){
             if (Space.trashList[i].Name == parameters[0] && parameters[0] == Space.availableTrash.Name){
+                if (Space.availableTrash.ForbiddenMaterial == true){
+                    context.MakeDone();
+                    return;
+                }
                 myInv.CollectTrash(Space.trashList[i]);
                 Space.availableTrash = new Trash("No trash here", "", false);
                 return;
