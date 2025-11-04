@@ -19,6 +19,7 @@ class Game
     registry.Register("go", new CommandGo());
     registry.Register("help", new CommandHelp(registry));
     registry.Register("collect", new CommandCollect());
+    registry.Register("deadly", new CommandDeadly());
   }
 
   static void Main(string[] args)
