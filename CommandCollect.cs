@@ -15,14 +15,14 @@ class CommandCollect : BaseCommand, ICommand {
         // maybe make CollectTrash static and then remove myInv
         Inventory myInv = new Inventory();
         for (int i = 0 ; i < Space.trashList.Length ; i++){
-            if (Space.trashList[i].Name == parameters[0] && parameters[0] == Space.availableTrash.Name){
-                if (Space.availableTrash.ForbiddenMaterial == true){
+            if (Space.trashList[i].Name == parameters[0] && parameters[0] == Space.GetavailableTrash().Name){
+                if (Space.GetavailableTrash().ForbiddenMaterial == true){
                     context.MakeDone();
                     return;
                 }
                 bool a = myInv.CollectTrash(Space.trashList[i]);
                 if (a == false) context.MakeDone();
-                Space.availableTrash = new Trash("No trash here", "", false);
+                Space.SetavailableTrash(new Trash("No trash here", "", false));
                 return;
             }
         }

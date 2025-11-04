@@ -20,7 +20,14 @@ class Space : Node {
     new Trash("Iphone", "Plastic", false),
     new Trash("Bil", "Plastic", false)
   };
-  public static Trash availableTrash; // also make private
+  private static Trash availableTrash = new Trash("No trash here", "", false);
+
+  public static Trash GetavailableTrash (){
+    return availableTrash;
+  }
+  public static void SetavailableTrash (Trash trash){
+    availableTrash = trash;
+  }
 
   public Space (String name) : base(name)
   {
