@@ -3,12 +3,12 @@ class Trash
 {
 	public string Name {get;}
 	public string Material {get;}
-	private bool forbiddenMaterial;
+	public bool ForbiddenMaterial {get;}
 
 	public Trash(string Name, string Material, bool forbiddenMaterial)
 	{
 		this.Name = Name;
 		this.Material = Material;
-		this.forbiddenMaterial = forbiddenMaterial;
+		this.ForbiddenMaterial = forbiddenMaterial;
 	}
 }
