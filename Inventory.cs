@@ -5,32 +5,25 @@ class Inventory
 	private static List<Trash> inventoryList = new List<Trash>();
 	private int capacity = 15;
 
-	public void CollectTrash(Trash trash)
+	public bool CollectTrash(Trash trash)
 	{
 		
 		if (inventoryList.Count < capacity)
 		{
 			inventoryList.Add(trash);
 			Console.WriteLine($"{trash.Name} added to inventory.");
+			return true;
 		}
 		else 
         {
-            FullCapacity(); 
+            return false;
         }
-			
 	}
 
 	public void RemoveTrash(Trash trash)
 	{
 		
 			inventoryList.Remove(trash); 
-	}
-
-	public void FullCapacity() // Player Should then die, but will be added later on.
-	{
-			Console.ForegroundColor = ConsoleColor.Red; 
-            Console.WriteLine("Inventory full! Cannot add more trash."); 
-        	Console.ForegroundColor = ConsoleColor.Gray; 
 	}
 
 

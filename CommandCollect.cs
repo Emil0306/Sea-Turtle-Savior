@@ -20,7 +20,8 @@ class CommandCollect : BaseCommand, ICommand {
                     context.MakeDone();
                     return;
                 }
-                myInv.CollectTrash(Space.trashList[i]);
+                bool a = myInv.CollectTrash(Space.trashList[i]);
+                if (a == false) context.MakeDone();
                 Space.availableTrash = new Trash("No trash here", "", false);
                 return;
             }
