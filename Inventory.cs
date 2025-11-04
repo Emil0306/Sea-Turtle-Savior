@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 class Inventory
 {
-	private List<Trash> inventoryList = new List<Trash>();
+	private static List<Trash> inventoryList = new List<Trash>();
 	private int capacity = 15;
 
 	public void CollectTrash(Trash trash)

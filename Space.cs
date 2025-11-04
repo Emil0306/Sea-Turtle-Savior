@@ -2,6 +2,26 @@
  */
 
 class Space : Node {
+  public static Trash[] trashList = new Trash[16]{ // change to private and add getters
+    new Trash("Dildo", "Plastic", false),
+    new Trash("Heineken", "Plastic", false),
+    new Trash("Træ", "Plastic", false),
+    new Trash("Køleskab", "Plastic", false),
+    new Trash("Bue", "Plastic", false),
+    new Trash("Pil", "Plastic", false),
+    new Trash("Hjul", "Plastic", false),
+    new Trash("Deo", "Plastic", false),
+    new Trash("Jernrør", "Plastic", false),
+    new Trash("Hammer", "Plastic", false),
+    new Trash("Spyd", "Plastic", false),
+    new Trash("Malerspand", "Plastic", false),
+    new Trash("Tang", "Plastic", false),
+    new Trash("Sten", "Plastic", false),
+    new Trash("Iphone", "Plastic", false),
+    new Trash("Bil", "Plastic", false)
+  };
+  public static Trash availableTrash; // also make private
+
   public Space (String name) : base(name)
   {
   }
@@ -9,7 +29,17 @@ class Space : Node {
   public void Welcome () {
     Console.Clear();
     HashSet<string> exits = edges.Keys.ToHashSet();
-    Console.WriteLine(MakeMaps(exits));
+    if (name == "Harbor" || name == "Cleaning Machine" || name == "WasteStation"){
+      availableTrash = new Trash("No trash here", "", false);
+      Console.WriteLine(MakeMaps(exits));
+    }
+    else {
+      Random rng = new Random();
+      int randomNumber = rng.Next(0, trashList.Length);
+      availableTrash = trashList[randomNumber];
+      Console.Write(MakeMaps(exits)); // change to other method
+      Console.WriteLine("Trash: "+availableTrash.Name);
+    }
     Console.WriteLine("You are now at "+name);
     Console.WriteLine("Current exits are:");
     foreach (String exit in exits) {
