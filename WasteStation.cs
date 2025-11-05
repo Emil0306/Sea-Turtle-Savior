@@ -22,24 +22,35 @@ class WasteStation
 	}
 
 
-	public void SortTrash(Inventory inv, Trash trash, int containerNumber, string sortingType)
-	{
-		
-		
-			if (trash.Material == sortingType && containers[containerNumber].SortingType == sortingType)
-			{
-				inv.RemoveTrash(trash);
-				Console.WriteLine("This sorting type is being put into the correct container! And now its not in the inventory anymore!");
-			}
-
-			else 
-			{
-				Console.WriteLine(sortingType + " is not " + containers[containerNumber].SortingType);
-				// Maybe we can add a penalty for sorting the wrong type of trash into the wrong container in the future. 
-			}
-		
+	
+public void SortTrash(Inventory inv, Trash trash, int containerNumber)
+{
+	if (trash == null){
+		return;
 	}
+    // Safety check to prevent crashing if the number is invalid
+    if (containerNumber < 0 || containerNumber >= containers.Length)
+    {
+        Console.WriteLine("That container doesn't exist!");
+        return; 
+    }
 
+    // Get the specific container
+    Container targetContainer = containers[containerNumber]; 
+
+    // Compare the trash's material to the container's sorting type
+    if (trash.Material == targetContainer.SortingType)
+    {
+        inv.RemoveTrash(trash);
+       
+        Console.WriteLine($"Successfully sorted {trash.Material} into the {targetContainer.SortingType} container!");
+    }
+    else 
+    {
+        Console.WriteLine($"Wrong container! {trash.Material} does not belong in the {targetContainer.SortingType} container.");
+        // Maybe we can add a penalty that adds to the pollutionmeter for sorting the wrong type of trash.
+    }
+}
 
 	public void RecyclingReward() //Unfinished
 	{

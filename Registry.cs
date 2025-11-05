@@ -19,7 +19,7 @@ class Registry {
     string[] elements = line.Split(" ");
     string command = elements[0];
     string[] parameters = GetParameters(elements);
-    (commands.ContainsKey(command) ? GetCommand(command) : fallback).Execute(context, command, parameters);
+    (commands.ContainsKey(command) ? GetCommand(command) : fallback).Execute(context, command, parameters); //Tjekker om commanden findes i Dictionary
   }
   
   public ICommand GetCommand (string commandName) {

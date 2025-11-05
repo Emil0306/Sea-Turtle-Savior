@@ -32,12 +32,25 @@ class Inventory
 	{
 		Console.ForegroundColor = ConsoleColor.Green; 
 		Console.WriteLine("Inventory: ");
-		Console.ForegroundColor = ConsoleColor.Gray;
+		Console.ForegroundColor = ConsoleColor.White;
 
 		for (int i = 0 ; i < inventoryList.Count ; i++) 
 		{
 			Console.WriteLine($"{inventoryList[i].Name} af {inventoryList[i].Material}"); // Prints out the waste's name and material type.
 		}
+	}
+
+	public Trash FindObj(string name){
+		for (int i = 0 ; i < inventoryList.Count ; i++) 
+		{
+			if (inventoryList[i].Name == name){
+				return inventoryList[i];
+			}
+
+		}
+		Console.WriteLine("Could not find " + name + " in the inventory");
+		return null;
+
 	}
 
 	/*public static void Main()

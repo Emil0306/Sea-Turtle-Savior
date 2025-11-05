@@ -9,6 +9,7 @@ class Game
   static Context context = new Context(world.GetEntry());
   static ICommand fallback = new CommandUnknown();
   static Registry registry = new Registry(context, fallback);
+  
 
   private static void InitRegistry()
   {
@@ -20,6 +21,8 @@ class Game
     registry.Register("help", new CommandHelp(registry));
     registry.Register("collect", new CommandCollect());
     registry.Register("deadly", new CommandDeadly());
+    registry.Register("show", new CommandShowInventory());
+    registry.Register("sort", new CommandSort());
   }
 
   static void Main(string[] args)
