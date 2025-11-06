@@ -17,7 +17,7 @@ class Pollutionmeter
         timer.Elapsed += Timer_Elapsed;
 
         timer.Enabled = true;
-        Console.ReadLine();
+        
     }
     private static void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
