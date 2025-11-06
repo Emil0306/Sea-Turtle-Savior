@@ -4,6 +4,8 @@ class Pollutionmeter
 {
     //atributtes
 
+    private static PollutionMeterVisual pollutionmeter = new PollutionMeterVisual ();
+
     private static System.Timers.Timer timer; // from Timer class
     private static int procent = 50;
     //constructor
@@ -12,7 +14,7 @@ class Pollutionmeter
 
     public static void GetPollutionData()
     {
-        timer = new System.Timers.Timer(30000); // 1000 = 1 second
+        timer = new System.Timers.Timer(1000); // 1000 = 1 second
 
         timer.Elapsed += Timer_Elapsed;
 
@@ -24,6 +26,7 @@ class Pollutionmeter
         if (procent < 100)
         {
             procent += 1;
+            pollutionmeter.IncreasePollution(1);
             Console.WriteLine($"Pollution procent: {procent}%");
         }
         else
@@ -40,7 +43,7 @@ class PollutionMeterVisual
     int pollution = 0;
     int maxPollution = 100;
 
-    // Metode til når tiden går
+    // Metode til når tiden går = stigning af pollution
     public void IncreasePollution(int amount)
     {
         pollution = pollution + amount;
@@ -51,7 +54,7 @@ class PollutionMeterVisual
         ShowPollution();
     }
 
-    // Metode til når man samler skrald
+    // Metode til når man samler skrald = fald af pollution
     public void DecreasePollution(int amount)
     {
         pollution = pollution - amount;
@@ -83,16 +86,6 @@ class PollutionMeterVisual
 
         int percent = pollution * 100 / maxPollution;
         Console.WriteLine("Pollution: [" + bar + "] " + pollution + "/" + maxPollution + " (" + percent + "%)");
-    }
-
-    public void Test() {
-        PollutionMeterVisual pollutionmeter = new PollutionMeterVisual(); 
-
-        pollutionmeter.IncreasePollution(10);
-
-        pollutionmeter.DecreasePollution(5);
-
-        pollutionmeter.ShowPollution(); 
     }
 }
 

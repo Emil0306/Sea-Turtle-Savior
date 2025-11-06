@@ -4,6 +4,7 @@ class Inventory
 {
 	private static List<Trash> inventoryList = new List<Trash>();
 	private int capacity = 15;
+	PollutionMeterVisual pollutionmeter = new PollutionMeterVisual ();
 
 	public bool CollectTrash(Trash trash)
 	{
@@ -12,6 +13,9 @@ class Inventory
 		{
 			inventoryList.Add(trash);
 			Console.WriteLine($"{trash.Name} added to inventory.");
+
+			pollutionmeter.DecreasePollution(5); // hænger sammen med Pollutionmeter.cs
+
 			return true;
 		}
 		else 
