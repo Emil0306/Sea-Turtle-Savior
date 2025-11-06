@@ -30,8 +30,11 @@ class Game
     Console.Clear();
     Startscreen start = new Startscreen();
     start.Startinformation();
-
-
+    Pollutionmeter.GetPollutionData();
+    GameTimer.startimer();
+    double time = GameTimer.readtimer();
+    Console.WriteLine(time);
+       
     InitRegistry();
     context.GetCurrent().Welcome();
 

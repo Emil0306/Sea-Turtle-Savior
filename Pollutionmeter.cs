@@ -31,8 +31,9 @@ class Pollutionmeter
         }
         else
         {
-            Console.WriteLine("100% reached! gameover");
             timer.Stop();
+            EndScreen endscreen = new EndScreen(false, GameTimer.readtimer(), procent, 0.5); //ToDo få CleaningMachine.GetProgress til at fungere
+            endscreen.EndInfo();
         }
     }
 }
@@ -40,8 +41,8 @@ class Pollutionmeter
 
 class PollutionMeterVisual
 {
-    int pollution = 0;
-    int maxPollution = 100;
+    int pollution = 0; // Vi skal have linkede op - Hans
+    int maxPollution = 100; // Vi skal have linkede op - Hans
 
     // Metode til når tiden går = stigning af pollution
     public void IncreasePollution(int amount)
