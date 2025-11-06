@@ -52,6 +52,13 @@ class Space : Node {
     foreach (String exit in exits) {
       Console.WriteLine(" - "+exit);
     }
+
+    if (name == "Cleaning Machine") {
+        CleaningMachine machine = new CleaningMachine();
+        Inventory playerInventory = new Inventory();
+
+        machine.AddItemFromInventory(playerInventory);
+    }
   }
   
   public void Goodbye () {

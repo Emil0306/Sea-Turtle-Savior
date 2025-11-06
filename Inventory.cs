@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-class Inventory
+public class Inventory
 {
 	private static List<Trash> inventoryList = new List<Trash>();
 	private int capacity = 15;

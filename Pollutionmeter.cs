@@ -14,7 +14,7 @@ class Pollutionmeter
 
     public static void GetPollutionData()
     {
-        timer = new System.Timers.Timer(1000); // 1000 = 1 second
+        timer = new System.Timers.Timer(40000); // 1000 = 1 second
 
         timer.Elapsed += Timer_Elapsed;
 
