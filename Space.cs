@@ -3,22 +3,22 @@
 
 class Space : Node {
   public static Trash[] trashList = new Trash[16]{ // change to private and add getters
-    new Trash("Plastic bottle",          "Plastic", false),
-    new Trash("Plastic bag",             "Plastic", false),
-    new Trash("Food wrapper",            "Plastic", false),
-    new Trash("Fishing net",             "Other",   false),
-    new Trash("Fishing line",            "Other",   false),
-    new Trash("Styrofoam float",         "Other",   false),
-    new Trash("Cigarette butts",         "Mixed",   false),
-    new Trash("Disposable mask",         "Plastic", false),
-    new Trash("Aluminum can",            "Metal",   false),
-    new Trash("Glass bottle",            "Glass",   false),
-    new Trash("Car tire",                "Other",   false),
-    new Trash("Battery",                 "Toxic",   false),
-    new Trash("Chemical drum",           "Toxic",   false),
-    new Trash("Oil container",           "Toxic",   false),
-    new Trash("Syringe",                 "Toxic",   false),
-    new Trash("Pesticide container",     "Toxic",   false)
+    new Trash("Bottle",        "Plastic",   false),
+    new Trash("Bag",           "Plastic",   false),
+    new Trash("Foodbag",          "Plastic",   false),
+    new Trash("Fishing_net",           "Plastic",   false),
+    new Trash("Fishing_line",          "Plastic",   false),
+    new Trash("Styrofoam_float",       "Plastic",   false),
+    new Trash("Cigarette",       "Plastic",   true),
+    new Trash("Disposable_mask",       "Plastic",   false),
+    new Trash("Pepsi_Can",          "Metal",     false),
+    new Trash("Bottle",          "Glass",     false),
+    new Trash("Car_tire",              "Plastic",   true),
+    new Trash("Battery",               "Batteries", true),
+    new Trash("Chemical_drum",         "Plastic",   true),
+    new Trash("Oil_container",         "Plastic",   true),
+    new Trash("Syringe",               "Plastic",   true),
+    new Trash("Pesticide_container",   "Plastic",   true)
   };
   private static Trash availableTrash = new Trash("No trash here", "", false);
 
