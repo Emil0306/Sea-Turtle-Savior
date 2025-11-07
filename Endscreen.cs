@@ -1,3 +1,5 @@
+using System.Net.Mail;
+
 class EndScreen{
 	// Atributes
 	private bool win;
@@ -16,8 +18,13 @@ class EndScreen{
 	// Methods
 	public bool EndInfo () {	// Display an endscreen with time, pollution and the cleaning machine progress
 		Console.Clear();
-		Console.WriteLine("You have "+(win==false ? "lost" : "won")+"!");
-		Console.WriteLine("You finnished in "+endtime+" seconds!");
+		Console.WriteLine("You have " + (win == false ? "lost" : "won") + "!");
+		DateTime endTime = DateTime.Now;
+		double endtime = (DateTime.Now - startTime).TotalSeconds;
+		TimeSpan playtime = TimeSpan.FromSeconds(endtime);
+
+		Console.WriteLine($"You finnished in {playtime:hh\\:mm\\.ss}!");
+		
 
 		Console.Write("The pollutionmeter has reached: ");
 		if (pollutionmeterProgress == 0){
