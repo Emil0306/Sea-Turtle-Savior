@@ -1,8 +1,6 @@
 public class CleaningMachine
 {
-    private int progress = 0;
-
-    private string[] constructionList=
+    private readonly string[] constructionList =
     {
         "Hjul",
         "Iphone",
@@ -11,15 +9,25 @@ public class CleaningMachine
         "Bil",
     };
 
-    public int GetProgress()
+    private int addedCount = 0;
+    private int progress = 0;
+
+    public string AddMaterial(string material)
     {
-        return progress;
+        if (!constructionList.Contains(material))
+            return $"'{material}' is not a valid part.";
+
+        addedCount++;
+        progress = addedCount * 100 / constructionList.Length;
+
+        if (addedCount == constructionList.Length)
+            return "🎉 Congratulations, the CleaningMachine is finished and working!";
+        else
+            return $"{material} added. ({progress}%)";
+
     }
 
-    public string[] GetConstructionList()
-    {
-        return constructionList;
-    }
+    public int GetProgress() => progress;
 
     public void SetProgress(int newProgress)
     {
@@ -99,6 +107,7 @@ public class CleaningMachine
     SetProgress(progress + 20); // each of 5 items = +20%
     Console.WriteLine(input + " added to Cleaning Machine! Progress is now " + progress + "%.");
     }
+    public string[] GetConstructionList() => constructionList;
 }
 
 
