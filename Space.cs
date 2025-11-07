@@ -3,22 +3,39 @@
 
 class Space : Node {
   public static Trash[] trashList = new Trash[16]{ // change to private and add getters
-    new Trash("Plastic bottle",          "Plastic", false),
-    new Trash("Plastic bag",             "Plastic", false),
-    new Trash("Food wrapper",            "Plastic", false),
-    new Trash("Fishing net",             "Other",   false),
-    new Trash("Fishing line",            "Other",   false),
-    new Trash("Styrofoam float",         "Other",   false),
-    new Trash("Cigarette butts",         "Mixed",   false),
-    new Trash("Disposable mask",         "Plastic", false),
-    new Trash("Aluminum can",            "Metal",   false),
-    new Trash("Glass bottle",            "Glass",   false),
-    new Trash("Car tire",                "Other",   false),
-    new Trash("Battery",                 "Toxic",   false),
-    new Trash("Chemical drum",           "Toxic",   false),
-    new Trash("Oil container",           "Toxic",   false),
-    new Trash("Syringe",                 "Toxic",   false),
-    new Trash("Pesticide container",     "Toxic",   false)
+// --- Plastic (5) ---
+new Trash("Plastic_Bottle",      "Plastic",     false),
+new Trash("Food_Wrapper",        "Plastic",     false),
+new Trash("Syringe",             "Plastic",     true),
+new Trash("Car_Tire",            "Plastic",     true),
+new Trash("Pesticide_Container", "Plastic",     true),
+
+// --- Glass (1) ---
+new Trash("Glass_Bottle",        "Glass",       false),
+
+// --- Metal (2) ---
+new Trash("Aluminum_Can",        "Metal",       false),
+new Trash("Tin_Can",             "Metal",       false),
+
+// --- Paper (1) ---
+new Trash("Cardboard_Box",       "Paper",       false),
+
+// --- Organic (2) ---
+new Trash("Apple_Core",          "Organic",     false),
+new Trash("Banana_Peel",         "Organic",     false),
+
+// --- Electronics (1) ---
+new Trash("Old_Phone",           "Electronics", true),
+
+// --- Batteries (2) ---
+new Trash("AA_Battery",          "Batteries",   true),
+new Trash("Car_Battery",         "Batteries",   true),
+
+// --- Textile (1) ---
+new Trash("Old_TShirt",          "Textile",     false),
+
+// --- Wood (1) ---
+new Trash("Wood_Plank",          "Wood",        false)
   };
   private static Trash availableTrash = new Trash("No trash here", "", false);
 
