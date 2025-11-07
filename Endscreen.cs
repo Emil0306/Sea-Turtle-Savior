@@ -23,10 +23,8 @@ class EndScreen{
 		double endtime = (DateTime.Now - startTime).TotalSeconds;
 		TimeSpan playtime = TimeSpan.FromSeconds(endtime);
 		Console.WriteLine($"You finnished in {playtime:hh\\:mm\\.ss}!");
-		
 		Console.WriteLine("You have "+(win==false ? "lost" : "won")+"!");
 		Console.WriteLine("You finished in "+endtime+" seconds!");
-
 		Console.Write("The pollutionmeter has reached: ");
 		if (pollutionmeterProgress == 0){
 			Console.ForegroundColor = ConsoleColor.Green;
