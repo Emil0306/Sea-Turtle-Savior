@@ -4,24 +4,24 @@
 class Space : Node {
   public static Trash[] trashList = new Trash[16]{ // change to private and add getters
 // --- Plastic (5) ---
-new Trash("Plastic_Bottle",      "Plastic",     false),
+new Trash("Bottle",      "Plastic",     false),
 new Trash("Food_Wrapper",        "Plastic",     false),
 new Trash("Syringe",             "Plastic",     true),
 new Trash("Car_Tire",            "Plastic",     true),
 new Trash("Pesticide_Container", "Plastic",     true),
 
 // --- Glass (1) ---
-new Trash("Glass_Bottle",        "Glass",       false),
+new Trash("Bottle",        "Glass",       false),
 
 // --- Metal (2) ---
-new Trash("Aluminum_Can",        "Metal",       false),
-new Trash("Tin_Can",             "Metal",       false),
+new Trash("Can",        "Metal",       false),
+new Trash("Can",             "Metal",       false),
 
 // --- Paper (1) ---
 new Trash("Cardboard_Box",       "Paper",       false),
 
 // --- Organic (2) ---
-new Trash("Apple_Core",          "Organic",     false),
+new Trash("Apple",          "Organic",     false),
 new Trash("Banana_Peel",         "Organic",     false),
 
 // --- Electronics (1) ---
