@@ -36,7 +36,7 @@ public class Inventory
 	{
 		Console.ForegroundColor = ConsoleColor.Green; 
 		Console.WriteLine("Inventory: ");
-		Console.ForegroundColor = ConsoleColor.White;
+		Console.ForegroundColor = ConsoleColor.Gray;
 
 		for (int i = 0 ; i < inventoryList.Count ; i++) 
 		{
