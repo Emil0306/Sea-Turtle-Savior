@@ -3,22 +3,22 @@
 
 class Space : Node {
   public static Trash[] trashList = new Trash[16]{ // change to private and add getters
-    new Trash("Dildo", "Plastic", false),
-    new Trash("Heineken", "Plastic", false),
-    new Trash("Træ", "Plastic", false),
-    new Trash("Køleskab", "Plastic", false),
-    new Trash("Bue", "Plastic", false),
-    new Trash("Pil", "Plastic", false),
-    new Trash("Hjul", "Plastic", false),
-    new Trash("Deo", "Plastic", false),
-    new Trash("Jernrør", "Plastic", false),
-    new Trash("Hammer", "Plastic", false),
-    new Trash("Spyd", "Plastic", false),
-    new Trash("Malerspand", "Plastic", false),
-    new Trash("Tang", "Plastic", false),
-    new Trash("Sten", "Plastic", false),
-    new Trash("Iphone", "Plastic", false),
-    new Trash("Bil", "Plastic", false)
+    new Trash("Plastic bottle",          "Plastic", false),
+    new Trash("Plastic bag",             "Plastic", false),
+    new Trash("Food wrapper",            "Plastic", false),
+    new Trash("Fishing net",             "Other",   false),
+    new Trash("Fishing line",            "Other",   false),
+    new Trash("Styrofoam float",         "Other",   false),
+    new Trash("Cigarette butts",         "Mixed",   false),
+    new Trash("Disposable mask",         "Plastic", false),
+    new Trash("Aluminum can",            "Metal",   false),
+    new Trash("Glass bottle",            "Glass",   false),
+    new Trash("Car tire",                "Other",   false),
+    new Trash("Battery",                 "Toxic",   false),
+    new Trash("Chemical drum",           "Toxic",   false),
+    new Trash("Oil container",           "Toxic",   false),
+    new Trash("Syringe",                 "Toxic",   false),
+    new Trash("Pesticide container",     "Toxic",   false)
   };
   private static Trash availableTrash = new Trash("No trash here", "", false);
 
