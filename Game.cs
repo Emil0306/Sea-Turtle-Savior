@@ -25,9 +25,9 @@ class Game
     registry.Register("sort", new CommandSort());
 
     CleaningMachine machine = new CleaningMachine();
-    registry.Register("add", new CommandAddMaterial(machine));
+    registry.Register("add",      new CommandAddMaterial(machine));
     registry.Register("progress", new CommandProgress(machine));
-    registry.Register("list", new CommandListParts(machine));
+    registry.Register("list",     new CommandListParts(machine));
   }
 
   static void Main(string[] args)

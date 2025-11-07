@@ -1,18 +1,24 @@
+using System;
+
 class CommandListParts : BaseCommand, ICommand
 {
-    private readonly CleaningMachine Machine;
+    private readonly CleaningMachine _machine;
 
     public CommandListParts(CleaningMachine machine)
     {
-        Machine = machine;
+        _machine = machine;
         description = "List all required parts";
     }
 
     public void Execute(Context ctx, string cmd, string[] p)
     {
-        if (!GuardEq(p, 0)) { ctx.Print("Usage: list"); return; }
+        if (!GuardEq(p, 0))
+        {
+            Console.WriteLine("Usage: list");
+            return;
+        }
 
-        var parts = _machine.GetConstructionList();
-        ctx.Print(string.Join(", ", parts));
+        string[] parts = _machine.GetConstructionList();
+        Console.WriteLine(string.Join(", ", parts));
     }
 }

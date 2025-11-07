@@ -1,18 +1,25 @@
+using System;
+using System.Linq;
+
 class CommandAddMaterial : BaseCommand, ICommand
 {
-    private readonly CleaningMachine Machine;
+    private readonly CleaningMachine _machine;
 
     public CommandAddMaterial(CleaningMachine machine)
     {
-        Machine = machine;
+        _machine = machine;
         description = "Add a material to the CleaningMachine";
     }
 
     public void Execute(Context ctx, string cmd, string[] p)
     {
-        if (!GuardEq(p, 1)) { ctx.Print("Usage: add <material>"); return; }
+        if (!GuardEq(p, 1))
+        {
+            Console.WriteLine("Usage: add <material>");
+            return;
+        }
 
         string result = _machine.AddMaterial(p[0]);
-        ctx.Print(result);
+        Console.WriteLine(result);
     }
 }
