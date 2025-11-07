@@ -25,6 +25,8 @@ class EndScreen{
 
 		Console.WriteLine($"You finnished in {playtime:hh\\:mm\\.ss}!");
 		
+		Console.WriteLine("You have "+(win==false ? "lost" : "won")+"!");
+		Console.WriteLine("You finished in "+endtime+" seconds!");
 
 		Console.Write("The pollutionmeter has reached: ");
 		if (pollutionmeterProgress == 0){
@@ -32,7 +34,7 @@ class EndScreen{
 		} else{
 			Console.ForegroundColor = ConsoleColor.Red;
 		}
-		Console.Write((pollutionmeterProgress*100)+"%");
+		Console.Write((pollutionmeterProgress*100)+"%"); // Vi skal lige få fixede procenttallet - Hans
 		Console.ForegroundColor = ConsoleColor.Gray;
 		Console.Write(" And you are: ");
 		if (cleaningMachineProgress == 1){

@@ -1,46 +1,32 @@
 public class CleaningMachine
 {
-    private int progress = 0;
-
-    public int Progress
+    private readonly string[] constructionList =
     {
-        get => progress;
-        private set
-        {
-            if (value < 0) progress = 0;
-            else if (value > 100) progress = 100;
-            else progress = value;
-        }
-    }
-
-    private string[] constructionList=
-    {
-        "Strong metal body to hold everything together",
-        "Floating parts to help it stay on the water",
-        "Trash collector to scoop up plastic and metal",
-        "Filter to clean out dirty or chemical water",
-        "Storage boxes for the collected trash",
-        "Battery or solar power to keep it running",
-        "Simple control panel to steer and start it"
+        "Strong metal", "Floating parts", "Trash collector",
+        "Filter", "Storage boxes", "Battery", "Simple control panel"
     };
 
-    public int GetProgress()
+    private int addedCount = 0;
+    private int progress = 0;
+
+    public string AddMaterial(string material)
     {
-        return Progress;
+        if (!constructionList.Contains(material))
+            return $"'{material}' is not a valid part.";
+
+        addedCount++;
+        progress = addedCount * 100 / constructionList.Length;
+
+        if (addedCount == constructionList.Length)
+            return "🎉 Congratulations, the CleaningMachine is finished and working!";
+        else
+            return $"{material} added. ({progress}%)";
+
     }
 
-    public string[] GetConstructionList()
-    {
-        return constructionList;
-    }
+    public int GetProgress() => progress;
 
-    public void ChangeProgress(int newProgress)
-    {
-        Progress=newProgress;
-    }
-
-    public void GoHarbor()
-    {
-        Console.WriteLine ("Going Harbor");
-    }
+    public string[] GetConstructionList() => constructionList;
 }
+
+
