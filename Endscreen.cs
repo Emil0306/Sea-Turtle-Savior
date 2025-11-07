@@ -25,7 +25,7 @@ class EndScreen{
 		} else{
 			Console.ForegroundColor = ConsoleColor.Red;
 		}
-		Console.Write((pollutionmeterProgress*100)+"%"); // Vi skal lige få fixede procenttallet - Hans
+		Console.Write((pollutionmeterProgress)+"%"); // Vi skal lige få fixede procenttallet - Hans
 		Console.ForegroundColor = ConsoleColor.Gray;
 		Console.Write(" And you are: ");
 		if (cleaningMachineProgress == 1){

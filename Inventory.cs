@@ -4,7 +4,7 @@ public class Inventory
 {
 	private static List<Trash> inventoryList = new List<Trash>();
 	private int capacity = 15;
-	PollutionMeterVisual pollutionmeter = new PollutionMeterVisual ();
+	Pollutionmeter pollutionmeter = new Pollutionmeter ();
 
 	public bool CollectTrash(Trash trash)
 	{
