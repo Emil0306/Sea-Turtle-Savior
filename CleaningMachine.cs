@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+
 public class CleaningMachine
 {
     private readonly string[] constructionList =
@@ -9,23 +12,7 @@ public class CleaningMachine
         "Bil",
     };
 
-    private int addedCount = 0;
     private int progress = 0;
-
-    public string AddMaterial(string material)
-    {
-        if (!constructionList.Contains(material))
-            return $"'{material}' is not a valid part.";
-
-        addedCount++;
-        progress = addedCount * 100 / constructionList.Length;
-
-        if (addedCount == constructionList.Length)
-            return "🎉 Congratulations, the CleaningMachine is finished and working!";
-        else
-            return $"{material} added. ({progress}%)";
-
-    }
 
     public int GetProgress() => progress;
 
@@ -36,78 +23,44 @@ public class CleaningMachine
         else progress = newProgress;
     }
 
-    public void AddItemFromInventory(Inventory playerInventory) {
-
-    Console.WriteLine("=== Cleaning Machine ===");
-    Console.WriteLine("Progress: " + progress + "%");
-    Console.WriteLine();
-
-    string[] missingItems = new string[constructionList.Length];
-    int missingCount = 0;
-
-    for (int i = 0; i < constructionList.Length; i++) {
-        string item = constructionList[i];
-        bool found = false;
-
-        // Hvis allerede tilføjet:
-        int itemsAdded = progress / 20;
-        if (i < itemsAdded) found = true;
-
-        if (!found) {
-            missingItems[missingCount] = item;
-            missingCount++;
-        }
-    }
-
-    if (missingCount == 0) {
-        Console.WriteLine("The Cleaning Machine is fully built!");
-        return;
-    }
-
-    Console.WriteLine("Required items:");
-    for (int i = 0; i < missingCount; i++) {
-        Console.WriteLine(" - " + missingItems[i]);
-    }
-
-    Console.WriteLine();
-    Console.WriteLine("Your inventory:");
-    playerInventory.GetInventory();
-
-    Console.WriteLine();
-    Console.WriteLine("Type the name of an item to add (or 'leave' to leave):");
-    string input = Console.ReadLine();
-
-    if (input == null || input.ToLower() == "leave") {
-        return;
-    }
-
-    // Tjek om item er en del af listen
-    bool isRequired = false;
-    for (int i = 0; i < missingCount; i++) {
-        if (missingItems[i] == input) {
-            isRequired = true;
-            break;
-        }
-    }
-
-    if (!isRequired) {
-        Console.WriteLine("That item is not required!");
-        return;
-    }
-
-    // Tjek om spilleren har item
-    Trash foundItem = playerInventory.FindObj(input);
-    if (foundItem == null) {
-        Console.WriteLine("You don't have that item!");
-        return;
-    }
-
-    // Tilføj til maskine + progress
-    playerInventory.RemoveTrash(foundItem);
-    SetProgress(progress + 20); // each of 5 items = +20%
-    Console.WriteLine(input + " added to Cleaning Machine! Progress is now " + progress + "%.");
-    }
     public string[] GetConstructionList() => constructionList;
+
+
+    // bruges af command 'add <material>'
+    //
+    public string AddMaterial(string input, Inventory playerInventory)
+    {
+        // find manglende dele
+
+        string[] missingItems = new string[GetConstructionList().Length];
+        int missingCount = 0;
+        for (int i = 0; i < GetConstructionList().Length; i++)
+        {
+            int itemsAdded = GetProgress() / 20;
+            if (i >= itemsAdded) missingItems[missingCount++] = GetConstructionList()[i];
+        }
+        if (missingCount == 0) return "The Cleaning Machine is fully built!";
+
+        // Er Materialet krævet?
+
+        bool isRequired = false;
+        for (int i = 0; i < missingCount; i++)
+        {
+            if (missingItems[i] == input) { isRequired = true; break; }
+        }
+        if (!isRequired) return "That item is not required!";
+
+        // Har spilleren Den i forevejen?
+
+        Trash foundItem = playerInventory.FindObj(input);
+        if (foundItem == null) return "You don't have that item!";
+
+        // tilføj Materiale og SetProgress
+
+        playerInventory.RemoveTrash(foundItem);
+        SetProgress(GetProgress() + 20);
+        return $"{input} added to Cleaning Machine! Progress is now {GetProgress()}%.";
+    }
 }
 
 

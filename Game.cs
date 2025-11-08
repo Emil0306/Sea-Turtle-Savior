@@ -10,6 +10,7 @@ class Game
   static ICommand fallback = new CommandUnknown();
   static Registry registry = new Registry(context, fallback);
   
+  static CleaningMachine machine = new CleaningMachine();
 
   private static void InitRegistry()
   {
@@ -23,11 +24,10 @@ class Game
     registry.Register("deadly", new CommandDeadly());
     registry.Register("show", new CommandShowInventory());
     registry.Register("sort", new CommandSort());
-
-    CleaningMachine machine = new CleaningMachine();
-    registry.Register("add",      new CommandAddMaterial(machine));
+    registry.Register("add",  new CommandAddMaterial(machine));
+    registry.Register("list", new CommandListParts(machine));
     registry.Register("progress", new CommandProgress(machine));
-    registry.Register("list",     new CommandListParts(machine));
+
   }
 
   static void Main(string[] args)

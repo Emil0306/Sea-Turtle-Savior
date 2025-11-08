@@ -10,9 +10,9 @@ class CommandListParts : BaseCommand, ICommand
         description = "List all required parts";
     }
 
-    public void Execute(Context ctx, string cmd, string[] p)
+    public void Execute(Context context, string command, string[] parameters)
     {
-        if (!GuardEq(p, 0))
+        if (GuardEq(parameters, 0))
         {
             Console.WriteLine("Usage: list");
             return;

@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 
 class CommandAddMaterial : BaseCommand, ICommand
 {
@@ -11,15 +10,17 @@ class CommandAddMaterial : BaseCommand, ICommand
         description = "Add a material to the CleaningMachine";
     }
 
-    public void Execute(Context ctx, string cmd, string[] p)
+    public void Execute(Context context, string command, string[] parameters)
     {
-        if (!GuardEq(p, 1))
+        if (GuardEq(parameters, 1))
         {
             Console.WriteLine("Usage: add <material>");
             return;
         }
 
-        string result = _machine.AddMaterial(p[0]);
+        Inventory inv = new Inventory();
+        string result = _machine.AddMaterial(parameters[0], inv);
         Console.WriteLine(result);
     }
 }
+
