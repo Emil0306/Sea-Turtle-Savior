@@ -57,6 +57,7 @@ new Trash("Wood_Plank",          "Wood",        false)
     Pollutionmeter pollution = new Pollutionmeter();
     Console.WriteLine(pollution.ShowPollution());
     
+    
     if (name == "Harbor" || name == "Cleaning Machine" || name == "WasteStation"){
       availableTrash = new Trash("No trash here", "", false);
       Console.WriteLine(MakeMaps(exits));
