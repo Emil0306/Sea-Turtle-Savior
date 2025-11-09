@@ -12,6 +12,8 @@ class Game
   
   static CleaningMachine machine = new CleaningMachine();
 
+
+
   private static void InitRegistry()
   {
     ICommand cmdExit = new CommandExit();

@@ -11,17 +11,11 @@ new Trash("Car_Tire",            "Plastic",     true),
 new Trash("Pesticide_Container", "Plastic",     true),
 
 // --- Glass (1) ---
-new Trash("Glass_Bottle",        "Glass",       false),
-
-// --- Metal (2) ---
-new Trash("Aluminum_Can",        "Metal",       false),
-new Trash("Tin_Can",             "Metal",       false),
-
-// --- Paper (1) ---
-new Trash("Cardboard_Box",       "Paper",       false),
-
-// --- Organic (2) ---
-new Trash("Apple_Core",          "Organic",     false),
+new Trash("Motor",            "Metal",        false),
+new Trash("AffaldsContainer", "Plastic",      false),
+new Trash("Filter",           "Synthetic",    false),
+new Trash("Metalramme",       "Metal",        false),
+new Trash("Solpanel",         "Electronics",  false),
 new Trash("Banana_Peel",         "Organic",     false),
 
 // --- Electronics (1) ---

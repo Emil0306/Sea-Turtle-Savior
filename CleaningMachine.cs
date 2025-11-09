@@ -5,11 +5,11 @@ public class CleaningMachine
 {
     private readonly string[] constructionList =
     {
-        "Hjul",
-        "Iphone",
-        "Bue",
-        "Jernrør",
-        "Bil",
+        "Motor",
+        "AffaldsContainer",
+        "Filter",
+        "Metalramme",
+        "solpanel",
     };
 
     private int progress = 0;
