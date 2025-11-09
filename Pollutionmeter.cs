@@ -6,7 +6,7 @@ class Pollutionmeter
 
     private static Pollutionmeter pollutionmeter = new Pollutionmeter ();
 
-    private static int maxPollution = 100; // Vi skal have linkede op - Hans
+    private static int maxPollution = 100;
 
     private static System.Timers.Timer timer; // from Timer class
     private static int procent = 50;
@@ -16,7 +16,7 @@ class Pollutionmeter
 
     public static void GetPollutionData()
     {
-        timer = new System.Timers.Timer(50000); // 1000 = 1 second
+        timer = new System.Timers.Timer(10000); // 1000 = 1 second
 
         timer.Elapsed += Timer_Elapsed;
 
@@ -45,7 +45,7 @@ class Pollutionmeter
         {
             procent = maxPollution;
         }
-        ShowPollution();
+        Console.WriteLine(ShowPollution());
     }
 
     // Metode til når man samler skrald = fald af pollution
@@ -56,30 +56,42 @@ class Pollutionmeter
         {
             procent = 0;
         }
-        ShowPollution();
+        Console.WriteLine((ShowPollution()));
+        
+        Game.CheckWinCondition(); // tjekker om spilleren har vundet (pollution = 0 og machine 100%)
     }
 
     // Pollution meter visuelt:
-    public void ShowPollution()
+    public string ShowPollution()
     {
         int barLength = 20;
         int filled = procent * barLength / maxPollution;
 
         string bar = "";
+        
         int i = 0;
         while (i < filled)
         {
-            bar = bar + "#";
-            i = i + 1;
+            bar += "#";
+            i++;
         }
         while (i < barLength)
         {
-            bar = bar + "-";
-            i = i + 1;
+            bar += "-";
+            i++;
         }
 
-        int percent = procent * 100 / maxPollution;
-        Console.WriteLine("Pollution: [" + bar + "] " + procent + "/" + maxPollution + " (" + procent + "%)");
+        return "Pollution: [" + bar + "] " + procent + "/" + maxPollution + " (" + procent + "%)";
+    }
+
+    public static int CurrentPollution() // til når man vinder
+    {
+        return procent;
+    }
+
+    public static void StopTimer() // stop timer når man vinder
+    {
+        timer.Stop();
     }
 }
 

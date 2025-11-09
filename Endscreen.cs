@@ -20,7 +20,7 @@ class EndScreen{
 		Console.Clear();
 		Console.WriteLine("You have " + (win == false ? "lost" : "won") + "!");
 		DateTime endTime = DateTime.Now;
-		double endtime = (DateTime.Now - startTime).TotalSeconds;
+		// double endtime = (DateTime.Now - startTime).TotalSeconds;
 		TimeSpan playtime = TimeSpan.FromSeconds(endtime);
 		Console.WriteLine($"You finnished in {playtime:hh\\:mm\\.ss}!");
 		Console.WriteLine("You have "+(win==false ? "lost" : "won")+"!");
