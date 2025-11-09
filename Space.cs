@@ -38,6 +38,7 @@ new Trash("Old_TShirt",          "Textile",     false),
 new Trash("Wood_Plank",          "Wood",        false)
   };
   private static Trash availableTrash = new Trash("No trash here", "", false);
+  private HashSet<string> exits;
 
   public static Trash GetavailableTrash (){
     return availableTrash;
@@ -46,13 +47,23 @@ new Trash("Wood_Plank",          "Wood",        false)
     availableTrash = trash;
   }
 
+  private void SetExits()
+  {
+      exits = edges.Keys.ToHashSet();
+  }
+
+  public HashSet<string> GetExits()
+  {
+      return exits;
+  }
+
   public Space (String name) : base(name)
   {
   }
   
   public void Welcome () {
     Console.Clear();
-    HashSet<string> exits = edges.Keys.ToHashSet();
+    SetExits();
 
     Pollutionmeter pollution = new Pollutionmeter();
     Console.WriteLine(pollution.ShowPollution());
@@ -81,7 +92,8 @@ new Trash("Wood_Plank",          "Wood",        false)
       Inventory playerInventory = new Inventory();
 
       Console.WriteLine("Type the name of an item to add (or 'leave' to leave):");
-      string input = Console.ReadLine();
+      string input = Console.ReadLine() ?? "";
+
 
       if (!string.IsNullOrWhiteSpace(input) && input.ToLower() != "leave")
       {

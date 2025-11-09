@@ -11,6 +11,16 @@ class CommandGo : BaseCommand, ICommand {
       Console.WriteLine("I don't seem to know where that is 🤔");
       return;
     }
-    context.Transition(parameters[0]);
+
+    HashSet<string> exits = context.GetCurrent().GetExits();
+    
+    if (exits.Contains(parameters[0])) 
+    { 
+      context.Transition(parameters[0]);
+      return;
+    }
+    
+    
+    Console.WriteLine("I don't seem to know where '"+parameters[0]+"' is 🤔");
   }
 }
