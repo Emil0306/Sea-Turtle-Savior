@@ -8,7 +8,7 @@ class CommandCollect : BaseCommand, ICommand {
 
     public void Execute (Context context, string command, string[] parameters) {
         if (GuardEq(parameters, 1)) {
-            Console.WriteLine("Thats weird 🤔");
+            Console.WriteLine("Error: Did you mean \"collect NAME_OF_TRASH\"?");
             return;
         }
 
@@ -26,6 +26,6 @@ class CommandCollect : BaseCommand, ICommand {
                 return;
             }
         }
-        Console.WriteLine("Can't pick up "+parameters[0]+" here");
+        Console.WriteLine("Can't pick up '"+parameters[0]+"' here");
     }
 }
