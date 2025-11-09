@@ -61,7 +61,8 @@ class Game
     if (machine.GetProgress() == 100 && Pollutionmeter.CurrentPollution() == 0)
     {
       Pollutionmeter.StopTimer();
-      
+      context.MakeDone();
+
       // mangeler noget som gør at der bliver vist at man vinder
     }
   }

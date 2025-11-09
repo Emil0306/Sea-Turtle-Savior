@@ -40,23 +40,39 @@ class Pollutionmeter
     // Metode til når tiden går = stigning af pollution
     public void IncreasePollution(int amount)
     {
+        int left = Console.CursorLeft; // method fra library
+        int top = Console.CursorTop; // method fra library
+        
         procent = procent + amount;
         if (procent > maxPollution)
         {
             procent = maxPollution;
         }
-        Console.WriteLine(ShowPollution());
+        
+        Console.SetCursorPosition(0, 0);
+        Console.Write(ShowPollution());
+        
+        // gør at man skriver i bunden igen
+        Console.SetCursorPosition(left, top); //method fra library
     }
 
     // Metode til når man samler skrald = fald af pollution
     public void DecreasePollution(int amount)
     {
+        int left = Console.CursorLeft; // method fra library
+        int top = Console.CursorTop; // method fra library
+        
         procent = procent - amount;
         if (procent < 0)
         {
             procent = 0;
         }
-        Console.WriteLine((ShowPollution()));
+
+        Console.SetCursorPosition(0, 0);
+        Console.Write((ShowPollution()));
+        
+        // gør at man skriver i bunden igen
+        Console.SetCursorPosition(left, top); //method fra library
         
         Game.CheckWinCondition(); // tjekker om spilleren har vundet (pollution = 0 og machine 100%)
     }
@@ -80,7 +96,8 @@ class Pollutionmeter
             bar += "-";
             i++;
         }
-
+        
+        Console.SetCursorPosition(0, 0);
         return "Pollution: [" + bar + "] " + procent + "/" + maxPollution + " (" + procent + "%)";
     }
 
