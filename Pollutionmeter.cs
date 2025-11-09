@@ -16,7 +16,7 @@ class Pollutionmeter
 
     public static void GetPollutionData()
     {
-        timer = new System.Timers.Timer(50000); // 1000 = 1 second
+        timer = new System.Timers.Timer(10000); // 1000 = 1 second
 
         timer.Elapsed += Timer_Elapsed;
 
@@ -45,7 +45,7 @@ class Pollutionmeter
         {
             procent = maxPollution;
         }
-        ShowPollution();
+        Console.WriteLine(ShowPollution());
     }
 
     // Metode til når man samler skrald = fald af pollution
@@ -56,30 +56,30 @@ class Pollutionmeter
         {
             procent = 0;
         }
-        ShowPollution();
+        Console.WriteLine((ShowPollution()));
     }
 
     // Pollution meter visuelt:
-    public void ShowPollution()
+    public string ShowPollution()
     {
         int barLength = 20;
         int filled = procent * barLength / maxPollution;
 
         string bar = "";
+        
         int i = 0;
         while (i < filled)
         {
-            bar = bar + "#";
-            i = i + 1;
+            bar += "#";
+            i++;
         }
         while (i < barLength)
         {
-            bar = bar + "-";
-            i = i + 1;
+            bar += "-";
+            i++;
         }
 
-        int percent = procent * 100 / maxPollution;
-        Console.WriteLine("Pollution: [" + bar + "] " + procent + "/" + maxPollution + " (" + procent + "%)");
+        return "Pollution: [" + bar + "] " + procent + "/" + maxPollution + " (" + procent + "%)";
     }
 }
 
