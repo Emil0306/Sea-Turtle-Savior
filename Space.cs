@@ -76,7 +76,8 @@ new Trash("Wood_Plank",          "Wood",        false)
       Inventory playerInventory = new Inventory();
 
       Console.WriteLine("Type the name of an item to add (or 'leave' to leave):");
-      string input = Console.ReadLine();
+      string input = Console.ReadLine() ?? "";
+
 
       if (!string.IsNullOrWhiteSpace(input) && input.ToLower() != "leave")
       {
