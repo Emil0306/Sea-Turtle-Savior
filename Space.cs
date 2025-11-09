@@ -70,12 +70,21 @@ new Trash("Wood_Plank",          "Wood",        false)
       Console.WriteLine(" - "+exit);
     }
 
-    if (name == "Cleaning Machine") {
-        CleaningMachine machine = new CleaningMachine();
-        Inventory playerInventory = new Inventory();
+    if (name == "Cleaning Machine")
+    {
+      CleaningMachine machine = new CleaningMachine();
+      Inventory playerInventory = new Inventory();
 
-        machine.AddItemFromInventory(playerInventory);
+      Console.WriteLine("Type the name of an item to add (or 'leave' to leave):");
+      string input = Console.ReadLine();
+
+      if (!string.IsNullOrWhiteSpace(input) && input.ToLower() != "leave")
+      {
+        string result = machine.AddMaterial(input, playerInventory);
+        Console.WriteLine(result);
+      }
     }
+
   }
   
   public void Goodbye () {
