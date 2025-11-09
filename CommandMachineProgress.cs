@@ -12,12 +12,17 @@ class CommandProgress : BaseCommand, ICommand
 
     public void Execute(Context context, string command, string[] parameters)
     {
-        if (GuardEq(parameters, 0))
-        {
-            Console.WriteLine("Usage: progress");
-            return;
-        }
+        if (context.GetCurrent().GetName() == "Cleaning Machine"){
+            if (GuardEq(parameters, 0))
+            {
+                Console.WriteLine("Usage: progress");
+                return;
+            }
 
-        Console.WriteLine($"{_machine.GetProgress()}%");
+            Console.WriteLine($"{_machine.GetProgress()}%");
+        }
+        else {
+            Console.WriteLine("You are not at the Cleaning Machine");
+        }
     }
 }

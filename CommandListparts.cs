@@ -12,13 +12,18 @@ class CommandListParts : BaseCommand, ICommand
 
     public void Execute(Context context, string command, string[] parameters)
     {
-        if (GuardEq(parameters, 0))
-        {
-            Console.WriteLine("Usage: list");
-            return;
-        }
+        if (context.GetCurrent().GetName() == "Cleaning Machine"){
+            if (GuardEq(parameters, 0))
+            {
+                Console.WriteLine("Usage: list");
+                return;
+            }
 
-        string[] parts = _machine.GetConstructionList();
-        Console.WriteLine(string.Join(", ", parts));
+            string[] parts = _machine.GetConstructionList();
+            Console.WriteLine(string.Join(", ", parts));
+        }
+        else{
+            Console.WriteLine("You are not at the Cleaning Machine");
+        }
     }
 }
