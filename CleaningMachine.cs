@@ -59,6 +59,7 @@ public class CleaningMachine
 
         playerInventory.RemoveTrash(foundItem);
         SetProgress(GetProgress() + 20);
+        Game.CheckWinCondition(); // tjekker om spilleren har vundet (0% pollution, 100% bygget maskine)
         return $"{input} added to Cleaning Machine! Progress is now {GetProgress()}%.";
     }
 }

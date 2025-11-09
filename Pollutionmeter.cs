@@ -6,7 +6,7 @@ class Pollutionmeter
 
     private static Pollutionmeter pollutionmeter = new Pollutionmeter ();
 
-    private static int maxPollution = 100; // Vi skal have linkede op - Hans
+    private static int maxPollution = 100;
 
     private static System.Timers.Timer timer; // from Timer class
     private static int procent = 50;
@@ -57,6 +57,8 @@ class Pollutionmeter
             procent = 0;
         }
         Console.WriteLine((ShowPollution()));
+        
+        Game.CheckWinCondition(); // tjekker om spilleren har vundet (pollution = 0 og machine 100%)
     }
 
     // Pollution meter visuelt:
@@ -80,6 +82,16 @@ class Pollutionmeter
         }
 
         return "Pollution: [" + bar + "] " + procent + "/" + maxPollution + " (" + procent + "%)";
+    }
+
+    public static int CurrentPollution() // til når man vinder
+    {
+        return procent;
+    }
+
+    public static void StopTimer() // stop timer når man vinder
+    {
+        timer.Stop();
     }
 }
 

@@ -53,6 +53,16 @@ class Game
     }
     Console.WriteLine("Game Over 😥");
   }
+
+  public static void CheckWinCondition()
+  { // Når både maskinen er bygget + pollution er 0
+    if (machine.GetProgress() == 100 && Pollutionmeter.CurrentPollution() == 0)
+    {
+      Pollutionmeter.StopTimer();
+      
+      
+    }
+  }
 }
 
 
