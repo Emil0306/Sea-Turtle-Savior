@@ -60,7 +60,7 @@ class Game
     {
       Pollutionmeter.StopTimer();
       
-      
+      // mangeler noget som gør at der bliver vist at man vinder
     }
   }
 }
