@@ -65,14 +65,12 @@ class Game
   }
 
   public static void CheckWinCondition()
-  { // Når både maskinen er bygget + pollution er 0
-    if (machine.GetProgress() == 100 && Pollutionmeter.CurrentPollution() == 0)
+  {
+    if (machine.GetProgress() == 100 || Pollutionmeter.CurrentPollution() == 0)
     {
       Pollutionmeter.StopTimer();
       winloss = true;
       context.MakeDone();
-
-      // mangeler noget som gør at der bliver vist at man vinder
     }
     else if (Pollutionmeter.CurrentPollution()==100)
     {
