@@ -10,7 +10,7 @@ class Space : Node {
     new Trash("pesticide_container", "Plastic", true),
     new Trash("motor", "Metal", false),
     new Trash("container", "Plastic", false),
-    new Trash("filter", "Synthetic", false),
+    new Trash("filter", "Plastic", false),
     new Trash("metal_frame", "Metal", false),
     new Trash("solar_panel", "Electronics", false),
     new Trash("banana_peel", "Organic", false),
