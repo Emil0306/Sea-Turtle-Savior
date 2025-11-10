@@ -29,12 +29,7 @@ class Pollutionmeter
         {
             pollutionmeter.IncreasePollution(1);
         }
-        else
-        {
-            timer.Stop();
-            EndScreen endscreen = new EndScreen(false, GameTimer.readtimer(), procent, 0.5); //ToDo få CleaningMachine.GetProgress til at fungere
-            endscreen.EndInfo();
-        }
+        Game.CheckWinCondition(); // tjekker om spilleren har vundet (pollution = 0 og machine 100%)
     }
 
     // Metode til når tiden går = stigning af pollution
@@ -73,8 +68,6 @@ class Pollutionmeter
         
         // gør at man skriver i bunden igen
         Console.SetCursorPosition(left, top); //method fra library
-        
-        Game.CheckWinCondition(); // tjekker om spilleren har vundet (pollution = 0 og machine 100%)
     }
 
     // Pollution meter visuelt:

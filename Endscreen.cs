@@ -4,13 +4,13 @@ class EndScreen{
 	// Atributes
 	private bool win;
 	private double endtime;
-	private double pollutionmeterProgress;
-	private double cleaningMachineProgress;
+	private int pollutionmeterProgress;
+	private int cleaningMachineProgress;
 
 	// Constructors
-	public EndScreen (bool win, double endtime, double pollutionmeterProgress, double cleaningMachineProgress) {
+	public EndScreen (bool win, TimeSpan endtime, int pollutionmeterProgress, int cleaningMachineProgress) {
 		this.win = win;												// Won or lost?
-		this.endtime = endtime; 									// Get current time from "Player"
+		this.endtime = endtime.TotalMinutes; 						// Get current time from "Player"
 		this.pollutionmeterProgress = pollutionmeterProgress; 		// Get pollution from "Pollutionmeter"
 		this.cleaningMachineProgress = cleaningMachineProgress;		// Get cleaning machine progress from "CleaningMachine"
 	}
@@ -18,10 +18,8 @@ class EndScreen{
 	// Methods
 	public bool EndInfo () {	// Display an endscreen with time, pollution and the cleaning machine progress
 		Console.Clear();
-		DateTime endTime = DateTime.Now;
-		TimeSpan playtime = TimeSpan.FromSeconds(endtime);
 		Console.WriteLine("You have "+(win==false ? "lost" : "won")+"!");
-		Console.WriteLine("You finished in "+endtime+" seconds!");
+		Console.WriteLine("You finished in "+endtime+" minutes!");
 		Console.Write("The pollutionmeter has reached: ");
 		if (pollutionmeterProgress == 0){
 			Console.ForegroundColor = ConsoleColor.Green;
@@ -42,8 +40,8 @@ class EndScreen{
 		Console.ForegroundColor = ConsoleColor.Gray;
 		Console.WriteLine(" done with the cleaning machine");
 
-
-		return Restart();
+		return false;
+		//return Restart();
 	}
 	public bool Restart () {	// Restart game to be played again
 		Console.WriteLine("What do you wish to do now: ");
@@ -52,9 +50,9 @@ class EndScreen{
 		while (true) {
 			Console.Write("> ");
 			string? line = Console.ReadLine();
-			if (line == "quit") return true;
-			else if (line == "restart") return false;
-			else Console.WriteLine("Woopsie, I don't understand '"+line+"' 😕");
+			if (line == "quit") return false;
+			else if (line == "restart") return true;
+			else Console.WriteLine("Woopsie, I don't understand '"+line+"'. Please write 'quit' or 'restart'. 😕");
 		}
 	}
 

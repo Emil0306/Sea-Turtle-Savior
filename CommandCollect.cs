@@ -21,7 +21,12 @@ class CommandCollect : BaseCommand, ICommand {
                     return;
                 }
                 bool a = myInv.CollectTrash(Space.trashList[i]);
-                if (a == false) context.MakeDone();
+                if (a == false)
+                {
+                    Pollutionmeter.StopTimer();
+                    Game.SetWinLoss(false);
+                    context.MakeDone();
+                }
                 Space.SetavailableTrash(new Trash("No trash here", "", false));
                 return;
             }

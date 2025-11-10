@@ -3,7 +3,7 @@
 
 class Game
 {
-  private bool IsRunning;
+  private static bool winloss = false;
 
   static World world = new World();
   static Context context = new Context(world.GetEntry());
@@ -13,6 +13,10 @@ class Game
   static CleaningMachine machine = new CleaningMachine();
 
 
+  public static void SetWinLoss(bool status)
+  {
+    winloss = status;
+  }
 
   private static void InitRegistry()
   {
@@ -43,17 +47,21 @@ class Game
     GameTimer.startimer();
     double time = GameTimer.readtimer();
     Console.WriteLine(time);
-       
+
     InitRegistry();
     context.GetCurrent().Welcome();
 
-    while (context.IsDone()==false)
+    while (context.IsDone() == false)
     {
       Console.Write("> ");
       string? line = Console.ReadLine();
       if (line != null) registry.Dispatch(line);
     }
-    Console.WriteLine("Game Over 😥");
+
+    DateTime endtime = DateTime.Now;
+    TimeSpan res = endtime.Subtract(start.GetStartTime());
+    EndScreen endScreen = new EndScreen(winloss, res, Pollutionmeter.CurrentPollution(), machine.GetProgress());
+    endScreen.EndInfo();
   }
 
   public static void CheckWinCondition()
@@ -61,9 +69,16 @@ class Game
     if (machine.GetProgress() == 100 && Pollutionmeter.CurrentPollution() == 0)
     {
       Pollutionmeter.StopTimer();
+      winloss = true;
       context.MakeDone();
 
       // mangeler noget som gør at der bliver vist at man vinder
+    }
+    else if (Pollutionmeter.CurrentPollution()==100)
+    {
+      Pollutionmeter.StopTimer();
+      winloss = false;
+      context.MakeDone();
     }
   }
 }
