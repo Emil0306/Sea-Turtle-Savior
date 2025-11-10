@@ -2,34 +2,25 @@
  */
 
 class Space : Node {
-  public static Trash[] trashList = new Trash[16]{ // change to private and add getters
-// --- Plastic (5) ---
-new Trash("Plastic_Bottle",      "Plastic",     false),
-new Trash("Food_Wrapper",        "Plastic",     false),
-new Trash("Syringe",             "Plastic",     true),
-new Trash("Car_Tire",            "Plastic",     true),
-new Trash("Pesticide_Container", "Plastic",     true),
-
-// --- Glass (1) ---
-new Trash("motor",            "Metal",        false),
-new Trash("container", "Plastic",      false),
-new Trash("filter",           "Synthetic",    false),
-new Trash("metalramme",       "Metal",        false),
-new Trash("solpanel",         "Electronics",  false),
-new Trash("Banana_Peel",         "Organic",     false),
-
-// --- Electronics (1) ---
-new Trash("Old_Phone",           "Electronics", true),
-
-// --- Batteries (2) ---
-new Trash("AA_Battery",          "Batteries",   true),
-new Trash("Car_Battery",         "Batteries",   true),
-
-// --- Textile (1) ---
-new Trash("Old_TShirt",          "Textile",     false),
-
-// --- Wood (1) ---
-new Trash("Wood_Plank",          "Wood",        false)
+  public static Trash[] trashList = new Trash[18]{ // change to private and add getters
+    new Trash("plastic_bottle", "Plastic", false),
+    new Trash("food_wrapper", "Plastic", false),
+    new Trash("syringe", "Plastic", true),
+    new Trash("car_tire", "Plastic", false),
+    new Trash("pesticide_Container", "Plastic", true),
+    new Trash("motor", "Metal", false),
+    new Trash("container", "Plastic", false),
+    new Trash("filter", "Synthetic", false),
+    new Trash("metal_frame", "Metal", false),
+    new Trash("solar_panel", "Electronics", false),
+    new Trash("banana_peel", "Organic", false),
+    new Trash("phone", "Electronics", true),
+    new Trash("aa_battery", "Batteries", true),
+    new Trash("car_Battery", "Batteries", true),
+    new Trash("t-shirt", "Textile", false),
+    new Trash("wood_plank", "Wood", false),
+    new Trash("glass_bottle", "Glass", false),
+    new Trash("can", "Metal", false)
   };
   private static Trash availableTrash = new Trash("No trash here", "", false);
   private HashSet<string> exits;

@@ -8,8 +8,8 @@ public class CleaningMachine
         "motor",
         "container",
         "filter",
-        "metalramme",
-        "solpanel",
+        "metal_frame",
+        "solar_panel",
     };
 
     private int progress = 0;
