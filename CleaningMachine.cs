@@ -5,10 +5,10 @@ public class CleaningMachine
 {
     private readonly string[] constructionList =
     {
-        "Motor",
-        "AffaldsContainer",
-        "Filter",
-        "Metalramme",
+        "motor",
+        "container",
+        "filter",
+        "metalramme",
         "solpanel",
     };
 
