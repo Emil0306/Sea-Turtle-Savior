@@ -13,7 +13,7 @@ public class CleaningMachine
     };
 
     private int progress = 0;
-
+    
     public int GetProgress() => progress;
 
     public void SetProgress(int newProgress)
@@ -27,7 +27,7 @@ public class CleaningMachine
 
 
     // bruges af command 'add <material>'
-    //
+    
     public string AddMaterial(string input, Inventory playerInventory)
     {
         // find manglende dele
@@ -59,7 +59,6 @@ public class CleaningMachine
 
         playerInventory.RemoveTrash(foundItem);
         SetProgress(GetProgress() + 20);
-        Game.CheckWinCondition(); // tjekker om spilleren har vundet (0% pollution, 100% bygget maskine)
         return $"{input} added to Cleaning Machine! Progress is now {GetProgress()}%.";
     }
 }

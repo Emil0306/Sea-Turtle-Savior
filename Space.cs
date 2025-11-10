@@ -70,23 +70,6 @@ class Space : Node {
     foreach (String exit in exits) {
       Console.WriteLine(" - "+exit);
     }
-
-    if (name == "Cleaning Machine")
-    {
-      CleaningMachine machine = new CleaningMachine();
-      Inventory playerInventory = new Inventory();
-
-      Console.WriteLine("Type the name of an item to add (or 'leave' to leave):");
-      string input = Console.ReadLine() ?? "";
-
-
-      if (!string.IsNullOrWhiteSpace(input) && input.ToLower() != "leave")
-      {
-        string result = machine.AddMaterial(input, playerInventory);
-        Console.WriteLine(result);
-      }
-    }
-
   }
   
   public void Goodbye () {
