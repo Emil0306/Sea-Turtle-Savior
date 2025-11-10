@@ -3,16 +3,16 @@ using System.Linq;
 
 public class CleaningMachine
 {
-    private readonly string[] constructionList =
+    private static string[] constructionList =
     {
         "motor",
         "container",
         "filter",
         "metal_frame",
-        "solar_panel",
+        "solar_panel"
     };
 
-    private int progress = 0;
+    private int progress;
     
     public int GetProgress() => progress;
 
@@ -30,33 +30,33 @@ public class CleaningMachine
     
     public string AddMaterial(string input, Inventory playerInventory)
     {
-        // find manglende dele
-
-        string[] missingItems = new string[GetConstructionList().Length];
-        int missingCount = 0;
-        for (int i = 0; i < GetConstructionList().Length; i++)
-        {
-            int itemsAdded = GetProgress() / 20;
-            if (i >= itemsAdded) missingItems[missingCount++] = GetConstructionList()[i];
-        }
-        if (missingCount == 0) return "The Cleaning Machine is fully built!";
-
-        // Er Materialet krævet?
+        // Checks if material is needed
 
         bool isRequired = false;
-        for (int i = 0; i < missingCount; i++)
+        for (int i = 0; i < constructionList.Length; i++)
         {
-            if (missingItems[i] == input) { isRequired = true; break; }
+            if (constructionList[i] == input) { isRequired = true; break; }
         }
         if (!isRequired) return "That item is not required!";
 
-        // Har spilleren Den i forevejen?
+        // Checks if player has item in inventory
 
         Trash foundItem = playerInventory.FindObj(input);
-        if (foundItem == null) return "You don't have that item!";
+        if (foundItem == null) return "";
 
-        // tilføj Materiale og SetProgress
-
+        // Updates the construction list
+        string[] temp = new string[constructionList.Length-1];
+        int x = 0;
+        for (int i = 0 ; i < constructionList.Length ; i++)
+        {
+            if (constructionList[i] != input)
+            {
+                temp[x] = constructionList[i];
+                x++;
+            }
+        }
+        constructionList = temp;
+        
         playerInventory.RemoveTrash(foundItem);
         SetProgress(GetProgress() + 20);
         return $"{input} added to Cleaning Machine! Progress is now {GetProgress()}%.";
