@@ -58,16 +58,7 @@ public void SortTrash(Inventory inv, Trash trash, int containerNumber)
 		//Add to the plyer coin amount. 
 
 	}
-
-	public void GoHabor()  //Unfinished
-	{
-		//For When the habor exits
-		Console.WriteLine("You are now at he habor!");
-
-	}
 }
-
-
 
 
 
