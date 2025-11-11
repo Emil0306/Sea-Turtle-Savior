@@ -11,9 +11,9 @@ class Startscreen
     public void Startinformation()
     {
             Console.ForegroundColor = ConsoleColor.Blue; 
-        Console.WriteLine("Sea turtles, have been navigating Earth's oceans since the era of the dinosaurs.");
+        Console.WriteLine("Sea turtles, have been navigating Earth's oceans since the age of the dinosaurs.");
         Console.WriteLine("Now, at present day, Sea Turtles very existence is threathed by man-made pollution.");
-        Console.WriteLine("6 out of 7 turtle species are criticality indangered. It said that only 1 out of every 1000 sea turles makes it to adult hood");
+        Console.WriteLine("6 out of 7 turtle species are critically endangered. It said that only 1 out of every 1000 sea turles makes it to adult hood");
         Console.WriteLine("Now it's up to you. Sea Turtle savoir. Build the Cleaning Machine. Clean the ocean. Restore harmony!");
         Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Gray; 
