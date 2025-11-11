@@ -5,6 +5,7 @@ using System.Collections.Generic;
 class WasteStation 
 {
 	private Container[] containers;
+    private string[] sortingTypes;
 
 	public WasteStation()
 	{
@@ -58,6 +59,11 @@ public void SortTrash(Inventory inv, Trash trash, int containerNumber)
 		//Add to the plyer coin amount. 
 
 	}
+
+    public string[] GetSortingTypes()
+    {
+        return sortingTypes;
+    }
 }
 
 

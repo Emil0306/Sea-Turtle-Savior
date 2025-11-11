@@ -13,8 +13,10 @@ class CommandSort : BaseCommand, ICommand {
     		Console.WriteLine("Please specify the trash item and its corresponding recycling container");
     		return; 
 		}
+
 		WasteStation myWasteStation = new WasteStation();
 		Inventory inv = new Inventory();
+
 
 		//int containerNumber = int.Parse(parameters[1]);
 		int containerNumber;
