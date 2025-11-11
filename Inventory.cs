@@ -40,7 +40,7 @@ public class Inventory
 
 		for (int i = 0 ; i < inventoryList.Count ; i++) 
 		{
-			Console.WriteLine($"{inventoryList[i].Name} af {inventoryList[i].Material}"); // Prints out the waste's name and material type.
+			Console.WriteLine($"{inventoryList[i].Name} made of {inventoryList[i].Material}"); // Prints out the waste's name and material type.
 		}
 	}
 
