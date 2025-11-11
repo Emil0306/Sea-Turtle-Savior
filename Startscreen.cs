@@ -10,7 +10,7 @@ class Startscreen
     //Methods
     public void Startinformation()
     {
-            Console.ForegroundColor = ConsoleColor.Blue; 
+            Console.ForegroundColor = ConsoleColor.Cyan; 
         Console.WriteLine("Sea turtles, have been navigating Earth's oceans since the age of the dinosaurs.");
         Console.WriteLine("Now, at present day, Sea Turtles very existence is threathed by man-made pollution.");
         Console.WriteLine("6 out of 7 turtle species are critically endangered. It said that only 1 out of every 1000 sea turles makes it to adult hood");
@@ -30,6 +30,6 @@ class Startscreen
     public DateTime GetStartTime()
     {
         return startTime;
-    }
+        }
 }
 
