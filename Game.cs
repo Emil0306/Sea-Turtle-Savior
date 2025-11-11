@@ -40,7 +40,6 @@ class Game
   {
     Console.Clear();
     Console.ForegroundColor = ConsoleColor.Gray;
-    Console.BackgroundColor = ConsoleColor.Black;
     Startscreen start = new Startscreen();
     start.Startinformation();
     Pollutionmeter.GetPollutionData();
