@@ -36,7 +36,7 @@ class EndScreen{
 		} else {
 			Console.ForegroundColor = ConsoleColor.Red;
 		}
-		Console.Write((cleaningMachineProgress*100)+"%");
+		Console.Write((cleaningMachineProgress)+"%");
 		Console.ForegroundColor = ConsoleColor.Gray;
 		Console.WriteLine(" done with the cleaning machine");
 
