@@ -10,8 +10,12 @@ class Startscreen
     //Methods
     public void Startinformation()
     {
-        Console.WriteLine("Sea turtles have swum Earth’s oceans since the age of dinosaurs. Now, they face extinction from human impact. But there’s still hope and that hope is you. Build the Cleaning Machine. CLean the ocean. Restore harmony.");
+            Console.ForegroundColor = ConsoleColor.Blue; 
+        Console.WriteLine("Sea turtles have swum Earth’s oceans since the age of dinosaurs.");
+        Console.WriteLine("Now, they face extinction from human impact. But there’s still hope and that hope is you.");
+        Console.WriteLine("Build the Cleaning Machine. Clean the ocean. Restore harmony.");
         Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Gray; 
 
         Console.WriteLine(" 🐢 Welcome to SEATURTLE SAVIOR 🐢 Please press 'k' to start the game : ");
         while (Console.ReadKey(true).Key != ConsoleKey.K)
