@@ -2,7 +2,10 @@
  */
 
 class CommandCollect : BaseCommand, ICommand {
-    public CommandCollect () {
+    private Inventory inv;
+    
+    public CommandCollect (Inventory inv) {
+        this.inv = inv;
         description = "Pick up trash";
     }
 
@@ -13,19 +16,21 @@ class CommandCollect : BaseCommand, ICommand {
         }
 
         // maybe make CollectTrash static and then remove myInv
-        Inventory myInv = new Inventory();
         for (int i = 0 ; i < Space.trashList.Length ; i++){
             if (Space.trashList[i].Name == parameters[0] && parameters[0] == Space.GetavailableTrash().Name){
                 if (Space.GetavailableTrash().ForbiddenMaterial == true){
-                    context.MakeDone();
+                    Pollutionmeter.StopTimer();
+                    Game.SetWinLoss(false);
+                    context.SetDone(true);
                     return;
                 }
-                bool a = myInv.CollectTrash(Space.trashList[i]);
+                bool a = inv.CollectTrash(Space.trashList[i]);
                 if (a == false)
                 {
                     Pollutionmeter.StopTimer();
                     Game.SetWinLoss(false);
-                    context.MakeDone();
+                    context.SetDone(true);
+                    return;
                 }
                 Space.SetavailableTrash(new Trash("No trash here", "", false));
                 return;

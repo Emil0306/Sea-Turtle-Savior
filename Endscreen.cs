@@ -1,5 +1,3 @@
-using System.Net.Mail;
-
 class EndScreen{
 	// Atributes
 	private bool win;
@@ -39,9 +37,8 @@ class EndScreen{
 		Console.Write((cleaningMachineProgress)+"%");
 		Console.ForegroundColor = ConsoleColor.Gray;
 		Console.WriteLine(" done with the cleaning machine");
-
-		return false;
-		//return Restart();
+		
+		return Restart();
 	}
 	public bool Restart () {	// Restart game to be played again
 		Console.WriteLine("What do you wish to do now: ");

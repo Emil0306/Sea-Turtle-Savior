@@ -1,13 +1,14 @@
 
 class CommandSort : BaseCommand, ICommand {
-
-	public CommandSort(){
+	
+	private Inventory inv;
+	
+	public CommandSort(Inventory inv){
+		this.inv = inv;
 		description = "Sort and recycle your trash";
-		
 	}
 
 	public void Execute (Context context, string command, string[] parameters){
-
 	if (context.GetCurrent().GetName() == "WasteStation"){
 		if (GuardEq(parameters, 2)) {
     		Console.WriteLine("Please specify the trash item and its corresponding recycling container");
@@ -15,9 +16,7 @@ class CommandSort : BaseCommand, ICommand {
 		}
 
 		WasteStation myWasteStation = new WasteStation();
-		Inventory inv = new Inventory();
-
-
+		
 		//int containerNumber = int.Parse(parameters[1]);
 		int containerNumber;
 		bool isInt = int.TryParse(parameters[1], out containerNumber);
@@ -29,15 +28,10 @@ class CommandSort : BaseCommand, ICommand {
 			Console.WriteLine("The number '"+ parameters[1]+"' is invalid. Container numbers must be a single digit from 0 to 8.");
 			Console.ForegroundColor = ConsoleColor.White;
 		}
-
-
-		
 	}
 	else {
 			Console.WriteLine("You are not at the Waste Station");
-		}
-	
-
+	}
 	}
 }
 //parameters[0] = skraldet feks. cykel

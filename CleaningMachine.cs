@@ -3,7 +3,7 @@ using System.Linq;
 
 public class CleaningMachine
 {
-    private static string[] constructionList =
+    private string[] constructionList =
     {
         "motor",
         "container",

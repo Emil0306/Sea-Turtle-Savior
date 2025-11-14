@@ -3,10 +3,12 @@ using System;
 class CommandAddMaterial : BaseCommand, ICommand
 {
     private readonly CleaningMachine _machine;
+    private Inventory inv;
 
-    public CommandAddMaterial(CleaningMachine machine)
+    public CommandAddMaterial(CleaningMachine machine, Inventory inv)
     {
         _machine = machine;
+        this.inv = inv;
         description = "Add a material to the CleaningMachine";
     }
 
@@ -19,7 +21,6 @@ class CommandAddMaterial : BaseCommand, ICommand
                 return;
             }
 
-            Inventory inv = new Inventory();
             string result = _machine.AddMaterial(parameters[0], inv);
             Console.WriteLine(result);
         }

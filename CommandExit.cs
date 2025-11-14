@@ -7,6 +7,6 @@ class CommandExit : BaseCommand, ICommand {
     description = "Exit the game";
   }
   public void Execute (Context context, string command, string[] parameters) {
-    context.MakeDone();
+    context.SetDone(true);
   }
 }

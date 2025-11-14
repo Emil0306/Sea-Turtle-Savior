@@ -24,8 +24,8 @@ class Context {
     }
   }
   
-  public void MakeDone () {
-    done = true;
+  public void SetDone (bool isDone) {
+    this.done = isDone;
   }
   
   public bool IsDone () {

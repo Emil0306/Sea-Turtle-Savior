@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class Inventory
 {
-	private static List<Trash> inventoryList = new List<Trash>();
+	private List<Trash> inventoryList = new List<Trash>();
 	private int capacity = 15;
 	Pollutionmeter pollutionmeter = new Pollutionmeter ();
 
@@ -26,7 +26,6 @@ public class Inventory
 
 	public void RemoveTrash(Trash trash)
 	{
-		
 			inventoryList.Remove(trash); 
 	}
 

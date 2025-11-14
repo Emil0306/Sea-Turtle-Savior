@@ -9,19 +9,20 @@ class Pollutionmeter
     private static int maxPollution = 100;
 
     private static System.Timers.Timer timer; // from Timer class
-    private static int procent = 50;
+    private static int procent;
     //constructor
 
     // Methods
 
     public static void GetPollutionData()
     {
+        procent = 50;
+        
         timer = new System.Timers.Timer(10000); // 1000 = 1 second
 
         timer.Elapsed += Timer_Elapsed;
 
         timer.Enabled = true;
-        
     }
     private static void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
@@ -64,7 +65,7 @@ class Pollutionmeter
         }
 
         Console.SetCursorPosition(0, 0);
-        Console.Write((ShowPollution()));
+        Console.Write(ShowPollution());
         
         // gør at man skriver i bunden igen
         Console.SetCursorPosition(left, top); //method fra library

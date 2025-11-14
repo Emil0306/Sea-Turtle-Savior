@@ -37,7 +37,7 @@ class World {
     water4.AddEdge("north", water7);
     water4.AddEdge("south", water1);
     water4.AddEdge("harbor", harbor);
-    water5.AddEdge("north", water7);
+    water5.AddEdge("north", water8);
     water5.AddEdge("west", water4);
     water5.AddEdge("east", water6);
     water5.AddEdge("south", water2);
