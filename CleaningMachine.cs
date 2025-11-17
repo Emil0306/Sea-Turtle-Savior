@@ -14,7 +14,10 @@ public class CleaningMachine
 
     private int progress;
     
-    public int GetProgress() => progress;
+    public int GetProgress()
+    {
+        return progress;
+    }
 
     public void SetProgress(int newProgress)
     {
@@ -56,7 +59,9 @@ public class CleaningMachine
             }
         }
         constructionList = temp;
-        
+        if (progress == 60) {
+            Console.WriteLine("Every piece of trash in the ocean adds up! Reducing ocean litter protects the sea turtles.");
+        }
         playerInventory.RemoveTrash(foundItem);
         SetProgress(GetProgress() + 20);
         return $"{input} added to Cleaning Machine! Progress is now {GetProgress()}%.";
