@@ -12,13 +12,13 @@ class Startscreen
     {
             Console.ForegroundColor = ConsoleColor.Cyan; 
         Console.WriteLine("Sea turtles, have been navigating Earth's oceans since the age of the dinosaurs.");
-        Console.WriteLine("Now, at present day, Sea Turtles very existence is threathed by man-made pollution.");
-        Console.WriteLine("6 out of 7 turtle species are critically endangered. It said that only 1 out of every 1000 sea turles makes it to adult hood");
+        Console.WriteLine("Currently, the very existence of sea turtles is greatly threatened by man-made pollution.");
+        Console.WriteLine("6 of the 7 sea turtle species are critically endangered, and only one in every 1,000 hatchlings survives to adulthood.");
         Console.WriteLine("Now it's up to you. Sea Turtle savoir. Build the Cleaning Machine. Clean the ocean. Restore harmony!");
         Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Gray; 
 
-        Console.WriteLine(" 🐢 Welcome to SEATURTLE SAVIOR 🐢 Please press 'k' to start the game : ");
+        Console.WriteLine(" 🐢 WELCOME TO SEATURTLE SAVIOR 🐢 Press 'k' to start the game! : ");
         while (Console.ReadKey(true).Key != ConsoleKey.K)
         {
 
