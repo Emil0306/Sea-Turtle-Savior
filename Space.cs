@@ -58,6 +58,30 @@ class Space : Node {
       availableTrash = new Trash("No trash here", "", false);
       Console.WriteLine(MakeMaps(exits));
     }
+
+    if (name == "WasteStation")
+    {
+        Console.WriteLine("Here are the types of containers you can sort your waste into:");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Write("[Plastic] ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("[Glass] ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+        Console.Write("[Metal] ");
+            Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("[Paper] ");
+            Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("[Organic] ");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.Write("[Electronics] ");
+            Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write("[Batteries] ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write("[Textile] ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.WriteLine("[Wood]");
+            Console.ResetColor();
+    }
     else {
       Random rng = new Random();
       int randomNumber = rng.Next(0, trashList.Length);
