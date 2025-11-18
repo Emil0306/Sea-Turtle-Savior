@@ -16,6 +16,7 @@ class Registry {
   }
   
   public void Dispatch (string line) {
+    line = line.ToLower(); // gør at man kan skrive med store og små bogstaver
     string[] elements = line.Split(" ");
     string command = elements[0];
     string[] parameters = GetParameters(elements);
