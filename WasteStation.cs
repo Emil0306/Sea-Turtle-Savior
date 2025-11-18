@@ -9,8 +9,8 @@ class WasteStation
 
 	public WasteStation() {
 		//Making 9 predefined sorting types
-		string[] sortingTypes = {"Plastic", "Glass", "Metal", "Paper", "Organic", 
-            "Electronics", "Batteries", "Textile", "Wood"};
+		string[] sortingTypes = {"plastic", "glass", "metal", "paper", "organic", 
+            "electronics", "batteries", "textile", "wood"};
 
         containers = new Container[sortingTypes.Length];
 
