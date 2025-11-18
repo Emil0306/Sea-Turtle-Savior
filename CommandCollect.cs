@@ -6,7 +6,7 @@ class CommandCollect : BaseCommand, ICommand {
     
     public CommandCollect (Inventory inv) {
         this.inv = inv;
-        description = "Pick up trash";
+        description = "Pick up trash (e.g. collect container)";
     }
 
     public void Execute (Context context, string command, string[] parameters) {

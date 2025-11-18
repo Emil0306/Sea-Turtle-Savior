@@ -3,24 +3,24 @@
 
 class Space : Node {
   public static Trash[] trashList = new Trash[18]{ // change to private and add getters
-    new Trash("plastic_bottle", "Plastic", false),
-    new Trash("food_wrapper", "Plastic", false),
-    new Trash("syringe", "Plastic", true),
-    new Trash("car_tire", "Plastic", false),
-    new Trash("pesticide_container", "Plastic", true),
-    new Trash("motor", "Metal", false),
-    new Trash("container", "Plastic", false),
-    new Trash("filter", "Plastic", false),
-    new Trash("metal_frame", "Metal", false),
-    new Trash("solar_panel", "Electronics", false),
-    new Trash("banana_peel", "Organic", false),
-    new Trash("phone", "Electronics", true),
-    new Trash("aa_battery", "Batteries", true),
-    new Trash("car_battery", "Batteries", true),
-    new Trash("t-shirt", "Textile", false),
-    new Trash("wood_plank", "Wood", false),
-    new Trash("glass_bottle", "Glass", false),
-    new Trash("can", "Metal", false)
+    new Trash("plastic_bottle", "plastic", false),
+    new Trash("food_wrapper", "plastic", false),
+    new Trash("syringe", "plastic", true),
+    new Trash("car_tire", "plastic", false),
+    new Trash("pesticide_container", "plastic", true),
+    new Trash("motor", "metal", false),
+    new Trash("container", "plastic", false),
+    new Trash("filter", "plastic", false),
+    new Trash("metal_frame", "metal", false),
+    new Trash("solar_panel", "electronics", false),
+    new Trash("banana_peel", "organic", false),
+    new Trash("phone", "electronics", true),
+    new Trash("aa_battery", "batteries", true),
+    new Trash("car_battery", "batteries", true),
+    new Trash("t-shirt", "textile", false),
+    new Trash("wood_plank", "wood", false),
+    new Trash("glass_bottle", "glass", false),
+    new Trash("can", "metal", false)
   };
   private static Trash availableTrash = new Trash("No trash here", "", false);
   private HashSet<string> exits;
