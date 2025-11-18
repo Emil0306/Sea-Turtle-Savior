@@ -61,7 +61,22 @@ class Space : Node {
 
     if (name == "WasteStation")
     {
-        Console.WriteLine("Here are the types of containers you can sort your waste into:");
+      Console.ForegroundColor = ConsoleColor.Cyan;
+      Console.Write("Instructions:\nType '");
+
+      Console.ForegroundColor = ConsoleColor.Blue;
+      Console.Write("help");
+
+      Console.ForegroundColor = ConsoleColor.Cyan;
+      Console.Write("' to view options, then use '");
+
+      Console.ForegroundColor = ConsoleColor.Blue;
+      Console.Write("sort");
+
+      Console.ForegroundColor = ConsoleColor.Cyan;
+      Console.Write("' ");
+
+        Console.WriteLine("\nHere are the types of containers you can sort your waste into:");
             Console.ForegroundColor = ConsoleColor.Cyan;
         Console.Write("[Plastic] ");
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -75,13 +90,80 @@ class Space : Node {
             Console.ForegroundColor = ConsoleColor.Magenta;
         Console.Write("[Electronics] ");
             Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write("[Batteries] ");
+        Console.Write("\n[Batteries] ");
             Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write("[Textile] ");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.WriteLine("[Wood]");
             Console.ResetColor();
     }
+
+    else if (name == "Harbor")
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Write("Important instructions:\nType '");
+
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("help");
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Write("' to view commands menu, '");
+
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("go");
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Write("' to move direction, \n'");
+
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("deadly");
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Write("' to check lethal items, and '");
+
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("collect");
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Write("' to pick up items.\n");
+
+        Console.ResetColor();
+        Console.WriteLine("You are now at Harbor: \neast ➡️ Cleaning Machine, west ➡️ WasteStation");
+
+      }
+
+      else if (name == "Cleaning Machine")
+      {
+          Console.ForegroundColor = ConsoleColor.Cyan;
+          Console.Write("Instructions:\nType '");
+
+          Console.ForegroundColor = ConsoleColor.Blue;
+          Console.Write("help");
+
+          Console.ForegroundColor = ConsoleColor.Cyan;
+          Console.Write("' to view options, then use '");
+
+          Console.ForegroundColor = ConsoleColor.Blue;
+          Console.Write("list");
+
+          Console.ForegroundColor = ConsoleColor.Cyan;
+          Console.Write("' '");
+
+          Console.ForegroundColor = ConsoleColor.Blue;
+          Console.Write("progress");
+
+          Console.ForegroundColor = ConsoleColor.Cyan;
+          Console.Write("' or '");
+
+          Console.ForegroundColor = ConsoleColor.Blue;
+          Console.Write("add");
+
+          Console.ForegroundColor = ConsoleColor.Cyan;
+          Console.Write("'for your next action.\n");
+
+          Console.ResetColor();
+        }
+
     else {
       Random rng = new Random();
       int randomNumber = rng.Next(0, trashList.Length);
@@ -89,7 +171,10 @@ class Space : Node {
       Console.Write(MakeMaps(exits)); // change to other method
       Console.WriteLine("Trash: "+availableTrash.Name);
     }
+    if (name != "Harbor")
+    {
     Console.WriteLine("You are now at "+name);
+    }
     Console.WriteLine("Current exits are:");
     foreach (String exit in exits) {
       Console.WriteLine(" - "+exit);

@@ -7,7 +7,7 @@ class CommandListParts : BaseCommand, ICommand
     public CommandListParts(CleaningMachine machine)
     {
         _machine = machine;
-        description = "List all required parts";
+        description = "List all required Machine_Parts";
     }
 
     public void Execute(Context context, string command, string[] parameters)

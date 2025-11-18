@@ -3,7 +3,7 @@
 
 class CommandGo : BaseCommand, ICommand {
   public CommandGo () {
-    description = "Follow an exit";
+    description = "Follow an exit (e.g. go west)";
   }
   
   public void Execute (Context context, string command, string[] parameters) {

@@ -5,7 +5,7 @@ class CommandSort : BaseCommand, ICommand {
 	
 	public CommandSort(Inventory inv){
 		this.inv = inv;
-		description = "Sort and recycle your trash";
+		description = "Sort and recycle your trash (e.g. sort can Metal)";
 	}
 
 	public void Execute (Context context, string command, string[] parameters){

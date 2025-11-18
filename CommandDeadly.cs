@@ -3,7 +3,7 @@
 
 class CommandDeadly : BaseCommand, ICommand {
     public CommandDeadly () {
-        description = "View a list of dangerous trash which is deadly to pick up";
+        description = "View a list of lethal trash items to pick up";
     }
 
     public void Execute (Context context, string command, string[] parameters) {

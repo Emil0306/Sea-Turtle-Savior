@@ -5,7 +5,7 @@ class CommandShowInventory : BaseCommand, ICommand {
 	public CommandShowInventory(Inventory inv)
 	{
 		this.inv = inv;
-		description = "Access your inventory trash list";
+		description = "View your inventory trash list (use: show inventory)";
 	}
 
 	public void Execute (Context context, string command, string[] parameters) 

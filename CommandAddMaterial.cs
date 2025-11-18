@@ -9,7 +9,7 @@ class CommandAddMaterial : BaseCommand, ICommand
     {
         _machine = machine;
         this.inv = inv;
-        description = "Add a material to the CleaningMachine";
+        description = "Add Material to CleaningMachine(e.g. add motor)";
     }
 
     public void Execute(Context context, string command, string[] parameters)
