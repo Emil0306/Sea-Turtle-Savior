@@ -17,7 +17,8 @@ class EndScreen{
 	public bool EndInfo () {	// Display an endscreen with time, pollution and the cleaning machine progress
 		Console.Clear();
 		Console.WriteLine("You have "+(win==false ? "lost" : "won")+"!");
-		Console.WriteLine("You finished in "+endtime+" minutes!");
+		Console.WriteLine("You finished in " + string.Format("{0:0.0.0}", endtime) +" Minutes!");
+		//Console.WriteLine("You finished in "+endtime+" minutes!");
 		Console.Write("The pollutionmeter has reached: ");
 		if (pollutionmeterProgress == 0){
 			Console.ForegroundColor = ConsoleColor.Green;
