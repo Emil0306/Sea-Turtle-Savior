@@ -47,7 +47,7 @@ class Game
             Console.Clear();
             Startscreen start = new Startscreen();
             start.Startinformation();
-            Pollutionmeter.GetPollutionData();
+            Pollutionmeter.StartPollutionMeter();
 
             context.GetCurrent().Welcome();
             while (context.GetDone() == false)

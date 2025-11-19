@@ -2,26 +2,18 @@ using System.Timers;
 
 class Pollutionmeter
 {
-    //atributtes
-
+    // attributes
     private static Pollutionmeter pollutionmeter = new Pollutionmeter ();
-
     private static int maxPollution = 100;
-
-    private static System.Timers.Timer timer; // from Timer class
+    private static System.Timers.Timer timer;
     private static int procent;
-    //constructor
-
+    
     // Methods
-
-    public static void GetPollutionData()
+    public static void StartPollutionMeter()
     {
         procent = 50;
-        
-        timer = new System.Timers.Timer(10000); // 1000 = 1 second
-
+        timer = new System.Timers.Timer(10000); // in milliseconds
         timer.Elapsed += Timer_Elapsed;
-
         timer.Enabled = true;
     }
     private static void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -30,14 +22,13 @@ class Pollutionmeter
         {
             pollutionmeter.IncreasePollution(1);
         }
-        Game.CheckWinCondition(); // tjekker om spilleren har vundet (pollution = 0 og machine 100%)
+        Game.CheckWinCondition();
     }
 
-    // Metode til når tiden går = stigning af pollution
     public void IncreasePollution(int amount)
     {
-        int left = Console.CursorLeft; // method fra library
-        int top = Console.CursorTop; // method fra library
+        int left = Console.CursorLeft;
+        int top = Console.CursorTop;
         
         procent = procent + amount;
         if (procent > maxPollution)
@@ -45,18 +36,18 @@ class Pollutionmeter
             procent = maxPollution;
         }
         
+        // Put cursor at top
         Console.SetCursorPosition(0, 0);
         Console.Write(ShowPollution());
         
-        // gør at man skriver i bunden igen
-        Console.SetCursorPosition(left, top); //method fra library
+        // Put cursor back to its original place
+        Console.SetCursorPosition(left, top);
     }
-
-    // Metode til når man samler skrald = fald af pollution
+    
     public void DecreasePollution(int amount)
     {
-        int left = Console.CursorLeft; // method fra library
-        int top = Console.CursorTop; // method fra library
+        int left = Console.CursorLeft;
+        int top = Console.CursorTop;
         
         procent = procent - amount;
         if (procent < 0)
@@ -66,12 +57,9 @@ class Pollutionmeter
 
         Console.SetCursorPosition(0, 0);
         Console.Write(ShowPollution());
-        
-        // gør at man skriver i bunden igen
-        Console.SetCursorPosition(left, top); //method fra library
+        Console.SetCursorPosition(left, top);
     }
 
-    // Pollution meter visuelt:
     public string ShowPollution()
     {
         int barLength = 20;
@@ -95,16 +83,13 @@ class Pollutionmeter
         return "Pollution: [" + bar + "] " + procent + "/" + maxPollution + " (" + procent + "%)";
     }
 
-    public static int CurrentPollution() // til når man vinder
+    public static int CurrentPollution()
     {
         return procent;
     }
 
-    public static void StopTimer() // stop timer når man vinder
+    public static void StopTimer()
     {
         timer.Stop();
     }
 }
-
-
-

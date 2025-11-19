@@ -9,46 +9,42 @@ class WasteStation
 
 	public WasteStation() {
 		//Making 9 predefined sorting types
-		string[] sortingTypes = {"plastic", "glass", "metal", "paper", "organic", 
-            "electronics", "batteries", "textile", "wood"};
+		string[] sortingTypes = {"plastic", "glass", "metal", "paper", "organic", "electronics", "batteries", "textile", "wood"};
 
         containers = new Container[sortingTypes.Length];
 
         for (int i = 0; i < sortingTypes.Length; i++)
         {
-            containers[i] = new Container(sortingTypes[i]); //Adding the actual arrys here and giving each array a different sorting type.
+            containers[i] = new Container(sortingTypes[i]); //Adding the actual arrays here and giving each array a different sorting type.
         }
 	}
-
-
 	
-public void SortTrash(Inventory inv, Trash trash, string containerSortType)
-{
-	if (trash == null){
-		return;
+	public void SortTrash(Inventory inv, Trash trash, string containerSortType)
+	{
+		if (trash == null){
+			return;
+		}
+	    
+	    if (trash.Material == containerSortType)
+	    {
+	        inv.RemoveTrash(trash);
+	        Console.ForegroundColor = ConsoleColor.Green;
+	        Console.WriteLine($"Successfully sorted the {trash.Name} into the {containerSortType} container!");
+	        Console.ResetColor();
+	    }
+	    else
+	    {
+		    Console.ForegroundColor = ConsoleColor.Red;
+	        Console.WriteLine($"Wrong container! {trash.Material} does not belong in the {containerSortType} container.");
+	        Console.ResetColor();
+	        // Maybe we can add a penalty that adds to the pollutionmeter for sorting the wrong type of trash.
+	    }
 	}
-    
-    if (trash.Material == containerSortType)
-    {
-        inv.RemoveTrash(trash);
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"Successfully sorted the {trash.Name} into the {containerSortType} container!");
-        Console.ResetColor();
-    }
-    else
-    {
-	    Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine($"Wrong container! {trash.Material} does not belong in the {containerSortType} container.");
-        Console.ResetColor();
-        // Maybe we can add a penalty that adds to the pollutionmeter for sorting the wrong type of trash.
-    }
-}
 
 	public void RecyclingReward() //Unfinished
 	{
 		Console.WriteLine("Giving x amount of coins to player");
 		//Add to the plyer coin amount. 
-
 	}
 
     public string[] GetSortingTypes()
@@ -56,8 +52,3 @@ public void SortTrash(Inventory inv, Trash trash, string containerSortType)
         return sortingTypes;
     }
 }
-
-
-
-
-
