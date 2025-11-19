@@ -2,12 +2,12 @@ using System;
 
 class CommandAddMaterial : BaseCommand, ICommand
 {
-    private readonly CleaningMachine _machine;
+    private readonly CleaningMachine machine;
     private Inventory inv;
 
     public CommandAddMaterial(CleaningMachine machine, Inventory inv)
     {
-        _machine = machine;
+        this.machine = machine;
         this.inv = inv;
         description = "Add Material to CleaningMachine(e.g. add motor)";
     }
@@ -20,8 +20,7 @@ class CommandAddMaterial : BaseCommand, ICommand
                 Console.WriteLine("Usage: add <material>");
                 return;
             }
-
-            string result = _machine.AddMaterial(parameters[0], inv);
+            string result = machine.AddMaterial(parameters[0], inv);
             Console.WriteLine(result);
         }
         else {
@@ -29,4 +28,3 @@ class CommandAddMaterial : BaseCommand, ICommand
         }
     }
 }
-

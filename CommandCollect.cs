@@ -14,11 +14,10 @@ class CommandCollect : BaseCommand, ICommand {
             Console.WriteLine("Error: Did you mean \"collect NAME_OF_TRASH\"?");
             return;
         }
-
-        // maybe make CollectTrash static and then remove myInv
+        
         for (int i = 0 ; i < Space.trashList.Length ; i++){
             if (Space.trashList[i].Name == parameters[0] && parameters[0] == Space.GetavailableTrash().Name){
-                if (Space.GetavailableTrash().ForbiddenMaterial == true){
+                if (Space.GetavailableTrash().ForbiddenMaterial){
                     Pollutionmeter.StopTimer();
                     Game.SetWinLoss(false);
                     context.SetDone(true);

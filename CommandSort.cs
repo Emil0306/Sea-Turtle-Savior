@@ -1,6 +1,4 @@
-
 class CommandSort : BaseCommand, ICommand {
-	
 	private Inventory inv;
 	
 	public CommandSort(Inventory inv){
@@ -9,21 +7,19 @@ class CommandSort : BaseCommand, ICommand {
 	}
 
 	public void Execute (Context context, string command, string[] parameters){
-	if (context.GetCurrent().GetName() == "WasteStation"){
-		if (GuardEq(parameters, 2)) {
-    		Console.WriteLine("Please specify the trash item and its corresponding recycling container");
-    		return; 
+		if (context.GetCurrent().GetName() == "WasteStation"){
+			if (GuardEq(parameters, 2)) {
+    			Console.WriteLine("Please specify the trash item and its corresponding recycling container");
+    			return; 
+			}
+			WasteStation myWasteStation = new WasteStation();
+			myWasteStation.SortTrash(inv, inv.FindObj(parameters[0]), parameters[1]);
 		}
-
-		WasteStation myWasteStation = new WasteStation();
-		myWasteStation.SortTrash(inv, inv.FindObj(parameters[0]), parameters[1]);
-	}
-	else{
+		else{ 
 			Console.WriteLine("You are not at the Waste Station");
-		} 
+		}
 	}
 }
-//parameters[0] = skraldet feks. cykel
-//parameters[1] = container nummer feks. 2
-
-// command = sort 
+// parameters[0] = trash item like: plastic_bottle
+// parameters[1] = container number like: Metal
+// command = sort

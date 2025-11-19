@@ -26,24 +26,26 @@ public class CleaningMachine
         else progress = newProgress;
     }
 
-    public string[] GetConstructionList() => constructionList;
-
-
-    // bruges af command 'add <material>'
+    public string[] GetConstructionList()
+    {
+        return constructionList;
+    }
     
-    public string AddMaterial(string input, Inventory playerInventory)
+    public string AddMaterial(string input, Inventory playerInventory)    // Used by CommandAddMaterial
     {
         // Checks if material is needed
-
         bool isRequired = false;
         for (int i = 0; i < constructionList.Length; i++)
         {
-            if (constructionList[i] == input) { isRequired = true; break; }
+            if (constructionList[i] == input)
+            {
+                isRequired = true;
+                break;
+            }
         }
         if (!isRequired) return "That item is not required!";
 
         // Checks if player has item in inventory
-
         Trash foundItem = playerInventory.FindObj(input);
         if (foundItem == null) return "";
 
@@ -67,5 +69,3 @@ public class CleaningMachine
         return $"{input} added to Cleaning Machine! Progress is now {GetProgress()}%.";
     }
 }
-
-

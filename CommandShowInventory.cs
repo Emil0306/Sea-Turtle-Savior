@@ -1,4 +1,3 @@
-
 class CommandShowInventory : BaseCommand, ICommand {
 	private Inventory inv;
 		

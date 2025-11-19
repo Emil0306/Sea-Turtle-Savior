@@ -2,11 +2,11 @@ using System;
 
 class CommandProgress : BaseCommand, ICommand
 {
-    private readonly CleaningMachine _machine;
+    private readonly CleaningMachine machine;
 
     public CommandProgress(CleaningMachine machine)
     {
-        _machine = machine;
+        this.machine = machine;
         description = "Show current build progress in percent";
     }
 
@@ -18,8 +18,7 @@ class CommandProgress : BaseCommand, ICommand
                 Console.WriteLine("Usage: progress");
                 return;
             }
-
-            Console.WriteLine($"{_machine.GetProgress()}%");
+            Console.WriteLine($"{machine.GetProgress()}%");
         }
         else {
             Console.WriteLine("You are not at the Cleaning Machine");

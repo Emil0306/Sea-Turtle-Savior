@@ -25,6 +25,5 @@ class CommandDeadly : BaseCommand, ICommand {
             }
         }
         Console.WriteLine("Do NOT pick up any of these types of trash. They are deadly!");
-
     }
 }

@@ -1,12 +1,9 @@
 class Container //Container class which has a sorting type attribute. 
 {
+	private string sortingType;
 
-	public string SortingType {get;}
-
-	public Container(string SortingType)
+	public Container(string sortingType)
 	{
-		this.SortingType = SortingType;
+		this.sortingType = sortingType;
 	}
-
-
 }

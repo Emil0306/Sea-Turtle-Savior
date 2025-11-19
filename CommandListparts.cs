@@ -2,11 +2,11 @@ using System;
 
 class CommandListParts : BaseCommand, ICommand
 {
-    private readonly CleaningMachine _machine;
+    private readonly CleaningMachine machine;
 
     public CommandListParts(CleaningMachine machine)
     {
-        _machine = machine;
+        this.machine = machine;
         description = "List all required Machine_Parts";
     }
 
@@ -19,10 +19,10 @@ class CommandListParts : BaseCommand, ICommand
                 return;
             }
 
-            string[] parts = _machine.GetConstructionList();
+            string[] parts = machine.GetConstructionList();
             Console.WriteLine(string.Join(", ", parts));
         }
-        else{
+        else{ 
             Console.WriteLine("You are not at the Cleaning Machine");
         }
     }

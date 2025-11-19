@@ -1,5 +1,5 @@
 class EndScreen{
-	// Atributes
+	// Attributes
 	private bool win;
 	private double endtime;
 	private int pollutionmeterProgress;
@@ -18,14 +18,13 @@ class EndScreen{
 		Console.Clear();
 		Console.WriteLine("You have "+(win==false ? "lost" : "won")+"!");
 		Console.WriteLine("You finished in " + string.Format("{0:0.0.0}", endtime) +" Minutes!");
-		//Console.WriteLine("You finished in "+endtime+" minutes!");
 		Console.Write("The pollutionmeter has reached: ");
 		if (pollutionmeterProgress == 0){
 			Console.ForegroundColor = ConsoleColor.Green;
 		} else{
 			Console.ForegroundColor = ConsoleColor.Red;
 		}
-		Console.Write((pollutionmeterProgress)+"%"); // Vi skal lige få fixede procenttallet - Hans
+		Console.Write(pollutionmeterProgress+"%");
 		Console.ForegroundColor = ConsoleColor.Gray;
 		Console.Write(" And you are: ");
 		if (cleaningMachineProgress == 100){
@@ -49,9 +48,8 @@ class EndScreen{
 			Console.Write("> ");
 			string? line = Console.ReadLine();
 			if (line == "quit") return false;
-			else if (line == "restart") return true;
-			else Console.WriteLine("Woopsie, I don't understand '"+line+"'. Please write 'quit' or 'restart'. 😕");
+			if (line == "restart") return true;
+			Console.WriteLine("Woopsie, I don't understand '"+line+"'. Please write 'quit' or 'restart'. 😕");
 		}
 	}
-
 }
