@@ -1,5 +1,7 @@
 /* Baseclass for commands
 */
+namespace SeaTurtleSavior;
+
 class BaseCommand {
     protected string description = "Undocumented";
 

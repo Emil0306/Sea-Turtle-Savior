@@ -1,6 +1,8 @@
 /* World class for modeling the entire in-game world
  */
 
+namespace SeaTurtleSavior;
+
 class World {
     Space entry;
 
@@ -64,4 +66,3 @@ class World {
         return entry;
     }
 }
-

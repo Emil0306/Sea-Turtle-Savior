@@ -1,6 +1,8 @@
 /* Command for transitioning between spaces
  */
 
+namespace SeaTurtleSavior;
+
 class CommandGo : BaseCommand, ICommand {
     public CommandGo () {
         description = "Follow an exit (e.g. go west)";

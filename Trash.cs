@@ -1,4 +1,6 @@
 // Trash class for creating Trash, which can be used to make lists of them in different rooms.
+namespace SeaTurtleSavior;
+
 public class Trash
 {
 	private string name;

@@ -1,6 +1,8 @@
 /* Command for exiting program
  */
 
+namespace SeaTurtleSavior;
+
 class CommandExit : BaseCommand, ICommand {
     public CommandExit () {
         description = "Exit the game";

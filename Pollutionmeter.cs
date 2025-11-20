@@ -1,5 +1,7 @@
 using System.Timers;
 
+namespace SeaTurtleSavior;
+
 class Pollutionmeter
 {
     // attributes

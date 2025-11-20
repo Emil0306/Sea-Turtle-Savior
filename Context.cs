@@ -1,6 +1,8 @@
 /* Context class to hold all context relevant to a session.
  */
 
+namespace SeaTurtleSavior;
+
 class Context {
     Space current;
     bool done = false;
@@ -32,4 +34,3 @@ class Context {
         return done;
     }
 }
-

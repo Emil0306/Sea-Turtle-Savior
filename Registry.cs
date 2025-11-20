@@ -1,6 +1,8 @@
 /* Command registry
  */
 
+namespace SeaTurtleSavior;
+
 class Registry {
     Context context;
     ICommand fallback;
@@ -39,4 +41,3 @@ class Registry {
         return output;
     }
 }
-

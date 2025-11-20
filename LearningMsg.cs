@@ -1,4 +1,6 @@
-﻿public class LearningMsg
+﻿namespace SeaTurtleSavior;
+
+public class LearningMsg
 {
     private int control = 3;
     Random rand = new Random();

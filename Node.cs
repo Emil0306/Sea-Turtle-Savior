@@ -1,6 +1,8 @@
 /* Node class for modeling graphs
  */
 
+namespace SeaTurtleSavior;
+
 class Node {
     protected string name;
     protected Dictionary<string, Node> edges = new Dictionary<string, Node>();
@@ -21,4 +23,3 @@ class Node {
         return edges[direction];
     }
 }
-

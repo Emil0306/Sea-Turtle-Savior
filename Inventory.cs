@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+namespace SeaTurtleSavior;
 
 public class Inventory
 {
@@ -19,9 +19,9 @@ public class Inventory
 			return true;
 		}
 		else 
-        {
-            return false;
-        }
+		{
+			return false;
+		}
 	}
 
 	public void RemoveTrash(Trash trash)

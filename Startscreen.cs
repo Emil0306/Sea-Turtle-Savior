@@ -1,3 +1,5 @@
+namespace SeaTurtleSavior;
+
 class Startscreen
 {
     //Attributes

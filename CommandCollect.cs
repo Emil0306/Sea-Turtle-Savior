@@ -1,6 +1,8 @@
 /* Command for collecting trash
  */
 
+namespace SeaTurtleSavior;
+
 class CommandCollect : BaseCommand, ICommand {
     private Inventory inv;
     

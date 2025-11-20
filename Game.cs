@@ -1,6 +1,8 @@
 /* Main class for launching the game
  */
 
+namespace SeaTurtleSavior;
+
 class Game
 {
     private static bool winloss = false;

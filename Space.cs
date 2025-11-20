@@ -1,6 +1,8 @@
 /* Space class for modeling spaces (rooms, caves, ...)
  */
 
+namespace SeaTurtleSavior;
+
 class Space : Node {
     private static Trash[] trashList = new Trash[18]{
         new Trash("plastic_bottle", "plastic", false),
@@ -236,6 +238,3 @@ class Space : Node {
         return border;
     }
 }
-
-
-

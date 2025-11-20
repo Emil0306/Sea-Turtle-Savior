@@ -1,3 +1,5 @@
+namespace SeaTurtleSavior;
+
 class EndScreen{
 	// Attributes
 	private bool win;

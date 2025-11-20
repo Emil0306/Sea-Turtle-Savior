@@ -1,6 +1,8 @@
 /* Help command
  */
 
+namespace SeaTurtleSavior;
+
 class CommandHelp : BaseCommand, ICommand {
     Registry registry;
 

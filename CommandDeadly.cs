@@ -1,6 +1,8 @@
 /* Command for viewing a list of dangerous trash
  */
 
+namespace SeaTurtleSavior;
+
 class CommandDeadly : BaseCommand, ICommand {
     public CommandDeadly () {
         description = "View a list of lethal trash items to pick up";
