@@ -3,7 +3,11 @@
 
 namespace SeaTurtleSavior;
 
-class Space : Node {
+class Space : Node
+{
+    public Space(string name) : base(name)
+    {
+    }
     private static Trash[] trashList = new Trash[18]{
         new Trash("plastic_bottle", "plastic", false),
         new Trash("food_wrapper", "plastic", false),
@@ -31,10 +35,12 @@ class Space : Node {
     {
         return trashList;
     }
-    public static Trash GetavailableTrash (){
+    public static Trash GetavailableTrash()
+    {
         return availableTrash;
     }
-    public static void SetavailableTrash (Trash trash){
+    public static void SetavailableTrash(Trash trash)
+    {
         availableTrash = trash;
     }
 
@@ -48,22 +54,28 @@ class Space : Node {
         return exits;
     }
 
-    public Space (string name) : base(name)
-    {
-    }
+    
 
-    public void Welcome () {
+
+
+    //Køre i starten, eller i nyt rum, Lav ny trash hvis ikke specielle rum, forklare spillet eller laver mappet
+    //Denne funktion har næsten alt render logik af spillet
+    public void Welcome(Context context,bool redraw)
+    {
         Console.Clear();
         SetExits();
 
         Pollutionmeter pollution = new Pollutionmeter();
         Console.WriteLine(pollution.ShowPollution());
-        
-        if (name == "Harbor" || name == "Cleaning Machine" || name == "WasteStation"){
+
+        // Hvis i specielle rum, lav ingen trash, lav scene
+        if (name == "Harbor" || name == "Cleaning Machine" || name == "WasteStation")
+        {
             availableTrash = new Trash("No trash here", "", false);
-            Console.WriteLine(MakeMaps(exits));
+            Console.WriteLine(MakeMaps(exits, context.GetPlayerX(), context.GetPlayerY()));
         }
 
+        // Specielle rum instruktioner (WasteStation)
         if (name == "WasteStation")
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -102,6 +114,7 @@ class Space : Node {
             Console.WriteLine("[Wood]");
             Console.ForegroundColor = ConsoleColor.Gray;
         }
+        // Specielle rum instruktioner (Harbor)
         else if (name == "Harbor")
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -130,9 +143,10 @@ class Space : Node {
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("' to pick up items.\n");
-            
+
             Console.ForegroundColor = ConsoleColor.Gray;
         }
+        // Specielle rum instruktioner (Cleaning Machine)
         else if (name == "Cleaning Machine")
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -164,74 +178,102 @@ class Space : Node {
 
             Console.ForegroundColor = ConsoleColor.Gray;
         }
-        else {
-            Random rng = new Random();
-            int randomNumber = rng.Next(0, trashList.Length);
-            availableTrash = trashList[randomNumber];
-            Console.Write(MakeMaps(exits));
-            Console.WriteLine("Trash: "+availableTrash.GetName());
+        
+        // Almindelige rum, laver nyt trash
+        else
+        {
+            if (!redraw) // hvis vi har tegnet rummet 1 gang, så skal der ikke komme et nyt stykke "trash"
+            {
+                Random rng = new Random();
+                int randomNumber = rng.Next(0, trashList.Length);
+                availableTrash = trashList[randomNumber];
+            }
+            Console.Write(MakeMaps(exits, context.GetPlayerX(), context.GetPlayerY()));
+            Console.WriteLine("Trash: " + availableTrash.GetName());
         }
 
-        Console.WriteLine("You are now at "+name);
+        Console.WriteLine("You are now at " + name);
         Console.WriteLine("Current exits are:");
-        foreach (string exit in exits) {
-            Console.WriteLine(" - "+exit);
+        foreach (string exit in exits)
+        {
+            Console.WriteLine(" - " + exit);
         }
     }
 
-    public void Goodbye () {
+    public void Goodbye()
+    {
     }
 
-    public override Space FollowEdge (string direction) {
-        return (Space) (base.FollowEdge(direction));
+    public override Space FollowEdge(string direction)
+    {
+        return (Space)(base.FollowEdge(direction));
     }
 
-    public string MakeMaps(HashSet<string> exits) {
+    // Tegner mappet, med player position som parameter
+    public string MakeMaps(HashSet<string> exits, int playerX, int playerY)
+    {
         int mapSize = 9;
         string makemap = "";
-        if (exits.Contains("north")){
-            for (int i = 0 ; i<((mapSize*3)/2)+5 ; i++){
+        if (exits.Contains("north"))
+        {
+            for (int i = 0; i < ((mapSize * 3) / 2) + 5; i++)
+            {
                 makemap += " ";
             }
             makemap += "north\n";
-        } else{
+        }
+        else
+        {
             makemap += "\n";
         }
         makemap += Borders(mapSize);
 
-        for (int i=0 ; i<mapSize ; i++){
-            for (int h=0 ; h<mapSize ; h++){
-                if (exits.Contains("west") && h==0 && i==mapSize/2){
+        for (int i = 0; i < mapSize; i++)
+        {
+            for (int h = 0; h < mapSize; h++)
+            {
+                if (exits.Contains("west") && h == 0 && i == mapSize / 2)
+                {
                     makemap += "west";
-                } else if (h==0){
+                }
+                else if (h == 0)
+                {
                     makemap += "    ";
                 }
-                if (h==0) makemap += " | ";
+                if (h == 0) makemap += " | ";
 
-                if (i==4 && h==4) makemap += "🐢 ";
+                // Use dynamic player position instead of hardcoded (4,4)
+                if (i == playerY && h == playerX) makemap += "🐢 ";
                 else makemap += " ~ ";
 
-                if (h==mapSize-1) makemap += " | ";
+                if (h == mapSize - 1) makemap += " | ";
 
-                if (exits.Contains("east") && i==mapSize/2 && h==mapSize-1) makemap += "east";
+                if (exits.Contains("east") && i == mapSize / 2 && h == mapSize - 1) makemap += "east";
             }
             makemap += "\n";
         }
         makemap += Borders(mapSize);
-        if (exits.Contains("south")){
-            for (int i = 0 ; i<((mapSize*3)/2)+5 ; i++){
+        if (exits.Contains("south"))
+        {
+            for (int i = 0; i < ((mapSize * 3) / 2) + 5; i++)
+            {
                 makemap += " ";
             }
             makemap += "south\n";
-        } else{
+        }
+        else
+        {
             makemap += "\n";
         }
         return makemap;
     }
-    
-    private string Borders(int mapSize){
+
+    // Tegner grænserne for mappet
+    private string Borders(int mapSize)
+    {
         string border = "     ";
-        for (int i = 0 ; i<mapSize*3+4 ; i++){
+        for (int i = 0; i < mapSize * 3 + 4; i++)
+        {
             border += "-";
         }
         border += "\n";

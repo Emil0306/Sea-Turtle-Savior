@@ -1,6 +1,8 @@
 /* Main class for launching the game
  */
 
+
+
 namespace SeaTurtleSavior;
 
 class Game
@@ -8,6 +10,7 @@ class Game
     private static bool winloss = false;
     private static bool isRunning = true;
 
+    static Startscreen start = new Startscreen();
     static World world = new World();
     static Context context = new Context(world.GetEntry());
     static ICommand fallback = new CommandUnknown();
@@ -19,6 +22,7 @@ class Game
     {
         winloss = status;
     }
+
 
     private static void InitRegistry()
     {
@@ -35,29 +39,101 @@ class Game
         registry.Register("deadly", new CommandDeadly());
         registry.Register("show", new CommandShowInventory(inv));
         registry.Register("sort", new CommandSort(inv));
-        registry.Register("add",  new CommandAddMaterial(machine, inv));
+        registry.Register("add", new CommandAddMaterial(machine, inv));
         registry.Register("list", new CommandListParts(machine));
         registry.Register("progress", new CommandProgress(machine));
     }
 
+
+
+    static string? ReadInput()
+    {
+        string input = "";
+        while (true)
+        {
+            ConsoleKeyInfo key = Console.ReadKey(true);
+            //håndtere piletasterne
+
+            if (key.Key == ConsoleKey.UpArrow)
+            {
+                if (context.MovePlayer("up"))
+                {
+                    context.Redraw();
+                }
+                Console.WriteLine("> ");
+                continue;
+            }
+            else if (key.Key == ConsoleKey.DownArrow)
+            {
+                if (context.MovePlayer("down"))
+                {
+                    context.Redraw();
+                }
+                Console.WriteLine("> ");
+                continue;
+            }
+            else if (key.Key == ConsoleKey.LeftArrow)
+            {
+                if (context.MovePlayer("left"))
+                {
+                    context.Redraw();
+                }
+                Console.WriteLine("> ");
+                continue;
+            }
+            else if (key.Key == ConsoleKey.RightArrow)
+            {
+                if (context.MovePlayer("right"))
+                {
+                    context.Redraw();
+                }
+                Console.WriteLine("> ");
+                continue;
+            }
+            else if (key.Key == ConsoleKey.Enter)
+            {
+                Console.WriteLine();
+                return input;
+            }
+            else if (key.Key == ConsoleKey.Backspace)
+            {
+                if (input.Length > 0)
+                {
+                    input = input.Substring(0, input.Length - 1);
+                    Console.Write("\b \b"); // Sletter det sidste tegn i konsollen
+                }
+            }
+            else if (!char.IsControl(key.KeyChar))
+            {
+                input += key.KeyChar;
+                Console.Write(key.KeyChar);
+            }
+
+        }
+    }
+
     static void Main(string[] args)
-    { 
+    {
         while (isRunning)
         {
+            //Reset game state
             InitRegistry();
             context.SetDone(false);
             Console.Clear();
-            Startscreen start = new Startscreen();
+            //Start game Display instructions
             start.Startinformation();
+            //Starrt Pollutionmeter
             Pollutionmeter.StartPollutionMeter();
-            context.GetCurrent().Welcome();
+            //Generate map and place player
+            context.GetCurrent().Welcome(context,false);
+            //gameplay loop
             while (context.GetDone() == false)
             {
                 Console.Write("> ");
-                string? line = Console.ReadLine();
+                string? line = ReadInput();
                 if (line != null) registry.Dispatch(line);
             }
-
+            //if win or loss display endscreen
             DateTime endtime = DateTime.Now;
             TimeSpan res = endtime.Subtract(start.GetStartTime());
             EndScreen endScreen = new EndScreen(winloss, res, Pollutionmeter.CurrentPollution(), machine.GetProgress());
@@ -73,7 +149,7 @@ class Game
             winloss = true;
             context.SetDone(true);
         }
-        else if (Pollutionmeter.CurrentPollution()==100)
+        else if (Pollutionmeter.CurrentPollution() == 100)
         {
             Pollutionmeter.StopTimer();
             winloss = false;
