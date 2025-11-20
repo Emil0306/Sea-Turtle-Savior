@@ -14,16 +14,16 @@ class CommandCollect : BaseCommand, ICommand {
             Console.WriteLine("Error: Did you mean \"collect NAME_OF_TRASH\"?");
             return;
         }
-        
-        for (int i = 0 ; i < Space.trashList.Length ; i++){
-            if (Space.trashList[i].Name == parameters[0] && parameters[0] == Space.GetavailableTrash().Name){
-                if (Space.GetavailableTrash().ForbiddenMaterial){
+
+        for (int i = 0 ; i < Space.GetTrashList().Length ; i++){
+            if (Space.GetTrashList()[i].GetName() == parameters[0] && parameters[0] == Space.GetavailableTrash().GetName()){
+                if (Space.GetavailableTrash().GetForbiddenMaterial()){
                     Pollutionmeter.StopTimer();
                     Game.SetWinLoss(false);
                     context.SetDone(true);
                     return;
                 }
-                bool a = inv.CollectTrash(Space.trashList[i]);
+                bool a = inv.CollectTrash(Space.GetTrashList()[i]);
                 if (a == false)
                 {
                     Pollutionmeter.StopTimer();

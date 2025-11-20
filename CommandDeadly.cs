@@ -19,9 +19,9 @@ class CommandDeadly : BaseCommand, ICommand {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("⚠️ Dangerous trash ⚠️");
         Console.ForegroundColor = ConsoleColor.Gray;
-        for (int i = 0 ; i < Space.trashList.Length ; i++){
-            if(Space.trashList[i].ForbiddenMaterial==true){
-                Console.WriteLine("   - "+Space.trashList[i].Name);
+        for (int i = 0 ; i < Space.GetTrashList().Length ; i++){
+            if(Space.GetTrashList()[i].GetForbiddenMaterial()==true){
+                Console.WriteLine("   - "+Space.GetTrashList()[i].GetName());
             }
         }
         Console.WriteLine("Do NOT pick up any of these types of trash. They are deadly!");

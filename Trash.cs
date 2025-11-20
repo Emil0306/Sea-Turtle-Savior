@@ -1,14 +1,29 @@
 // Trash class for creating Trash, which can be used to make lists of them in different rooms.
 public class Trash
 {
-	public string Name {get;}
-	public string Material {get;}
-	public bool ForbiddenMaterial {get;}
+	private string name;
+	private string material;
+	private bool forbiddenMaterial;
 
-	public Trash(string Name, string Material, bool ForbiddenMaterial)
+	public Trash(string name, string material, bool forbiddenMaterial)
 	{
-		this.Name = Name;
-		this.Material = Material;
-		this.ForbiddenMaterial = ForbiddenMaterial;
+		this.name = name;
+		this.material = material;
+		this.forbiddenMaterial = forbiddenMaterial;
+	}
+	
+	public string GetName()
+	{
+		return name;
+	}
+	
+	public string GetMaterial()
+	{
+		return material;
+	}
+
+	public bool GetForbiddenMaterial()
+	{
+		return forbiddenMaterial;
 	}
 }

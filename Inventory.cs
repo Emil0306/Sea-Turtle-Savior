@@ -12,7 +12,7 @@ public class Inventory
 		if (inventoryList.Count < capacity)
 		{
 			inventoryList.Add(trash);
-			Console.WriteLine($"{trash.Name} added to inventory.");
+			Console.WriteLine($"{trash.GetName()} added to inventory.");
 
 			pollutionmeter.DecreasePollution(5);
 
@@ -37,14 +37,14 @@ public class Inventory
 
 		for (int i = 0 ; i < inventoryList.Count ; i++) 
 		{
-			Console.WriteLine($"{inventoryList[i].Name} made of {inventoryList[i].Material}"); // Prints out the waste's name and material type.
+			Console.WriteLine($"{inventoryList[i].GetName()} made of {inventoryList[i].GetMaterial()}"); // Prints out the waste's name and material type.
 		}
 	}
 
 	public Trash FindObj(string name){
 		for (int i = 0 ; i < inventoryList.Count ; i++) 
 		{
-			if (inventoryList[i].Name == name){
+			if (inventoryList[i].GetName() == name){
 				return inventoryList[i];
 			}
 

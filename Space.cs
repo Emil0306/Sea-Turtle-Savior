@@ -2,7 +2,7 @@
  */
 
 class Space : Node {
-    public static Trash[] trashList = new Trash[18]{ // change to private and add getters
+    private static Trash[] trashList = new Trash[18]{
         new Trash("plastic_bottle", "plastic", false),
         new Trash("food_wrapper", "plastic", false),
         new Trash("syringe", "plastic", true),
@@ -25,6 +25,10 @@ class Space : Node {
     private static Trash availableTrash = new Trash("No trash here", "", false);
     private HashSet<string> exits;
 
+    public static Trash[] GetTrashList()
+    {
+        return trashList;
+    }
     public static Trash GetavailableTrash (){
         return availableTrash;
     }
@@ -163,7 +167,7 @@ class Space : Node {
             int randomNumber = rng.Next(0, trashList.Length);
             availableTrash = trashList[randomNumber];
             Console.Write(MakeMaps(exits));
-            Console.WriteLine("Trash: "+availableTrash.Name);
+            Console.WriteLine("Trash: "+availableTrash.GetName());
         }
 
         Console.WriteLine("You are now at "+name);
