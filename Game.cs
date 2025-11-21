@@ -52,13 +52,17 @@ class Game
         while (true)
         {
             ConsoleKeyInfo key = Console.ReadKey(true);
-            //håndtere piletasterne
+            //hÃ¥ndtere piletasterne
 
             if (key.Key == ConsoleKey.UpArrow)
             {
                 if (context.MovePlayer("up"))
                 {
                     context.Redraw();
+                }
+                else if (context.GetPlayerY() == 0 && context.GetCurrent().GetExits().Contains("north"))
+                {
+                    context.Transition("north");
                 }
                 Console.WriteLine("> ");
                 continue;
@@ -69,6 +73,10 @@ class Game
                 {
                     context.Redraw();
                 }
+                else if (context.GetPlayerY() == 8 && context.GetCurrent().GetExits().Contains("south"))
+                {
+                    context.Transition("south");
+                }
                 Console.WriteLine("> ");
                 continue;
             }
@@ -78,6 +86,10 @@ class Game
                 {
                     context.Redraw();
                 }
+                else if (context.GetPlayerX() == 0 && context.GetCurrent().GetExits().Contains("west"))
+                {
+                    context.Transition("west");
+                }
                 Console.WriteLine("> ");
                 continue;
             }
@@ -86,6 +98,10 @@ class Game
                 if (context.MovePlayer("right"))
                 {
                     context.Redraw();
+                }
+                else if (context.GetPlayerX() == 8 && context.GetCurrent().GetExits().Contains("east"))
+                {
+                    context.Transition("east");
                 }
                 Console.WriteLine("> ");
                 continue;
