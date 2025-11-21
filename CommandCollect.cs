@@ -34,6 +34,7 @@ class CommandCollect : BaseCommand, ICommand {
                     return;
                 }
                 Space.SetavailableTrash(new Trash("No trash here", "", false));
+                context.Redraw();
                 return;
             }
         }

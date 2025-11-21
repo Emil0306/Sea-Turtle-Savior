@@ -189,9 +189,9 @@ class Space : Node
                 availableTrash = trashList[randomNumber];
             }
             Console.Write(MakeMaps(exits, context.GetPlayerX(), context.GetPlayerY()));
-            Console.WriteLine("Trash: " + availableTrash.GetName());
+            
         }
-
+        Console.WriteLine("Trash: " + availableTrash.GetName());
         Console.WriteLine("You are now at " + name);
         Console.WriteLine("Current exits are:");
         foreach (string exit in exits)
