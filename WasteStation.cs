@@ -46,7 +46,6 @@ class WasteStation
 		Console.WriteLine("Giving x amount of coins to player");
 		//Add to the plyer coin amount. 
 	}
-
 	public string[] GetSortingTypes()
 	{
 		return sortingTypes;
