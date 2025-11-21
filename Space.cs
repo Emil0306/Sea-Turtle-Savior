@@ -243,7 +243,7 @@ class Space : Node
                 if (h == 0) makemap += " | ";
 
                 // Use dynamic player position instead of hardcoded (4,4)
-                if (i == playerY && h == playerX) makemap += " 🐢 ";
+                if (i == playerY && h == playerX) makemap += "🐢 ";
                 else makemap += " ~ ";
 
                 if (h == mapSize - 1) makemap += " | ";
