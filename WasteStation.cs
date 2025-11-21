@@ -5,11 +5,11 @@ namespace SeaTurtleSavior;
 class WasteStation 
 {
 	private Container[] containers;
-	private string[] sortingTypes;
+	string[] sortingTypes = new string[] {"plastic", "glass", "metal", "paper", "organic", "electronics", "batteries", "textile", "wood"};
 
 	public WasteStation() {
 		//Making 9 predefined sorting types
-		string[] sortingTypes = {"plastic", "glass", "metal", "paper", "organic", "electronics", "batteries", "textile", "wood"};
+		
 
 		containers = new Container[sortingTypes.Length];
 
