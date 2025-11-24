@@ -22,12 +22,12 @@ class Pollutionmeter
     {
         if (procent < maxPollution)
         {
-            pollutionmeter.IncreasePollution(1);
+            pollutionmeter.ChangePollution(1);
         }
         Game.CheckWinCondition();
     }
 
-    public void IncreasePollution(int amount)
+    public void ChangePollution(int amount)
     {
         int left = Console.CursorLeft;
         int top = Console.CursorTop;
@@ -36,6 +36,10 @@ class Pollutionmeter
         if (procent > maxPollution)
         {
             procent = maxPollution;
+        }
+        if (procent < 0)
+        {
+            procent = 0;
         }
         
         // Put cursor at top
@@ -46,22 +50,6 @@ class Pollutionmeter
         Console.SetCursorPosition(left, top);
     }
     
-    public void DecreasePollution(int amount)
-    {
-        int left = Console.CursorLeft;
-        int top = Console.CursorTop;
-        
-        procent = procent - amount;
-        if (procent < 0)
-        {
-            procent = 0;
-        }
-
-        Console.SetCursorPosition(0, 0);
-        Console.Write(ShowPollution());
-        Console.SetCursorPosition(left, top);
-    }
-
     public string ShowPollution()
     {
         int barLength = 20;

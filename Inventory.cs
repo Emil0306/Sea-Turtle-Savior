@@ -14,7 +14,7 @@ public class Inventory
 			inventoryList.Add(trash);
 			Console.WriteLine($"{trash.GetName()} added to inventory.");
 
-			pollutionmeter.DecreasePollution(5);
+			pollutionmeter.ChangePollution(-5);
 
 			return true;
 		}

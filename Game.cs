@@ -51,6 +51,7 @@ class Game
         string input = "";
         while (true)
         {
+            if (CheckWinCondition()) return "";
             ConsoleKeyInfo key = Console.ReadKey(true);
             //håndtere piletasterne
 
@@ -136,7 +137,6 @@ class Game
                 input += key.KeyChar;
                 Console.Write(key.KeyChar);
             }
-
         }
     }
 
@@ -169,19 +169,22 @@ class Game
         }
     }
 
-    public static void CheckWinCondition()
+    public static bool CheckWinCondition()
     {
         if (machine.GetProgress() == 100 || Pollutionmeter.CurrentPollution() == 0)
         {
             Pollutionmeter.StopTimer();
             winloss = true;
             context.SetDone(true);
+            return true;
         }
-        else if (Pollutionmeter.CurrentPollution() == 100)
+        else if (Pollutionmeter.CurrentPollution() >= 100)
         {
             Pollutionmeter.StopTimer();
             winloss = false;
             context.SetDone(true);
+            return true;
         }
+        return false;
     }
 }
