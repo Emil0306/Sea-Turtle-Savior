@@ -4,7 +4,7 @@ public class Inventory
 {
 	private List<Trash> inventoryList = new List<Trash>();
 	private int capacity = 15;
-	Pollutionmeter pollutionmeter = new Pollutionmeter ();
+	Pollutionmeter pollutionmeter = new Pollutionmeter (); //laver vores nye pollutionmeter så vi kan bruge den.
 
 	public bool CollectTrash(Trash trash)
 	{
@@ -14,7 +14,7 @@ public class Inventory
 			inventoryList.Add(trash);
 			Console.WriteLine($"{trash.GetName()} added to inventory.");
 
-			pollutionmeter.ChangePollution(-5);
+			pollutionmeter.ChangePollution(-5); //Måske burde vi fjerne det.
 
 			return true;
 		}

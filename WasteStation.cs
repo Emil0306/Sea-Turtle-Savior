@@ -4,7 +4,8 @@ namespace SeaTurtleSavior;
 
 class WasteStation 
 {
-	private Container[] containers;
+    Pollutionmeter pollutionmeter = new Pollutionmeter();
+    private Container[] containers;
 	string[] sortingTypes = new string[] {"plastic", "glass", "metal", "paper", "organic", "electronics", "batteries", "textile", "wood"};
 
 	public WasteStation() {
@@ -20,6 +21,7 @@ class WasteStation
 	}
 	
 	public void SortTrash(Inventory inv, Trash trash, string containerSortType)
+
 	{
 		if (trash == null){
 			return;
@@ -31,14 +33,18 @@ class WasteStation
 			Console.ForegroundColor = ConsoleColor.Green;
 			Console.WriteLine($"Successfully sorted the {trash.GetName()} into the {containerSortType} container!");
 			Console.ResetColor();
-		}
+			pollutionmeter.ChangePollution(-5); // Ved korrekt Sortering går Pollutionmeter % ned.
+
+        }
 		else
 		{
 			Console.ForegroundColor = ConsoleColor.Red;
 			Console.WriteLine($"Wrong container! {trash.GetMaterial()} does not belong in the {containerSortType} container.");
 			Console.ResetColor();
-			// Maybe we can add a penalty that adds to the pollutionmeter for sorting the wrong type of trash.
-		}
+            pollutionmeter.ChangePollution(+5); // Ved forkert  Sortering går Pollutionmeter % op.
+
+            // Maybe we can add a penalty that adds to the pollutionmeter for sorting the wrong type of trash.
+        }
 	}
 
 	public void RecyclingReward() //Unfinished
