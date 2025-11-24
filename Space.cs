@@ -28,6 +28,7 @@ class Space : Node
         new Trash("glass_bottle", "glass", false),
         new Trash("can", "metal", false)
     };
+    private static InformationPrinter infoPrinter = new InformationPrinter();
     private static Trash availableTrash = new Trash("No trash here", "", false);
     private HashSet<string> exits;
 
@@ -78,105 +79,17 @@ class Space : Node
         // Specielle rum instruktioner (WasteStation)
         if (name == "WasteStation")
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("Instructions:\nType '");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("help");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to view options, then use '");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("sort");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' ");
-
-            Console.WriteLine("\nHere are the types of containers you can sort your waste into:");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("[Plastic] ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("[Glass] ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write("[Metal] ");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("[Paper] ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("[Organic] ");
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.Write("[Electronics] ");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("\n[Batteries] ");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("[Textile] ");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("[Wood]");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            infoPrinter.RoomInfoPrint("WasteStation");
         }
         // Specielle rum instruktioner (Harbor)
         else if (name == "Harbor")
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("Important instructions:\nType '");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("help");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to view commands menu, '");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("go");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to move direction, \n'");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("deadly");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to check lethal items, and '");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("collect");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to pick up items.\n");
-
-            Console.ForegroundColor = ConsoleColor.Gray;
+            infoPrinter.RoomInfoPrint("Harbor");
         }
         // Specielle rum instruktioner (Cleaning Machine)
         else if (name == "Cleaning Machine")
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("Instructions:\nType '");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("help");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to view options, then use '");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("list");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' '");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("progress");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' or '");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("add");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("'for your next action.\n");
-
-            Console.ForegroundColor = ConsoleColor.Gray;
+            infoPrinter.RoomInfoPrint("CleaningMachine");
         }
         
         // Almindelige rum, laver nyt trash
