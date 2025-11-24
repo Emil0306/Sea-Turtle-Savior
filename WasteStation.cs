@@ -4,7 +4,7 @@ namespace SeaTurtleSavior;
 
 class WasteStation 
 {
-    Pollutionmeter pollutionmeter = new Pollutionmeter();
+    Pollutionmeter pollutionmeter = new Pollutionmeter(); //nyt pollutionmeter
     private Container[] containers;
 	string[] sortingTypes = new string[] {"plastic", "glass", "metal", "paper", "organic", "electronics", "batteries", "textile", "wood"};
 

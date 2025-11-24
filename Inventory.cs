@@ -4,7 +4,7 @@ public class Inventory
 {
 	private List<Trash> inventoryList = new List<Trash>();
 	private int capacity = 15;
-	Pollutionmeter pollutionmeter = new Pollutionmeter (); //laver vores nye pollutionmeter så vi kan bruge den.
+	Pollutionmeter pollutionmeter = new Pollutionmeter (); 
 
 	public bool CollectTrash(Trash trash)
 	{
