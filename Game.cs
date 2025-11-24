@@ -64,8 +64,11 @@ class Game
                 {
                     context.Transition("north");
                 }
-                Console.WriteLine("> ");
-                continue;
+                else if (context.GetPlayerY() == 0 && !context.GetCurrent().GetExits().Contains("north"))
+                {
+                    continue;
+                }
+                Console.Write("> "+input);
             }
             else if (key.Key == ConsoleKey.DownArrow)
             {
@@ -77,8 +80,11 @@ class Game
                 {
                     context.Transition("south");
                 }
-                Console.WriteLine("> ");
-                continue;
+                else if (context.GetPlayerY() == 8 && !context.GetCurrent().GetExits().Contains("south"))
+                {
+                    continue;
+                }
+                Console.Write("> "+input);
             }
             else if (key.Key == ConsoleKey.LeftArrow)
             {
@@ -90,8 +96,11 @@ class Game
                 {
                     context.Transition("west");
                 }
-                Console.WriteLine("> ");
-                continue;
+                else if (context.GetPlayerX() == 0 && !context.GetCurrent().GetExits().Contains("west"))
+                {
+                    continue;
+                }
+                Console.Write("> "+input);
             }
             else if (key.Key == ConsoleKey.RightArrow)
             {
@@ -103,8 +112,11 @@ class Game
                 {
                     context.Transition("east");
                 }
-                Console.WriteLine("> ");
-                continue;
+                else if (context.GetPlayerX() == 8 && !context.GetCurrent().GetExits().Contains("east"))
+                {
+                    continue;
+                }
+                Console.Write("> "+input);
             }
             else if (key.Key == ConsoleKey.Enter)
             {
