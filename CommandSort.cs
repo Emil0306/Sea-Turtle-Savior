@@ -16,6 +16,8 @@ class CommandSort : BaseCommand, ICommand {
 			}
 			WasteStation myWasteStation = new WasteStation();
 			myWasteStation.SortTrash(inv, inv.FindObj(parameters[0]), parameters[1]);
+			InformationPrinter infoPrinter = new InformationPrinter();
+			infoPrinter.PrintInfoMsg(infoPrinter.GetTrashPrinter());
 		}
 		else{ 
 			Console.WriteLine("You are not at the Waste Station");

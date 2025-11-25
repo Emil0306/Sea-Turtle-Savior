@@ -2,7 +2,7 @@
 
 public class InformationPrinter
 {
-    private int control = 3;
+    private static int control = 3;
     Random rand = new Random();
 
     private static List<string> trashInfoMsg = new List<string>
@@ -46,6 +46,14 @@ public class InformationPrinter
         }
     }
 
+    public List<string> GetSortPrinter()
+    {
+        return sortInfoMsg;
+    }
+    public List<string> GetTrashPrinter()
+    {
+        return trashInfoMsg;
+    }
     public void RoomInfoPrint(string room)
     {
         if (room == "WasteStation")
@@ -61,9 +69,9 @@ public class InformationPrinter
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("' ");
             Console.WriteLine("\nHere are the types of containers you can sort your waste into:");
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("[Plastic] ");
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write("[Glass] ");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.Write("[Metal] ");
