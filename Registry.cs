@@ -23,18 +23,26 @@ class Registry {
         string command = elements[0];
         string[] parameters = GetParameters(elements);
         
-        if (parameters.Length >= 2 && (command == "sort" || command == "collect"))
+        if (command == "collect" && parameters.Length >= 2)
         {
-            // This makes it so we can write food wrapper and it automatically converts it into an underscore for us
-            string itemWithSpace = $"{parameters[0]} {parameters[1]}"; // f.eks. "food wrapper"
-            string itemWithoutSpace = itemWithSpace.Replace(' ', '_'); // 
+            string itemWithSpace = $"{parameters[0]} {parameters[1]}"; 
+            string itemWithoutSpace = itemWithSpace.Replace(' ', '_'); 
             
             List<string> newParameterList = new List<string> {itemWithoutSpace};
-            newParameterList.AddRange(parameters.Skip(2)); //skips ex. wood and wrapper and adds whats left in parameters into the end of newParameterList
-            parameters = newParameterList.ToArray(); // Makes it into an array as that is what the Execute command takes as a input
+            
+            parameters = newParameterList.ToArray();
         }
-        
-        
+        else if (command == "sort" && parameters.Length == 3)
+        {
+            string itemWithSpace = $"{parameters[0]} {parameters[1]}"; 
+            string itemWithoutSpace = itemWithSpace.Replace(' ', '_'); 
+            
+            // Create a new parameter list: [combined_item, container]
+            List<string> newParameterList = new List<string> {itemWithoutSpace};
+            newParameterList.Add(parameters[2]); // Add the container ( eg. wood)
+            
+            parameters = newParameterList.ToArray();
+        }
         (commands.ContainsKey(command) ? GetCommand(command) : fallback).Execute(context, command, parameters); // Looks if the command exists in the dictionary
     }
 
