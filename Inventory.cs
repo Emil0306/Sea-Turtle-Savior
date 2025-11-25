@@ -31,7 +31,7 @@ public class Inventory
 	public void GetInventory()
 	{
 		Console.ForegroundColor = ConsoleColor.Green; 
-		Console.WriteLine("Inventory: ");
+		Console.WriteLine($"Inventory:[{inventoryList.Count}/{capacity}]");
 		Console.ForegroundColor = ConsoleColor.Gray;
 
 		for (int i = 0 ; i < inventoryList.Count ; i++) 
