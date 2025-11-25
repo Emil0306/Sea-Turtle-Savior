@@ -106,11 +106,6 @@ class Space : Node
         }
         Console.WriteLine("Trash: " + availableTrash.GetName());
         Console.WriteLine("You are now at " + name);
-        Console.WriteLine("Current exits are:");
-        foreach (string exit in exits)
-        {
-            Console.WriteLine(" - " + exit);
-        }
     }
 
     public void Goodbye()
