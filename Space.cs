@@ -8,8 +8,11 @@ class Space : Node
     public Space(string name) : base(name)
     {
     }
-    private static Trash[] trashList = new Trash[18]{
+    private static Trash[] trashList = new Trash[]{
+        //"plastic", "glass", "metal", "paper", "organic", "electronics", "batteries", "textile", "wood"
         new Trash("bottle", "plastic", false),
+        new Trash("bottle", "metal", false),
+        new Trash("bottle", "glass", false),
         new Trash("food_wrapper", "plastic", false),
         new Trash("syringe", "plastic", true),
         new Trash("car_tire", "plastic", false),
@@ -23,10 +26,28 @@ class Space : Node
         new Trash("phone", "electronics", true),
         new Trash("aa_battery", "batteries", true),
         new Trash("car_battery", "batteries", true),
-        new Trash("t-shirt", "textile", false),
+        new Trash("shirt", "textile", false),
         new Trash("wood_plank", "wood", false),
-        new Trash("glass_bottle", "glass", false),
-        new Trash("can", "metal", false)
+        new Trash("can", "metal", false),
+        new Trash("cloth", "plastic", false),
+        new Trash("bottle_cap", "plastic", false),
+        new Trash("fork", "metal", false),
+        new Trash("knife", "metal", false),
+        new Trash("straw", "plastic", false),
+        new Trash("fishing_gear", "plastic", false),
+        new Trash("bubblegum", "organic", false),
+        new Trash("nylon_net", "textile", false),
+        new Trash("cloth", "plastic", false),
+        new Trash("oil_clump", "chemical", true),
+        new Trash("toxic_drum", "chemical", true),
+        new Trash("medical_waste", "chemical", true),
+        new Trash("plywood", "wood", false),
+        new Trash("wire", "electronics", false),
+        new Trash("charging_cable", "electronics", false),
+        new Trash("container", "glass", false),
+        new Trash("container", "glass", false),
+        new Trash("flowerpot", "glass", false),
+        
     };
     private static InformationPrinter infoPrinter = new InformationPrinter();
     private static Trash availableTrash = new Trash("No trash here", "", false);
