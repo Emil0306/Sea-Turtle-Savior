@@ -14,8 +14,6 @@ public class Inventory
 			inventoryList.Add(trash);
 			Console.WriteLine($"{trash.GetName()} added to inventory.");
 
-			 //Måske burde vi fjerne det.
-
 			return true;
 		}
 		else 
