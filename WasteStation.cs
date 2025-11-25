@@ -33,7 +33,11 @@ class WasteStation
 			Console.ForegroundColor = ConsoleColor.Green;
 			Console.WriteLine($"Successfully sorted the {trash.GetName()} into the {containerSortType} container!");
 			Console.ResetColor();
+<<<<<<< HEAD
 			pollutionmeter.ChangePollution(-2); // Ved korrekt Sortering går Pollutionmeter % ned.
+=======
+			pollutionmeter.ChangePollution(-5); // Ved korrekt Sortering gï¿½r Pollutionmeter % ned.
+>>>>>>> 63aaa9bdd5338d8fb54d021d98c9c4b41e59dfac
 
         }
 		else
@@ -42,7 +46,7 @@ class WasteStation
             Console.ForegroundColor = ConsoleColor.Red;
 			Console.WriteLine($"Wrong container! {trash.GetMaterial()} does not belong in the {containerSortType} container.");
 			Console.ResetColor();
-            pollutionmeter.ChangePollution(+5); // Ved forkert  Sortering går Pollutionmeter % op.
+            pollutionmeter.ChangePollution(+5); // Ved forkert  Sortering gÃ¸r Pollutionmeter % op.
 
             // Maybe we can add a penalty that adds to the pollutionmeter for sorting the wrong type of trash.
         }

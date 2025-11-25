@@ -26,6 +26,7 @@ class CommandCollect : BaseCommand, ICommand {
                     return;
                 }
                 bool a = inv.CollectTrash(Space.GetTrashList()[i]);
+                
                 if (a == false)
                 {
                     Pollutionmeter.StopTimer();
@@ -33,8 +34,11 @@ class CommandCollect : BaseCommand, ICommand {
                     context.SetDone(true);
                     return;
                 }
+                
                 Space.SetavailableTrash(new Trash("No trash here", "", false));
                 context.Redraw();
+                InformationPrinter printer = new InformationPrinter();
+                printer.PrintInfoMsg(printer.GetTrashPrinter());
                 return;
             }
         }
