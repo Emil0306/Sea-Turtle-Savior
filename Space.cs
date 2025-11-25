@@ -85,10 +85,6 @@ class Space : Node
         return exits;
     }
 
-    
-
-
-
     //Køre i starten, eller i nyt rum, Lav ny trash hvis ikke specielle rum, forklare spillet eller laver mappet
     //Denne funktion har næsten alt render logik af spillet
     public void Welcome(Context context,bool redraw)
@@ -128,13 +124,34 @@ class Space : Node
             if (!redraw) // hvis vi har tegnet rummet 1 gang, så skal der ikke komme et nyt stykke "trash"
             {
                 Random rng = new Random();
-
-                    int randomNumber = rng.Next(0, trashList.Length);
-                    availableTrash = trashList[randomNumber];
+                int trashNumber = rng.Next(5, 10);
+                int[] spawnPoints = new int[] { 0, 1, 2, 6, 7, 8 };
+                List<int> listX = new List<int>(spawnPoints);
+                List<int> listY = new List<int>(spawnPoints);
+                List<Trash> tempTrashList = new List<Trash>(trashList);
+                int count = 0;
+                for (int i = 0 ; i < trashNumber ; i++)
+                {
+                    
+                    // make random numbers for the lists elements
+                    int randomX = rng.Next(0, listX.Count);
+                    int randomY = rng.Next(0, listY.Count);
+                    
+                    // make an instance of TrashPosition and set its values to the random numbers
                     TrashPosition pos = new TrashPosition();
-                    pos.posX = rng.Next(2, 4);
-                    pos.posY = rng.Next(2, 4);
-                    trashInRoom.Add(pos, availableTrash);
+                    pos.posX = listX.ElementAt(randomX);
+                    pos.posY = listY.ElementAt(randomY);
+                    
+                    // remove an element from only 1 list
+                    if (count % 2 == 0) listX.RemoveAt(randomX);
+                    else listY.RemoveAt(randomY);
+                    count++;
+                    
+                    // make random trash
+                    int randomNumber = rng.Next(0, tempTrashList.Count);
+                    trashInRoom.Add(pos, tempTrashList.ElementAt(randomNumber));
+                    tempTrashList.RemoveAt(randomNumber);
+                }
             }
             Console.Write(MakeMaps(exits, context.GetPlayerX(), context.GetPlayerY(), trashInRoom));
         }
@@ -271,7 +288,6 @@ class Space : Node
         if (pickedUpTrash)
         {
             makemap += trash.GetName() + " added to inventory.\n";
-            pickedUpTrash = false;
         }
         return makemap;
     }
