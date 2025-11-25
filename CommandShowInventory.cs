@@ -15,7 +15,7 @@ class CommandShowInventory : BaseCommand, ICommand {
 			Console.WriteLine("Error: Did you mean \"show inventory\"?");
 			return; 
 		}
-		if (parameters[0] == "inventory"){
+		if (parameters[0] == "inventory" || parameters[0] == "inv"){
 			inv.GetInventory();
 		}
 		else
