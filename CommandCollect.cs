@@ -20,18 +20,14 @@ class CommandCollect : BaseCommand, ICommand {
         for (int i = 0 ; i < Space.GetTrashList().Length ; i++){
             if (Space.GetTrashList()[i].GetName() == parameters[0] && parameters[0] == Space.GetavailableTrash().GetName()){
                 if (Space.GetavailableTrash().GetForbiddenMaterial()){
-                    Pollutionmeter.StopTimer();
-                    Game.SetWinLoss(false);
-                    context.SetDone(true);
+                    Game.EndGame(false, "Cause of death: Picked up a deadly piece of trash");
                     return;
                 }
                 bool a = inv.CollectTrash(Space.GetTrashList()[i]);
                 
                 if (a == false)
                 {
-                    Pollutionmeter.StopTimer();
-                    Game.SetWinLoss(false);
-                    context.SetDone(true);
+                    Game.EndGame(false, "Cause of death: Inventory capacity exceeded");
                     return;
                 }
                 

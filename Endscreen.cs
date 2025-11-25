@@ -6,19 +6,30 @@ class EndScreen{
 	private double endtime;
 	private int pollutionmeterProgress;
 	private int cleaningMachineProgress;
+	private string deathmsg;
 
 	// Constructors
-	public EndScreen (bool win, TimeSpan endtime, int pollutionmeterProgress, int cleaningMachineProgress) {
+	public EndScreen (bool win, TimeSpan endtime, int pollutionmeterProgress, int cleaningMachineProgress, string deathmsg) {
 		this.win = win;												// Won or lost?
 		this.endtime = endtime.TotalMinutes; 						// Get current time from "Player"
 		this.pollutionmeterProgress = pollutionmeterProgress; 		// Get pollution from "Pollutionmeter"
 		this.cleaningMachineProgress = cleaningMachineProgress;		// Get cleaning machine progress from "CleaningMachine"
+		this.deathmsg = deathmsg;
 	}
 
 	// Methods
 	public bool EndInfo () {	// Display an endscreen with time, pollution and the cleaning machine progress
 		Console.Clear();
-		Console.WriteLine("You have "+(win==false ? "lost" : "won")+"!");
+		Console.Write("You have ");
+		if (!win)
+		{
+			Console.WriteLine("lost!");
+			Console.WriteLine(deathmsg);
+		}
+		else
+		{
+			Console.Write("won!");
+		}
 		Console.WriteLine("You finished in " + string.Format("{0:0.0.0}", endtime) +" Minutes!");
 		Console.Write("The pollutionmeter has reached: ");
 		if (pollutionmeterProgress == 0){

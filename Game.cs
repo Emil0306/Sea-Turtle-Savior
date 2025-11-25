@@ -9,6 +9,7 @@ class Game
 {
     private static bool winloss = false;
     private static bool isRunning = true;
+    private static string endMessage = "";
 
     static Startscreen start = new Startscreen();
     static World world = new World();
@@ -169,32 +170,28 @@ class Game
             //if win or loss display endscreen
             DateTime endtime = DateTime.Now;
             TimeSpan res = endtime.Subtract(start.GetStartTime());
-            EndScreen endScreen = new EndScreen(winloss, res, Pollutionmeter.CurrentPollution(), machine.GetProgress());
+            EndScreen endScreen = new EndScreen(winloss, res, Pollutionmeter.CurrentPollution(), machine.GetProgress(), endMessage);
             isRunning = endScreen.EndInfo();
         }
     }
 
-    public static bool CheckWinCondition()
+    public static void CheckWinCondition()
     {
         if (machine.GetProgress() == 100 || Pollutionmeter.CurrentPollution() == 0)
         {
-            Pollutionmeter.StopTimer();
-            winloss = true;
-            context.SetDone(true);
-            return true;
-        }
-        else if (Pollutionmeter.CurrentPollution() >= 100)
+            EndGame(true, "");
+        } 
+        if (Pollutionmeter.CurrentPollution() >= 100)
         {
-            Pollutionmeter.StopTimer();
-            winloss = false;
-            context.SetDone(true);
-            return true;
+            EndGame(false, "Cause of death: Pollution reached 100 %");
         }
-        return false;
     }
 
-    public static void GoDie()
+    public static void EndGame(bool status, string msg)
     {
+        Pollutionmeter.StopTimer();
+        endMessage = msg;
+        winloss = status;
         context.SetDone(true);
     }
 }

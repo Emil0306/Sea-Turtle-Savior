@@ -245,9 +245,7 @@ class Space : Node
                     {
                         if (item.Value.GetForbiddenMaterial())
                         {
-                            Pollutionmeter.StopTimer();
-                            Game.SetWinLoss(false);
-                            Game.GoDie();
+                            Game.EndGame(false, "Cause of death: Picked up a deadly piece of trash");
                         }
                         
                         bool a = Game.GetInv().CollectTrash(item.Value);
@@ -256,9 +254,7 @@ class Space : Node
                         
                         if (a == false)
                         {
-                            Pollutionmeter.StopTimer();
-                            Game.SetWinLoss(false);
-                            Game.GoDie();
+                            Game.EndGame(false, "Cause of death: Inventory capacity exceeded");
                         }
                         pickedUpTrash = true;
                     }
