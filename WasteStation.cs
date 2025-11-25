@@ -34,7 +34,7 @@ class WasteStation
 			Console.WriteLine($"Successfully sorted the {trash.GetName()} into the {containerSortType} container!");
 			Console.ResetColor();
  
-			pollutionmeter.ChangePollution(-2);// Ved korrekt Sortering går Pollutionmeter % ned.
+			pollutionmeter.ChangePollution(-2);// Ved korrekt Sortering gÃ¥r Pollutionmeter % ned.
 
 		
 

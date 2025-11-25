@@ -37,7 +37,7 @@ class Space : Node
         new Trash("fishing_gear", "plastic", false),
         new Trash("bubblegum", "organic", false),
         new Trash("nylon_net", "textile", false),
-        new Trash("cloth", "plastic", false),
+        new Trash("cloth", "textile", false),
         new Trash("oil_clump", "chemical", true),
         new Trash("toxic_drum", "chemical", true),
         new Trash("medical_waste", "chemical", true),
@@ -45,7 +45,7 @@ class Space : Node
         new Trash("wire", "electronics", false),
         new Trash("charging_cable", "electronics", false),
         new Trash("container", "glass", false),
-        new Trash("container", "glass", false),
+        new Trash("container", "metal", false),
         new Trash("flowerpot", "glass", false),
         
     };
