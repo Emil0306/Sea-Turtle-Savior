@@ -36,7 +36,6 @@ class CommandCollect : BaseCommand, ICommand {
                 }
                 
                 Space.SetavailableTrash(new Trash("No trash here", "", false));
-                context.Redraw();
                 InformationPrinter printer = new InformationPrinter();
                 printer.PrintInfoMsg(printer.GetTrashPrinter());
                 return;

@@ -18,6 +18,11 @@ class Game
     static CleaningMachine machine = new CleaningMachine();
     static Inventory inv = new Inventory();
 
+    public static Inventory GetInv()
+    {
+        return inv;
+    }
+    
     public static void SetWinLoss(bool status)
     {
         winloss = status;
@@ -51,7 +56,7 @@ class Game
         string input = "";
         while (true)
         {
-            if (CheckWinCondition()) return "";
+            if (context.GetDone()) return "";
             ConsoleKeyInfo key = Console.ReadKey(true);
             //håndtere piletasterne
 
@@ -186,5 +191,10 @@ class Game
             return true;
         }
         return false;
+    }
+
+    public static void GoDie()
+    {
+        context.SetDone(true);
     }
 }

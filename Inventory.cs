@@ -12,7 +12,6 @@ public class Inventory
 		if (inventoryList.Count < capacity)
 		{
 			inventoryList.Add(trash);
-			Console.WriteLine($"{trash.GetName()} added to inventory.");
 
 
 			return true;

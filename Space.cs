@@ -53,6 +53,15 @@ class Space : Node
     private static Trash availableTrash = new Trash("No trash here", "", false);
     private HashSet<string> exits;
 
+    public struct TrashPosition
+    {
+        public int posX;
+        public int posY;
+    }
+
+    private Dictionary<TrashPosition, Trash> trashInRoom = new Dictionary<TrashPosition, Trash>();
+    private bool pickedUpTrash = false;
+    
     public static Trash[] GetTrashList()
     {
         return trashList;
@@ -94,7 +103,7 @@ class Space : Node
         if (name == "Harbor" || name == "Cleaning Machine" || name == "WasteStation")
         {
             availableTrash = new Trash("No trash here", "", false);
-            Console.WriteLine(MakeMaps(exits, context.GetPlayerX(), context.GetPlayerY()));
+            Console.WriteLine(MakeMaps(exits, context.GetPlayerX(), context.GetPlayerY(), trashInRoom));
         }
 
         // Specielle rum instruktioner (WasteStation)
@@ -119,18 +128,42 @@ class Space : Node
             if (!redraw) // hvis vi har tegnet rummet 1 gang, så skal der ikke komme et nyt stykke "trash"
             {
                 Random rng = new Random();
-                int randomNumber = rng.Next(0, trashList.Length);
-                availableTrash = trashList[randomNumber];
+                int trashNumber = rng.Next(5, 10);
+                int[] possibleTrashPosX = new int[] { 0, 1, 2, 8 };
+                int[] possibleTrashPosY = new int[] { 0, 8 };
+                for (int i = 0 ; i < trashNumber; i++)
+                {
+                    int randomNumber = rng.Next(0, trashList.Length);
+                    availableTrash = trashList[randomNumber];
+                    TrashPosition pos = new TrashPosition();
+                    pos.posX = rng.Next(2, 4);
+                    pos.posY = rng.Next(2, 4);
+                    trashInRoom.Add(pos, availableTrash);
+                }
             }
-            Console.Write(MakeMaps(exits, context.GetPlayerX(), context.GetPlayerY()));
-            
+            Console.Write(MakeMaps(exits, context.GetPlayerX(), context.GetPlayerY(), trashInRoom));
         }
-        Console.WriteLine("Trash: " + availableTrash.GetName());
-        Console.WriteLine("You are now at " + name);
+
+        if (pickedUpTrash)
+        {
+            InformationPrinter printer = new InformationPrinter();
+            printer.PrintInfoMsg(printer.GetTrashPrinter());
+            pickedUpTrash = false;
+        }
+        Console.WriteLine("Trash: ");
+        foreach (var item in trashInRoom)
+        {
+            Console.WriteLine(" - "+item.Value.GetName());
+        }
+        Console.Write("You are now at ");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(name);
+        Console.ResetColor();
     }
 
     public void Goodbye()
     {
+        trashInRoom.Clear();
     }
 
     public override Space FollowEdge(string direction)
@@ -139,8 +172,9 @@ class Space : Node
     }
 
     // Tegner mappet, med player position som parameter
-    public string MakeMaps(HashSet<string> exits, int playerX, int playerY)
+    public string MakeMaps(HashSet<string> exits, int playerX, int playerY, Dictionary<TrashPosition, Trash> showTrash)
     {
+        Trash trash = new Trash("No trash here", "", false);
         int mapSize = 9;
         string makemap = "";
         if (exits.Contains("north"))
@@ -169,9 +203,54 @@ class Space : Node
                 }
                 if (h == 0) makemap += " | ";
 
-                // Use dynamic player position instead of hardcoded (4,4)
-                if (i == playerY && h == playerX) makemap += "🐢 ";
-                else makemap += " ~ ";
+
+                makemap += " ~ ";
+                bool turtleHere = false;
+                if (i == playerY && h == playerX)
+                {
+                    makemap = makemap.Remove(makemap.Length - 3);
+                    makemap += "🐢 ";
+                    turtleHere = true;
+                }
+                
+                foreach (var item in showTrash)
+                {
+                    if (h == item.Key.posX && i == item.Key.posY && !turtleHere)
+                    {
+                        makemap = makemap.Remove(makemap.Length - 3);
+                        if (item.Value.GetForbiddenMaterial()) makemap += "☠️ ";
+                        else if (item.Value.GetMaterial() == "plastic") makemap += " P ";
+                        else if (item.Value.GetMaterial() == "glass") makemap += " G ";
+                        else if (item.Value.GetMaterial() == "metal") makemap += " M ";
+                        else if (item.Value.GetMaterial() == "paper") makemap += " P ";
+                        else if (item.Value.GetMaterial() == "organic") makemap += " O ";
+                        else if (item.Value.GetMaterial() == "electronics") makemap += " E ";
+                        else if (item.Value.GetMaterial() == "batteries") makemap += " B ";
+                        else if (item.Value.GetMaterial() == "textile") makemap += " T ";
+                        else if (item.Value.GetMaterial() == "wood") makemap += " W ";
+                    }
+                    else if (h == item.Key.posX && i == item.Key.posY && turtleHere)
+                    {
+                        if (item.Value.GetForbiddenMaterial())
+                        {
+                            Pollutionmeter.StopTimer();
+                            Game.SetWinLoss(false);
+                            Game.GoDie();
+                        }
+                        
+                        bool a = Game.GetInv().CollectTrash(item.Value);
+                        trash = item.Value;
+                        showTrash.Remove(item.Key);
+                        
+                        if (a == false)
+                        {
+                            Pollutionmeter.StopTimer();
+                            Game.SetWinLoss(false);
+                            Game.GoDie();
+                        }
+                        pickedUpTrash = true;
+                    }
+                }
 
                 if (h == mapSize - 1) makemap += " | ";
 
@@ -193,6 +272,11 @@ class Space : Node
         else
         {
             makemap += "\n";
+        }
+        if (pickedUpTrash)
+        {
+            makemap += trash.GetName() + " added to inventory.\n";
+            pickedUpTrash = false;
         }
         return makemap;
     }
