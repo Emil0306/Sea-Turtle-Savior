@@ -128,18 +128,13 @@ class Space : Node
             if (!redraw) // hvis vi har tegnet rummet 1 gang, så skal der ikke komme et nyt stykke "trash"
             {
                 Random rng = new Random();
-                int trashNumber = rng.Next(5, 10);
-                int[] possibleTrashPosX = new int[] { 0, 1, 2, 8 };
-                int[] possibleTrashPosY = new int[] { 0, 8 };
-                for (int i = 0 ; i < trashNumber; i++)
-                {
+
                     int randomNumber = rng.Next(0, trashList.Length);
                     availableTrash = trashList[randomNumber];
                     TrashPosition pos = new TrashPosition();
                     pos.posX = rng.Next(2, 4);
                     pos.posY = rng.Next(2, 4);
                     trashInRoom.Add(pos, availableTrash);
-                }
             }
             Console.Write(MakeMaps(exits, context.GetPlayerX(), context.GetPlayerY(), trashInRoom));
         }
