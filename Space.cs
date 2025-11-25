@@ -9,7 +9,7 @@ class Space : Node
     {
     }
     private static Trash[] trashList = new Trash[18]{
-        new Trash("plastic_bottle", "plastic", false),
+        new Trash("bottle", "plastic", false),
         new Trash("food_wrapper", "plastic", false),
         new Trash("syringe", "plastic", true),
         new Trash("car_tire", "plastic", false),

@@ -8,12 +8,12 @@ class CommandCollect : BaseCommand, ICommand {
     
     public CommandCollect (Inventory inv) {
         this.inv = inv;
-        description = "Pick up trash (e.g. collect container)";
+        description = "Pick up trash (e.g. collect food wrapper)";
     }
 
     public void Execute (Context context, string command, string[] parameters) {
         if (GuardEq(parameters, 1)) {
-            Console.WriteLine("Error: Did you mean \"collect NAME_OF_TRASH\"?");
+            Console.WriteLine("Error: Did you mean \"collect TRASH NAME\"?");
             return;
         }
 
