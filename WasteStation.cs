@@ -33,12 +33,13 @@ class WasteStation
 			Console.ForegroundColor = ConsoleColor.Green;
 			Console.WriteLine($"Successfully sorted the {trash.GetName()} into the {containerSortType} container!");
 			Console.ResetColor();
-			pollutionmeter.ChangePollution(-5); // Ved korrekt Sortering går Pollutionmeter % ned.
+			pollutionmeter.ChangePollution(-2); // Ved korrekt Sortering går Pollutionmeter % ned.
 
         }
 		else
 		{
-			Console.ForegroundColor = ConsoleColor.Red;
+            inv.RemoveTrash(trash);
+            Console.ForegroundColor = ConsoleColor.Red;
 			Console.WriteLine($"Wrong container! {trash.GetMaterial()} does not belong in the {containerSortType} container.");
 			Console.ResetColor();
             pollutionmeter.ChangePollution(+5); // Ved forkert  Sortering går Pollutionmeter % op.
