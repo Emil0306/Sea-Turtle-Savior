@@ -106,11 +106,6 @@ class Space : Node
         }
         Console.WriteLine("Trash: " + availableTrash.GetName());
         Console.WriteLine("You are now at " + name);
-        Console.WriteLine("Current exits are:");
-        foreach (string exit in exits)
-        {
-            Console.WriteLine(" - " + exit);
-        }
     }
 
     public void Goodbye()
@@ -129,11 +124,7 @@ class Space : Node
         string makemap = "";
         if (exits.Contains("north"))
         {
-            for (int i = 0; i < ((mapSize * 3) / 2) + 5; i++)
-            {
-                makemap += " ";
-            }
-            makemap += "north\n";
+            makemap += "                          North\n";
         }
         else
         {
@@ -147,11 +138,13 @@ class Space : Node
             {
                 if (exits.Contains("west") && h == 0 && i == mapSize / 2)
                 {
-                    makemap += "west";
+                    if (name == "Harbor") makemap += "WasteStation";
+                    else if (name == "Cleaning Machine") makemap += "      Harbor";
+                    else makemap += "        West";
                 }
                 else if (h == 0)
                 {
-                    makemap += "    ";
+                    makemap += "            ";
                 }
                 if (h == 0) makemap += " | ";
 
@@ -161,18 +154,20 @@ class Space : Node
 
                 if (h == mapSize - 1) makemap += " | ";
 
-                if (exits.Contains("east") && i == mapSize / 2 && h == mapSize - 1) makemap += "east";
+                if (exits.Contains("east") && i == mapSize / 2 && h == mapSize - 1)
+                {
+                    if (name == "Harbor") makemap += "Cleaning Machine";
+                    else if (name == "WasteStation") makemap += "Harbor";
+                    else makemap += "East";
+                }
             }
             makemap += "\n";
         }
         makemap += Borders(mapSize);
         if (exits.Contains("south"))
         {
-            for (int i = 0; i < ((mapSize * 3) / 2) + 5; i++)
-            {
-                makemap += " ";
-            }
-            makemap += "south\n";
+            if (name == "Southern waters") makemap += "                          Harbor\n";
+            else makemap += "                          South\n";
         }
         else
         {
@@ -184,7 +179,7 @@ class Space : Node
     // Tegner grænserne for mappet
     private string Borders(int mapSize)
     {
-        string border = "     ";
+        string border = "             ";
         for (int i = 0; i < mapSize * 3 + 4; i++)
         {
             border += "-";
