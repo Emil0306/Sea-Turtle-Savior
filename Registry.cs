@@ -19,7 +19,7 @@ class Registry {
 
     public void Dispatch (string line) {
         line = line.ToLower(); // This line makes the game NOT caps sensitive
-       string[] elements = line.Split(" ");
+        string[] elements = line.Split(" ");
         string command = elements[0];
         string[] parameters = GetParameters(elements);
         
