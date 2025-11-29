@@ -118,10 +118,10 @@ class Space : Node
             infoPrinter.RoomInfoPrint("CleaningMachine");
         }
         
-        // Almindelige rum, laver nyt trash
+        // Normal rooms make new trash
         else
         {
-            if (!redraw) // hvis vi har tegnet rummet 1 gang, så skal der ikke komme et nyt stykke "trash"
+            if (!redraw) // If we have not drawed the room 1 time, there shouldt come new trash
             {
                 Random rng = new Random();
                 int trashNumber = rng.Next(5, 10);
