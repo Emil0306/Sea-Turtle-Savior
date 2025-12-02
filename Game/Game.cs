@@ -58,6 +58,7 @@ class Game
         while (true)
         {
             if (context.GetDone()) return "";
+            Pollutionmeter.GetPollutionMeter().ChangePollution(0);
             ConsoleKeyInfo key = Console.ReadKey(true);
             //haandtere piletasterne
 

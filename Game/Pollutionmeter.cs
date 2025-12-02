@@ -24,6 +24,7 @@ class Pollutionmeter
         {
             pollutionmeter.ChangePollution(1);
         }
+
         Game.CheckWinCondition();
     }
 
@@ -84,5 +85,9 @@ class Pollutionmeter
     public static void StopTimer()
     {
         timer.Stop();
+    }
+    public static Pollutionmeter GetPollutionMeter()
+    {
+        return pollutionmeter;
     }
 }
