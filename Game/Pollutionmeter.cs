@@ -27,27 +27,30 @@ class Pollutionmeter
         Game.CheckWinCondition();
     }
 
-    public void ChangePollution(int amount)
+    public bool ChangePollution(int amount)
     {
         int left = Console.CursorLeft;
         int top = Console.CursorTop;
         
-        procent = procent + amount;
+       
         if (procent > maxPollution)
         {
             procent = maxPollution;
+            return false;
         }
         if (procent < 0)
         {
             procent = 0;
+            return false;
         }
-        
+        procent = procent + amount;
         // Put cursor at top
         Console.SetCursorPosition(0, 0);
         Console.Write(ShowPollution());
         
         // Put cursor back to its original place
         Console.SetCursorPosition(left, top);
+        return true;
     }
     
     public string ShowPollution()
