@@ -59,7 +59,7 @@ class Game
         {
             if (context.GetDone()) return "";
             ConsoleKeyInfo key = Console.ReadKey(true);
-            //håndtere piletasterne
+            //haandtere piletasterne
 
             if (key.Key == ConsoleKey.UpArrow)
             {
