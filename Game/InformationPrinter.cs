@@ -9,7 +9,7 @@ public class InformationPrinter
     {
         "|ℹ️| Did you know microplastics in the ocean can accumulate in seafood making it risky for humans to consume?",
         "|ℹ️| Did you know you can reduce marine debris from your home by simply using fewer single-use plastic items? ",
-        "|ℹ️| You picked up trash - good! Now remember the 4 R’s: Refuse, Reuse, Reduce, Recycle. Forget one, and a seaturtle will judge you!",
+        "|ℹ️| You picked up trash - good! Now remember the 5 R's: Refuse, Reduce, Reuse, Repurpose, Recycle. Forget one, and a seaturtle will judge you!",
         "|ℹ️| Great! Now there is only 150 million tons of ocean trash left. You better start finishing the Cleaning Machine!",
         "|ℹ️| Did you know a single plastic bottle takes about 450 years to decompose? That means it would outlive your great-great-great-grandchildren!",
         "|ℹ️| Did you know glass bottles specifically do not decompose? They can last for over 1 million years in the environment if not crushed or recycled.",
