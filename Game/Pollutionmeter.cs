@@ -7,7 +7,7 @@ class Pollutionmeter
     // attributes
     private static Pollutionmeter pollutionmeter = new Pollutionmeter ();
     private static int maxPollution = 100;
-    private static System.Timers.Timer timer;
+    private static System.Timers.Timer timer = new System.Timers.Timer();
     private static int procent;
     
     // Methods
@@ -18,7 +18,7 @@ class Pollutionmeter
         timer.Elapsed += Timer_Elapsed;
         timer.Enabled = true;
     }
-    private static void Timer_Elapsed(object sender, ElapsedEventArgs e)
+    private static void Timer_Elapsed(object? sender, ElapsedEventArgs e)
     {
         if (procent < maxPollution)
         {

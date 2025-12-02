@@ -45,7 +45,7 @@ public class CleaningMachine
         if (!isRequired) return "That item is not required!";
 
         // Checks if player has item in inventory
-        Trash foundItem = playerInventory.FindObj(input);
+        Trash? foundItem = playerInventory.FindObj(input);
         if (foundItem == null) return "";
 
         // Updates the construction list

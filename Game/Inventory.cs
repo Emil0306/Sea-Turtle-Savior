@@ -39,7 +39,7 @@ public class Inventory
 		}
 	}
 
-	public Trash FindObj(string name){
+	public Trash? FindObj(string name){
 		for (int i = 0 ; i < inventoryList.Count ; i++) 
 		{
 			if (inventoryList[i].GetName() == name){

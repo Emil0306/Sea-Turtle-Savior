@@ -51,7 +51,7 @@ class Space : Node
     };
     private static InformationPrinter infoPrinter = new InformationPrinter();
     private static Trash availableTrash = new Trash("No trash here", "", false);
-    private HashSet<string> exits;
+    private HashSet<string> exits = new HashSet<string>();
 
     public struct TrashPosition
     {

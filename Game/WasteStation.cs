@@ -20,7 +20,7 @@ class WasteStation
 		}
 	}
 	
-	public void SortTrash(Inventory inv, Trash trash, string containerSortType)
+	public void SortTrash(Inventory inv, Trash? trash, string containerSortType)
 
 	{
 		if (trash == null){
