@@ -1,6 +1,8 @@
 /* Command registry
  */
 
+using SeaTurtleSavior.Commands;
+
 namespace SeaTurtleSavior;
 
 class Registry {

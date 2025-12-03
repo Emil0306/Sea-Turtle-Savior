@@ -1,7 +1,7 @@
 /* Command for viewing a list of dangerous trash
  */
 
-namespace SeaTurtleSavior;
+namespace SeaTurtleSavior.Commands;
 
 class CommandDeadly : BaseCommand, ICommand {
     public CommandDeadly () {

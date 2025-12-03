@@ -1,7 +1,7 @@
 /* Command for exiting program
  */
 
-namespace SeaTurtleSavior;
+namespace SeaTurtleSavior.Commands;
 
 class CommandExit : BaseCommand, ICommand {
     public CommandExit () {
