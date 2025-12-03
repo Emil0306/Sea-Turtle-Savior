@@ -2,6 +2,7 @@
  */
 
 
+using System.Runtime.CompilerServices;
 
 namespace SeaTurtleSavior;
 
@@ -10,6 +11,8 @@ class Game
     private static bool winloss = false;
     private static bool isRunning = true;
     private static string endMessage = "";
+    private static int coins = 0;
+    private static int shield = 0;
 
     static Startscreen start = new Startscreen();
     static World world = new World();
@@ -23,6 +26,25 @@ class Game
     {
         return inv;
     }
+
+    public static int GetShield()
+    {
+        return shield;
+    }
+
+    public static void SetShield(int newshield)
+    {
+        shield = newshield;
+    }
+    public static int GetCoins()
+    {
+        return coins;
+    }
+
+    public static void SetCoins(int newcoins)
+    {
+        coins = newcoins;
+    }
     
     public static void SetWinLoss(bool status)
     {
@@ -32,6 +54,8 @@ class Game
 
     private static void InitRegistry()
     {
+        coins = 0;
+        shield = 0;
         world = new World();
         context = new Context(world.GetEntry());
         fallback = new CommandUnknown();
@@ -46,6 +70,9 @@ class Game
         registry.Register("add", new CommandAddMaterial(machine, inv));
         registry.Register("list", new CommandListParts(machine));
         registry.Register("progress", new CommandProgress(machine));
+        registry.Register("upgrade", new CommandUpgrade(inv));
+        registry.Register("coins", new CommandCoins());
+        registry.Register("shield", new CommandShield());
     }
 
 

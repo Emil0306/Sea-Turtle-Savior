@@ -3,7 +3,7 @@ namespace SeaTurtleSavior;
 public class Inventory
 {
 	private List<Trash> inventoryList = new List<Trash>();
-	private int capacity = 15;
+	private int capacity = 5;
 	Pollutionmeter pollutionmeter = new Pollutionmeter (); 
 
 	public bool CollectTrash(Trash trash)
@@ -20,6 +20,15 @@ public class Inventory
 		{
 			return false;
 		}
+	}
+
+	public int GetCapacity()
+	{
+		return this.capacity;
+	}
+	public void SetCapacity(int capacity)
+	{
+		this.capacity = capacity;
 	}
 
 	public void RemoveTrash(Trash trash)
