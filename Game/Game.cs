@@ -39,9 +39,7 @@ class Game
         machine = new CleaningMachine();
         inv = new Inventory();
         registry.Register("quit", new CommandExit());
-        registry.Register("go", new CommandGo());
         registry.Register("help", new CommandHelp(registry));
-        registry.Register("collect", new CommandCollect(inv));
         registry.Register("deadly", new CommandDeadly());
         registry.Register("show", new CommandShowInventory(inv));
         registry.Register("sort", new CommandSort(inv));
