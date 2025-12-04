@@ -221,7 +221,7 @@ class Space : Node
                 if (i == playerY && h == playerX)
                 {
                     makemap = makemap.Remove(makemap.Length - 3);
-                    makemap += "🐢 ";
+                    makemap += "𓆉  ";
                     turtleHere = true;
                 }
                 
@@ -230,7 +230,7 @@ class Space : Node
                     if (h == item.Key.posX && i == item.Key.posY && !turtleHere)
                     {
                         makemap = makemap.Remove(makemap.Length - 3);
-                        if (item.Value.GetForbiddenMaterial()) makemap += "☠️ ";
+                        if (item.Value.GetForbiddenMaterial()) makemap += " ☠︎︎️ ";
                         else if (item.Value.GetMaterial() == "plastic") makemap += " P ";
                         else if (item.Value.GetMaterial() == "glass") makemap += " G ";
                         else if (item.Value.GetMaterial() == "metal") makemap += " M ";
