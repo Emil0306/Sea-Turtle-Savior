@@ -14,7 +14,7 @@ public class Tests
     }
 
     [Test]
-    public void Test1()
+    public void CollectTrashTest()
     {
         // First 15 items of trash should return true
         for (int i = 0 ; i < 15 ; i++)

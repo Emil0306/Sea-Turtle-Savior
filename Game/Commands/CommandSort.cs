@@ -1,4 +1,4 @@
-namespace SeaTurtleSavior;
+namespace SeaTurtleSavior.Commands;
 
 class CommandSort : BaseCommand, ICommand {
 	private Inventory inv;

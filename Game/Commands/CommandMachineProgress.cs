@@ -1,13 +1,13 @@
-namespace SeaTurtleSavior;
+namespace SeaTurtleSavior.Commands;
 
-class CommandListParts : BaseCommand, ICommand
+class CommandProgress : BaseCommand, ICommand
 {
     private readonly CleaningMachine machine;
 
-    public CommandListParts(CleaningMachine machine)
+    public CommandProgress(CleaningMachine machine)
     {
         this.machine = machine;
-        description = "List all required Machine_Parts";
+        description = "Show current build progress in percent";
     }
 
     public void Execute(Context context, string command, string[] parameters)
@@ -15,14 +15,12 @@ class CommandListParts : BaseCommand, ICommand
         if (context.GetCurrent().GetName() == "Cleaning Machine"){
             if (GuardEq(parameters, 0))
             {
-                Console.WriteLine("Usage: list");
+                Console.WriteLine("Usage: progress");
                 return;
             }
-
-            string[] parts = machine.GetConstructionList();
-            Console.WriteLine(string.Join(", ", parts));
+            Console.WriteLine($"{machine.GetProgress()}%");
         }
-        else{ 
+        else {
             Console.WriteLine("You are not at the Cleaning Machine");
         }
     }

@@ -1,7 +1,7 @@
 /* Fallback for when a command is not implemented
  */
 
-namespace SeaTurtleSavior;
+namespace SeaTurtleSavior.Commands;
 
 class CommandUnknown : BaseCommand, ICommand {
     public void Execute (Context context, string command, string[] parameters) {

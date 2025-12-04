@@ -245,7 +245,14 @@ class Space : Node
                     {
                         if (item.Value.GetForbiddenMaterial())
                         {
-                            Game.EndGame(false, "Cause of death: Picked up a deadly piece of trash");
+                            if (Game.GetShield() == 0)
+                            {
+                                Game.EndGame(false, "Cause of death: Picked up a deadly piece of trash");
+                            }
+                            else
+                            {
+                                Game.SetShield(Game.GetShield()-1);
+                            }
                         }
                         
                         bool a = Game.GetInv().CollectTrash(item.Value);
@@ -283,7 +290,9 @@ class Space : Node
         }
         if (pickedUpTrash)
         {
-            makemap += trash.GetName() + " added to inventory.\n";
+            makemap += trash.GetName() + " added to inventory.";
+            if (trash.GetForbiddenMaterial()) makemap += " You have used a shield to pick up a deadly piece of trash.";
+            makemap += "\n";
         }
         return makemap;
     }

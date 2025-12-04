@@ -31,11 +31,13 @@ class WasteStation
 		{
 			inv.RemoveTrash(trash);
 			Console.ForegroundColor = ConsoleColor.Green;
-			Console.WriteLine($"Successfully sorted the {trash.GetName()} into the {containerSortType} container!");
+			int coinsGot = 2;
+			Game.SetCoins(Game.GetCoins()+coinsGot);
+			Console.WriteLine($"Successfully sorted the {trash.GetName()} into the {containerSortType} container! You got "+coinsGot+" coins.");
 			Console.ResetColor();
  
 			pollutionmeter.ChangePollution(-2);// Ved korrekt Sortering går Pollutionmeter % ned.
-
+			
 		
 
         }
