@@ -162,7 +162,12 @@ class Space : Node
             printer.PrintInfoMsg(printer.GetTrashPrinter());
             pickedUpTrash = false;
         }
-        Console.WriteLine("Trash: ");
+
+        if (trashInRoom.Count != 0) // Only showing trash if there is anything
+        {
+            Console.WriteLine("Trash: ");
+        }
+        
         foreach (var item in trashInRoom)
         {
             Console.WriteLine(" - "+item.Value.GetName());

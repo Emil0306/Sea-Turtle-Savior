@@ -101,7 +101,7 @@ public class InformationPrinter
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("deadly");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to check lethal items. ");
+            Console.WriteLine("' to check lethal items. ");
         }
 
         if (room == "CleaningMachine")
