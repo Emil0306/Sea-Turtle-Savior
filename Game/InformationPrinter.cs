@@ -97,20 +97,11 @@ public class InformationPrinter
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("help");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to view commands menu, '");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("go");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to move direction, \n'");
+            Console.Write("' to view commands menu, and '");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("deadly");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to check lethal items, and '");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("collect");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("' to pick up items.\n");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write("' to check lethal items. ");
         }
 
         if (room == "CleaningMachine")
