@@ -28,7 +28,7 @@ class EndScreen{
 		}
 		else
 		{
-			Console.Write("won!");
+			Console.WriteLine("won!");
 		}
 		Console.WriteLine("You finished in " + string.Format("{0:0.0.0}", endtime) +" Minutes!");
 		Console.Write("The pollutionmeter has reached: ");
