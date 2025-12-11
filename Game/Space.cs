@@ -46,6 +46,9 @@ class Space : Node
         new Trash("container", "glass", false),
         new Trash("container", "metal", false),
         new Trash("flowerpot", "glass", false),
+        new Trash("pipe", "plastic", false),
+        new Trash("bearing", "metal", false),
+        new Trash("microcontroller", "electronics", false),
         
     };
     private static InformationPrinter infoPrinter = new InformationPrinter();

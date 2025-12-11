@@ -9,6 +9,9 @@ public class CleaningMachine
         "filter",
         "frame",
         "solar_panel"
+        "bearings",
+        "pipe",
+        "microcontroller"
     };
 
     private int progress;
