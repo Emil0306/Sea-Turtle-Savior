@@ -26,8 +26,8 @@ public class Tests
         Assert.Pass();
     }
 
-    /*[Test]
-    public void Test2()
+    [Test]
+    public void PollutionmeterTest()
     { 
         Console.WriteLine("Hello World!");
 
@@ -39,5 +39,5 @@ public class Tests
         }
         Assert.That(PMeter.ChangePollution(1), Is.EqualTo(false));
         Assert.Pass();
-    }*/
+    }
 }
