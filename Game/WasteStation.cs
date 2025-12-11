@@ -6,7 +6,7 @@ class WasteStation
 {
     Pollutionmeter pollutionmeter = new Pollutionmeter(); //nyt pollutionmeter
     private Container[] containers;
-	string[] sortingTypes = new string[] {"plastic", "glass", "metal", "paper", "organic", "electronics", "batteries", "textile", "wood"};
+	string[] sortingTypes = new string[] {"plastic", "glass", "metal", "paper", "organic", "electronics", "batteries", "textile", "wood", "hazardous_waste"};
 
 	public WasteStation() {
 		//Making 9 predefined sorting types
