@@ -7,7 +7,7 @@ public class CleaningMachine
         "motor",
         "container",
         "filter",
-        "metal_frame",
+        "frame",
         "solar_panel"
     };
 
