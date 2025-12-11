@@ -8,7 +8,7 @@ public class CleaningMachine
         "container",
         "filter",
         "frame",
-        "solar_panel"
+        "solar_panel",
         "bearings",
         "pipe",
         "microcontroller"
