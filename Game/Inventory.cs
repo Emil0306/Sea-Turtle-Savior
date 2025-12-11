@@ -40,7 +40,7 @@ public class Inventory
 	{
 		Console.ForegroundColor = ConsoleColor.Green; 
 		Console.WriteLine($"Inventory:[{inventoryList.Count}/{capacity}]");
-		Console.ForegroundColor = ConsoleColor.Gray;
+		Console.ResetColor();
 
 		for (int i = 0 ; i < inventoryList.Count ; i++) 
 		{

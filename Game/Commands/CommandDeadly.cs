@@ -20,7 +20,7 @@ class CommandDeadly : BaseCommand, ICommand {
         }
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("⚠️ Dangerous trash ⚠️");
-        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.ResetColor();
         for (int i = 0 ; i < Space.GetTrashList().Length ; i++){
             if(Space.GetTrashList()[i].GetForbiddenMaterial()==true){
                 Console.WriteLine("   - "+Space.GetTrashList()[i].GetName());

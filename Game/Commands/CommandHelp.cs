@@ -14,7 +14,9 @@ class CommandHelp : BaseCommand, ICommand {
     public void Execute (Context context, string command, string[] parameters) {
         string[] commandNames = registry.GetCommandNames();
         Array.Sort(commandNames);
-
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("Trash is found in the ocean and marked by its corresponding material type. Eg. [M] for metal");
+        Console.ResetColor();
         // find max length of command name
         int max = 0;
         foreach (String commandName in commandNames) {

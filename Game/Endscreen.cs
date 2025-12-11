@@ -5,11 +5,11 @@ class EndScreen{
 	private bool win;
 	private double endtime;
 	private int pollutionmeterProgress;
-	private int cleaningMachineProgress;
+	private double cleaningMachineProgress;
 	private string deathmsg;
 
 	// Constructors
-	public EndScreen (bool win, TimeSpan endtime, int pollutionmeterProgress, int cleaningMachineProgress, string deathmsg) {
+	public EndScreen (bool win, TimeSpan endtime, int pollutionmeterProgress, double cleaningMachineProgress, string deathmsg) {
 		this.win = win;												// Won or lost?
 		this.endtime = endtime.TotalMinutes; 						// Get current time from "Player"
 		this.pollutionmeterProgress = pollutionmeterProgress; 		// Get pollution from "Pollutionmeter"
@@ -38,7 +38,7 @@ class EndScreen{
 			Console.ForegroundColor = ConsoleColor.Red;
 		}
 		Console.Write(pollutionmeterProgress+"%");
-		Console.ForegroundColor = ConsoleColor.Gray;
+		Console.ResetColor();
 		Console.Write(" And you are: ");
 		if (cleaningMachineProgress == 100){
 			Console.ForegroundColor = ConsoleColor.Green;
@@ -48,7 +48,7 @@ class EndScreen{
 			Console.ForegroundColor = ConsoleColor.Red;
 		}
 		Console.Write((cleaningMachineProgress)+"%");
-		Console.ForegroundColor = ConsoleColor.Gray;
+		Console.ResetColor();
 		Console.WriteLine(" done with the cleaning machine");
 		
 		return Restart();

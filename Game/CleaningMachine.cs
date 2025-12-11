@@ -2,26 +2,45 @@ namespace SeaTurtleSavior;
 
 public class CleaningMachine
 {
-    private string[] constructionList =
+    public CleaningMachine()
+    {
+        constructionList = new string[] {
+            "motor",
+            "container",
+            "filter",
+            "frame",
+            "solar_panel",
+            "bearing",
+            "pipe",
+            "microcontroller",
+            "rubber",
+            "pump"
+        };
+    }
+
+    private static string[] constructionList =
     {
         "motor",
         "container",
         "filter",
         "frame",
         "solar_panel",
-        "bearings",
+        "bearing",
         "pipe",
-        "microcontroller"
-    };
+        "microcontroller",
+        "rubber",
+        "pump"
 
-    private int progress;
+    };
+    private double len = constructionList.Length;
+    private double progress;
     
-    public int GetProgress()
+    public double GetProgress()
     {
         return progress;
     }
 
-    public void SetProgress(int newProgress)
+    public void SetProgress(double newProgress)
     {
         if (newProgress < 0) progress = 0;
         else if (newProgress >= 100) progress = 100;
@@ -67,7 +86,7 @@ public class CleaningMachine
             Console.WriteLine("Every piece of trash in the ocean adds up! Reducing ocean litter protects the sea turtles.");
         }
         playerInventory.RemoveTrash(foundItem);
-        SetProgress(GetProgress() + 20);
+        SetProgress(GetProgress() + (100.00/len));
         return $"{input} added to Cleaning Machine! Progress is now {GetProgress()}%.";
     }
 }
