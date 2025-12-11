@@ -9,6 +9,7 @@ class Pollutionmeter
     private static int maxPollution = 100;
     private static System.Timers.Timer timer = new System.Timers.Timer();
     private static int procent;
+    private static bool goToZero = false;
     
     // Methods
     public static void StartPollutionMeter()
@@ -20,10 +21,16 @@ class Pollutionmeter
     }
     private static void Timer_Elapsed(object? sender, ElapsedEventArgs e)
     {
-        if (procent < maxPollution)
-        {
-            pollutionmeter.ChangePollution(1);
+        if (!goToZero){
+            if (procent < maxPollution)
+            {
+                pollutionmeter.ChangePollution(1);
+            }
+        } else {
+            timer.Interval = 100;
+            pollutionmeter.ChangePollution(-1);
         }
+
 
         Game.CheckWinCondition();
     }
@@ -74,7 +81,7 @@ class Pollutionmeter
         }
         
         Console.SetCursorPosition(0, 0);
-        return "Pollution: [" + bar + "] " + procent + "/" + maxPollution + " (" + procent + "%)";
+        return "Pollution: [" + bar + "] " + procent + "/" + maxPollution + " (" + procent + "%)   ";
     }
 
     public static int CurrentPollution()
@@ -89,5 +96,8 @@ class Pollutionmeter
     public static Pollutionmeter GetPollutionMeter()
     {
         return pollutionmeter;
+    }
+    public static void SetGoToZero(bool status){
+        goToZero = status;
     }
 }

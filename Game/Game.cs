@@ -178,6 +178,7 @@ class Game
         {
             //Reset game state
             InitRegistry();
+            Pollutionmeter.SetGoToZero(false);
             context.SetDone(false);
             Console.Clear();
             //Start game Display instructions
@@ -203,9 +204,13 @@ class Game
 
     public static void CheckWinCondition()
     {
-        if (machine.GetProgress() == 100 || Pollutionmeter.CurrentPollution() == 0)
+        if (machine.GetProgress() == 100)
         {
-            EndGame(true, "");
+            Pollutionmeter.SetGoToZero(true);
+            if (Pollutionmeter.CurrentPollution() == 0)
+            {
+                EndGame(true, "");
+            }
         } 
         if (Pollutionmeter.CurrentPollution() >= 100)
         {
