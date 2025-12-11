@@ -26,6 +26,7 @@ public class Tests
         Assert.Pass();
     }
 
+
     /*[Test]
     public void Test2()
     { 
@@ -40,4 +41,17 @@ public class Tests
         Assert.That(PMeter.ChangePollution(1), Is.EqualTo(false));
         Assert.Pass();
     }*/
+
+    [Test]
+    public void MovePlayerTest()
+    {
+        World world = new World();
+        Context context = new Context(world.GetEntry());
+        Assert.That(context.MovePlayer("up"), Is.EqualTo(true));
+        Assert.That(context.MovePlayer("up"), Is.EqualTo(true));
+        Assert.That(context.MovePlayer("up"), Is.EqualTo(true));
+        Assert.That(context.MovePlayer("up"), Is.EqualTo(true));
+        Assert.That(context.MovePlayer("up"), Is.EqualTo(false)); //Skal returnere false fordi vi efter 4 gange op vil være på kanten
+        Assert.Pass();
+    }
 }
