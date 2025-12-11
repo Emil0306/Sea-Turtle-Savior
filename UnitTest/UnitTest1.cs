@@ -5,12 +5,14 @@ public class Tests
 {
     Inventory inv;
     Pollutionmeter PMeter;
+    CleaningMachine cleaningmachine;
     
     [SetUp]
     public void Setup()
     {
         inv = new Inventory();
         PMeter = new Pollutionmeter();
+        cleaningmachine = new CleaningMachine();
     }
 
     [Test]
@@ -54,4 +56,27 @@ public class Tests
         Assert.Pass();
 
     }
+
+    [Test]
+   public void GetConstructionListTest()
+   {
+       string[] expected_List =
+       {
+           "motor",
+           "container",
+           "filter",
+           "frame",
+           "solar_panel",
+           "bearing",
+           "pipe",
+           "microcontroller",
+           "rubber",
+           "pump"
+
+       };
+       Assert.That(cleaningmachine.GetConstructionList, Is.EqualTo(expected_List));
+       Assert.Pass();
+    }
+
 }
+
