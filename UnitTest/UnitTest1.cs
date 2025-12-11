@@ -27,8 +27,8 @@ public class Tests
     }
 
 
-    /*[Test]
-    public void Test2()
+    [Test]
+    public void PollutionmeterTest()
     { 
         Console.WriteLine("Hello World!");
 
@@ -40,7 +40,8 @@ public class Tests
         }
         Assert.That(PMeter.ChangePollution(1), Is.EqualTo(false));
         Assert.Pass();
-    }*/
+
+    }
 
     [Test]
     public void MovePlayerTest()
@@ -53,5 +54,6 @@ public class Tests
         Assert.That(context.MovePlayer("up"), Is.EqualTo(true));
         Assert.That(context.MovePlayer("up"), Is.EqualTo(false)); //Skal returnere false fordi vi efter 4 gange op vil være på kanten
         Assert.Pass();
+
     }
 }

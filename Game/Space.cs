@@ -46,6 +46,9 @@ class Space : Node
         new Trash("container", "glass", false),
         new Trash("container", "metal", false),
         new Trash("flowerpot", "glass", false),
+        new Trash("pipe", "plastic", false),
+        new Trash("bearing", "metal", false),
+        new Trash("microcontroller", "electronics", false),
         
     };
     private static InformationPrinter infoPrinter = new InformationPrinter();
@@ -225,7 +228,7 @@ class Space : Node
                 if (i == playerY && h == playerX)
                 {
                     makemap = makemap.Remove(makemap.Length - 3);
-                    makemap += "𓆉  ";
+                    makemap += " \U0001F422";
                     turtleHere = true;
                 }
                 
@@ -234,7 +237,7 @@ class Space : Node
                     if (h == item.Key.posX && i == item.Key.posY && !turtleHere)
                     {
                         makemap = makemap.Remove(makemap.Length - 3);
-                        if (item.Value.GetForbiddenMaterial()) makemap += " ☠︎︎️ ";
+                        if (item.Value.GetForbiddenMaterial()) makemap += " \u2620\uFE0E ";
                         else if (item.Value.GetMaterial() == "plastic") makemap += " P ";
                         else if (item.Value.GetMaterial() == "glass") makemap += " G ";
                         else if (item.Value.GetMaterial() == "metal") makemap += " M ";

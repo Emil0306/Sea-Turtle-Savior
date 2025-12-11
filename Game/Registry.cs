@@ -25,7 +25,7 @@ class Registry {
         string command = elements[0];
         string[] parameters = GetParameters(elements);
         
-        if (command == "collect" && parameters.Length >= 2)
+        if (command == "add" && parameters.Length >= 2)
         {
             string itemWithSpace = $"{parameters[0]} {parameters[1]}"; 
             string itemWithoutSpace = itemWithSpace.Replace(' ', '_'); 
