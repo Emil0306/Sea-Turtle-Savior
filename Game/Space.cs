@@ -224,8 +224,15 @@ class Space : Node
                 }
                 if (h == 0) makemap += " | ";
 
-
-                makemap += " ~ ";
+                if (name == "Harbor" || name == "WasteStation" || name == "Cleaning Machine" )
+                {
+                    makemap += " \u25A8 ";
+                }
+                else
+                {
+                    makemap += " ~ "; 
+                }
+               
                 bool turtleHere = false;
                 if (i == playerY && h == playerX)
                 {
